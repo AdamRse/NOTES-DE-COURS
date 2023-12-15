@@ -1,0 +1,14 @@
+Jumbotron : bandeau
+
+Pour faire du responsive, il faut utiliser la grid pour placer et dimensionner les éléméntso
+responsive : https://getbootstrap.com/docs/5.3/layout/columns/#how-they-work
+	par ex : col-6 col-sm-3 -> grand site  utilisera colonne 6, petit site utilisera colonne 3
+
+d-flex align-item-center : centre verticalement
+
+classes a utiliser :
+mt-5 : margin top de 5 unités
+d-flex justify-content-center : fex et centre l'enfant
+text-white : texte en blanc
+text-center : centrer le texte
+bt-lg : bouton large
