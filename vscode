@@ -1,3 +1,5 @@
 php executable path : Lancer devilbox
 	dans devilbox : whereis php
 	copier le chemin dans le json option
+
+Commenter/décommenter : ctrl+maj+:
