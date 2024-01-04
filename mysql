@@ -1,0 +1,6 @@
+Pour supprimer une table avec une clé primaire qui est une clé étrangère dans une autre table,
+il faut supprimer la table avec la clé étrangère en premier.
+	par ex : DELETE appointments, patients
+	FROM appointments
+	LEFT JOIN patients ON appointments.idPatients = patients.id
+	WHERE appointments.idPatients = 1;

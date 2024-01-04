@@ -5,4 +5,5 @@ Pour rester identifié, il faut ajouter la clé SSH au fichier config de SSH :
 Pour enregistrer le chemin du repo :
     Vérifier les remotes avec : git remote -v
     Si aucun remote, ajouter un remote origin avec git remote add origin <lien repo ssh>
+    Si la branche locale n'existe pas, copier la branche distante avec git fetch
     Si la branche locale ne suite pas la branche distante : git branch --set-upstream-to=origin/<Branche-locale> <Branche-distante>
