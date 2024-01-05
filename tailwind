@@ -16,4 +16,21 @@ Créer un fichier de config tailwind
 			nvm install <dernière version par ex 20.10>
 				On peut vérifier avec node -v
 		Créer le fichier de config qui avait échoué
-			npx install tailwind
+			npx tailwind init
+Créer un fichier .css et coller les instructions d'importation, patr exemple pour les styles de base :
+	@import 'tailwindcss/base';
+	@import 'tailwindcss/components';
+	@import 'tailwindcss/utilities';
+Indiquer à tailwind la feuille CSS à compiler (celle qu'on vient de créer)
+	Dans le package.json, chercher la clé "scripts", et ajouter la commande de compilation
+		"scripts": {
+			"build:css": "tailwindcss build -i <fichierCSS> -o output.css"
+		}
+On peut compiler le css
+	npm run build:css
+	En cas de soucis "Cannot find module", réinitialiser les dépendances
+		rm -rf node_modules
+		npm install
+Lier le fichier css compilé (ici on a compilé output.css)
+	<link rel="stylesheet" href="output.css">
+On peut utiliser tailwind !
