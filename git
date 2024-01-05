@@ -7,3 +7,10 @@ Pour enregistrer le chemin du repo :
     Si aucun remote, ajouter un remote origin avec git remote add origin <lien repo ssh>
     Si la branche locale n'existe pas, copier la branche distante avec git fetch
     Si la branche locale ne suite pas la branche distante : git branch --set-upstream-to=origin/<Branche-locale> <Branche-distante>
+
+Pour ignorer un fichier
+    Créer un fichier .gitignore à la racine.
+    Ajouter le fichier ou dossier à supprimer
+        par exemple exclure tout le dossier module
+            **/module
+        voir les nombreux patterns
