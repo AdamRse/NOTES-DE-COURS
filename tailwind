@@ -1,0 +1,19 @@
+//Installer Tailwind avec NPM et nodeJS
+Aller à la racine du projet
+Installer npm :
+	npm init -y
+Installer tailwind :
+	npm install tailwindcss
+Créer un fichier de config tailwind
+	npx tailwindcss init
+	NOTE : Si ça retourne une erreur, la version installée est sans doute trop ancienne (vérifier avec node -v)
+		Installer manuellement nvm
+			https://github.com/nvm-sh/nvm > Installing and updating
+			executer la ligne (mais à jour) curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+			executer la ligne export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+				[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+		La commande nvm est débloquée, mettre à jour la dernière version
+			nvm install <dernière version par ex 20.10>
+				On peut vérifier avec node -v
+		Créer le fichier de config qui avait échoué
+			npx install tailwind
