@@ -34,3 +34,9 @@ On peut compiler le css
 Lier le fichier css compilé (ici on a compilé output.css)
 	<link rel="stylesheet" href="output.css">
 On peut utiliser tailwind !
+
+//UTILISATION
+Dans le html, linker le fichier d'output en tant que page css
+Configurer le fichier tailwind.config.js
+	Ajouter le chemin des fichiers html et css
+		content: ["./*.{html,js}"]
