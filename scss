@@ -1,0 +1,51 @@
+Variables : $v: 5px;
+    Pour mettre en % : $x: 10*1%
+On peut mettre un sélecteur dans un autre : div p
+    devient :
+    div{
+        p{ }
+    }
+Mixin sont des fonctions qui regrouppent des paramètres css, comme une classe. 2 Exemples avec et sans variables :
+    @mixin my-mix{              @my-mixin-var($v){
+        color: blue;                color: $v;
+    }                           }
+    div{                        div{
+        @include my-mix;            @include my-mixin-var(#000);
+    }                           }
+On peut rajouter une pseudo-classe dans une classe
+    &:hover{ }
+    &:focus{ }
+On peut rajouter égallement &::before ou &::after{ }
+
+//CONDITIONS
+$shadow: '"';
+$color: orange;
+@if ($color == orange) {
+    $shadow: 0 0 5px black
+}
+@elseif ($color == blue) {
+    // Il est également possible de redéfinir la variable
+    $color: pink;
+    $shadow: 0 5px 0 red;
+}
+@else {
+    $shadow: 5px 5px white;
+}
+
+//TABLEAUX
+$fruits: "kiwi", "banane", "cerise", "ananas", "pomme", "pêche", "orange";
+$premiere_valeur: nth($fruits, 1);
+$derniere_valeur: nth($fruits, -1);
+//BOUCLES
+For :
+    @for $i from 1 through 7 {
+        .col-#{$i} {
+            width: 25%*$i;
+        }
+    }
+While :
+    $i: 6;
+    @while $i > 0 {
+        .item-#{$i} { width: 2em * $i; }
+        $i: $i - 2;
+    }
