@@ -1,0 +1,58 @@
+/////////////// PAGES
+Faire un controller
+    php bin/console make:controller
+    Il sera créé dans templates/<nomDuControler>
+Ajouter une route
+    Ajouter une page templates/<nomController>/<nomPage>.html.twig
+    Dans le controller src/<ontroller/<nomController>.php :
+        #[Route(<nomRoute>, name: <nameRoute>)]
+        public function <route>(): Response {
+            $variable = 'Totoooooo';
+            return $this->render('<nomController>/<nomPage>.html.twig', [
+                'variable' => $variable, //variable utilisable dans la page
+            ]);
+        }
+            <nomRoute> : String uri (par exemple "/", ou "/accueil")
+            <nameRoute> : Nom de la page
+            <nomPage> : nom de la page html
+Modèle base
+    Chaque page peut être héritée d'un modèle qui se trouve dans templates/base.html.twig
+    On peut y écrire la structure html, et y définir l'endroit de blocs appelés par la page
+        {% block <nomBloc> %}{% endblock %}
+Page
+    On créé la page dans templates/<nomController>/<nomPage>.html.twig
+    On utilise une base comme modèle, donc on écrira les blocks du modèle comme ceci :
+        {% extends 'base.html.twig' %}
+        {% block <nomBloc> %}
+            //html
+        {% endblock %}
+            Par exemple :
+                {% extends 'base.html.twig' %}
+                {% block title %}Index{% endblock %}
+                {% block body %}<h1>Hello world</h1>{% endblock %}
+                {% block javascript %}<script>console.log("hello world")</script>{% endblock %}
+    On peut utiliser le variables passées avec {{ <nomVariable> }}
+        <nomVariable> sans $
+    On peut utiliser les assets avec un chemin absolu asset()
+        par exemple src="{{ asset('css/styles.css') }}" irra chercher assets/css/styles.css
+        On utilise les assets pour les feuilles de style, images, js, etc
+    On peut érire le chemin d'une page par son nom (<nameRoute>)
+        par ex : href="{{ path('<nameRoute>') }}"
+            on trouve <nameRoute> dans le controller à la ligne #[Route(<nomRoute>, name: <nameRoute>)] de la page correspondante
+
+/////////////// BDD
+Créer une base de données
+Aller dans .env
+    DATABASE_URL="mysql://root:@127.0.0.1:3306/<nomBdd>>"
+1 entity = 1 table
+Créer une entitée
+    php bin/console make:entity
+        >Nom de la table
+        property = colonne
+    Pour faire une relation (foreign key) : créer la property (colonne), avec le type relation
+        >Donner le nom de l'entité (table) à laquelle elle est reliée
+Une fois les entitées créées, créer un fichier de migration vers la BDD
+    php bin/console make:migration
+        le fichier va apparaitre dans migration/<version>.php
+Créer la bdd avec doctrine (doctrine est le pdo de symfony en plus puissant)
+    php bin/console doctrine:migrations:migrate
