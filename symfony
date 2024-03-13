@@ -15,6 +15,18 @@ Ajouter une route
             <nomRoute> : String uri (par exemple "/", ou "/accueil")
             <nameRoute> : Nom de la page
             <nomPage> : nom de la page html
+    Un controlleur peut assigner une arborescence de route à toutes ses méthodes. Par exemple pour avoir la route /campaign/show :
+        #[Route('/campaign')]
+        class CampaignController{
+            #[Route('/show', name: 'show')]
+            public function homeShow(): Response
+            {
+                return $this->render('campaign/show.html.twig', [
+                ]);
+
+            }
+    On peut rediriger sur une autre reoure dans le return de la méthode route
+        return $this->redirectToRoute(<nomPage>, [], Response::HTTP_SEE_OTHER);
 Modèle base
     Chaque page peut être héritée d'un modèle qui se trouve dans templates/base.html.twig
     On peut y écrire la structure html, et y définir l'endroit de blocs appelés par la page
@@ -61,4 +73,28 @@ Créer le CRUD
         >Choisir l'entitée (la table) du crud
         >Choisir le nom du controlleur qui servira d'accès au crud
             On peut avoir la même route qu'un autre controlleur, mais avec des requêtes get ou post. Le contrôleur sera choisis en fonction de la présence des ces requêtes ou non lors de l'appel de la page
-        Ses composants html exploitables de base vont se créer dans templates/<nomController>
+        Ses composants html exploitables de base vont se créer dans templates/<nomController> pour permettre le CRUD.
+L'objet $form
+    Un objet Form s'est créé dans src/Form/<nomController>Type.php pour pouvoir gérer le formulaire de modification de la table.
+    Dans le controlleur, l'objet $form est ajouté et exploitable; par exemple dans la route /new
+        l'objet $form et passé à la vue par le controlleur (par le return). La vue exploite le formulaire par défaut dans templates/<nomControlleur>/_form.html.twig
+    Pour ajouter un attribut à un input de builder dans src/Form/<nomController>Type.php :
+        $builder->add('<nomColonneBdd>', null, ['attr' => ['<nomAttribut>' => '<dansLattribut>']]);
+
+
+
+/////////////// ELEMENTS
+dd(<variable>);
+    var_dump symfony avec avec un die.
+formulaire
+    form_start(form) et form_end(form) : fonctions qui crééent des balises <form>
+    form_row(form.<nomColonneBdd>) : Ajoute l'input qui servira à insérer <nomColonneBdd> en Bdd
+
+/////////////// COMMANDES UTILES
+php bin/console
+    OUvre la console de debug
+
+
+/////////////// SYNTAXE TWIG UTILE
+Avoir la taille d'un tableau
+    <tableau> | length
