@@ -56,3 +56,9 @@ Une fois les entitées créées, créer un fichier de migration vers la BDD
         le fichier va apparaitre dans migration/<version>.php
 Créer la bdd avec doctrine (doctrine est le pdo de symfony en plus puissant)
     php bin/console doctrine:migrations:migrate
+Créer le CRUD
+    php bin/console make:crud
+        >Choisir l'entitée (la table) du crud
+        >Choisir le nom du controlleur qui servira d'accès au crud
+            On peut avoir la même route qu'un autre controlleur, mais avec des requêtes get ou post. Le contrôleur sera choisis en fonction de la présence des ces requêtes ou non lors de l'appel de la page
+        Ses composants html exploitables de base vont se créer dans templates/<nomController>
