@@ -82,6 +82,15 @@ L'objet $form
         $builder->add('<nomColonneBdd>', null, ['attr' => ['<nomAttribut>' => '<dansLattribut>']]);
 
 
+// temp
+$payment = new Payment();
+$form = $this->createForm(PaymentType::class, $payment);
+$form->handleRequest($request);
+
+href="{{ path('nomPage', {'id' : campaign.id}) }}"
+
+$payment->getParticipant()->setCampaign($campaign);
+
 
 /////////////// ELEMENTS
 dd(<variable>);
