@@ -99,9 +99,6 @@ Pour réceptionner le formulaire, on peut le remplir avec la requête Request $r
 /////////////// ELEMENTS
 dd(<variable>);
     var_dump symfony avec avec un die.
-formulaire
-    form_start(form) et form_end(form) : fonctions qui crééent des balises <form>
-    form_row(form.<nomColonneBdd>) : Ajoute l'input qui servira à insérer <nomColonneBdd> en Bdd
 
 /////////////// COMMANDES UTILES
 php bin/console
@@ -114,7 +111,7 @@ Avoir la taille d'un tableau
 envoyer une requête get avec path(). exemple avec un id de l'objet campaign
     href="{{ path('<nomPage>', {'id' : campaign.id}) }}"
 
-    ////// Exemple de cours
+////// Exemple de cours
 formulaire sans crud
     ajouter les names sur l'input
     {{ app.request.query.get("id") }}
