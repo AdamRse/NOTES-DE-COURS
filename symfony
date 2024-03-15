@@ -91,6 +91,24 @@ href="{{ path('nomPage', {'id' : campaign.id}) }}"
 
 $payment->getParticipant()->setCampaign($campaign);
 
+//////
+formulaire sans crud
+    ajouter les names sur l'input
+    {{ app.request.query.get("id") }}
+process du formulaire payment
+    récupérer les valeurs de request : $i = $request->request->get("<nomInput>") // Get n'est pas méthode get, ça marche aussi pour post
+    $payment = new Payment(); $participant = new participant();
+    $payment->set<nomInput>($i); $participant->setName($request->request->get("<nomInput>"))
+    $campaign = $campaignRepository->find($request->request->get("<nomInput>"))
+Enregistrer en bdd
+    ajout de EntityManagerInterface $entityManager en paramètre de la méthode
+    $entityManager->persist($payment);
+    $entityManager->flush();
+récupérer une campagne
+    mettre CampaignRepository $campaignRepository en paramètre de la méthode
+    $campaign = $campaignRepository->find($request->request->get("<nomInputCampaignId>"))
+///
+On ne créé pas d'entité de table pivot (relation many to many)
 
 /////////////// ELEMENTS
 dd(<variable>);
