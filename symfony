@@ -82,16 +82,39 @@ L'objet $form
         $builder->add('<nomColonneBdd>', null, ['attr' => ['<nomAttribut>' => '<dansLattribut>']]);
 
 
-// temp
-$payment = new Payment();
-$form = $this->createForm(PaymentType::class, $payment);
-$form->handleRequest($request);
+/////////////// FORMULAIRES
+Utiliser un formulaire du CRUD avec twig
+    form_start(form) et form_end(form) : fonctions qui crééent des balises <form>
+    form_row(form.<nomColonneBdd>) : Ajoute l'input qui servira à insérer <nomColonneBdd> en Bdd
+Créer un formulaire dans le controlleur à partir d'un CRUD
+    $form = $this->createForm(<tableBdd>Type::class, <objetEntity>);
+Pour réceptionner le formulaire, on peut le remplir avec la requête Request $request (à passer dans la méthode du controlleur de la page)
+    $form->handleRequest($request);
+        par exemple avec un nouveau payment :
+            $payment = new Payment();
+            $form = $this->createForm(PaymentType::class, $payment);
+            $form->handleRequest($request);
+            $payment->getParticipant()->setCampaign($campaign);
 
-href="{{ path('nomPage', {'id' : campaign.id}) }}"
+/////////////// ELEMENTS
+dd(<variable>);
+    var_dump symfony avec avec un die.
+formulaire
+    form_start(form) et form_end(form) : fonctions qui crééent des balises <form>
+    form_row(form.<nomColonneBdd>) : Ajoute l'input qui servira à insérer <nomColonneBdd> en Bdd
 
-$payment->getParticipant()->setCampaign($campaign);
+/////////////// COMMANDES UTILES
+php bin/console
+    Ouvre la console de debug
 
-//////
+
+/////////////// SYNTAXE TWIG UTILE
+Avoir la taille d'un tableau
+    <tableau> | length
+envoyer une requête get avec path(). exemple avec un id de l'objet campaign
+    href="{{ path('<nomPage>', {'id' : campaign.id}) }}"
+
+    ////// Exemple de cours
 formulaire sans crud
     ajouter les names sur l'input
     {{ app.request.query.get("id") }}
@@ -109,19 +132,3 @@ récupérer une campagne
     $campaign = $campaignRepository->find($request->request->get("<nomInputCampaignId>"))
 ///
 On ne créé pas d'entité de table pivot (relation many to many)
-
-/////////////// ELEMENTS
-dd(<variable>);
-    var_dump symfony avec avec un die.
-formulaire
-    form_start(form) et form_end(form) : fonctions qui crééent des balises <form>
-    form_row(form.<nomColonneBdd>) : Ajoute l'input qui servira à insérer <nomColonneBdd> en Bdd
-
-/////////////// COMMANDES UTILES
-php bin/console
-    OUvre la console de debug
-
-
-/////////////// SYNTAXE TWIG UTILE
-Avoir la taille d'un tableau
-    <tableau> | length
