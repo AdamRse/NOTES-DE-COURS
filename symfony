@@ -1,3 +1,23 @@
+/////////////// EXEMPLE NOUVEAU PROJET
+Pour voir si symfony est configuré correctement
+    symfony check:requirements
+Créer le projet symfony
+    symfony new <repertoireProjet> --version="7.0.*" --webapp
+        --version="7.0.*" est optionel, par défaut sumfony prend la dernière version comptible avec la version de PHP utilisée
+        --webapp pour un site internet
+Dans .env, ajouter la BDD
+    DATABASE_URL="mysql://<user>:<mdp>@<ip>:3306/<nomBdd>"
+        le :<mdp> est optionel s'il n'y a pas de mot de passe
+Créer les controlleur
+    php bin/console make:controller
+Créer les entités
+    php bin/console make:entity
+Créer le fichier de migration
+    php bin/console make:migration
+Créer la bdd
+    php bin/console doctrine:migrations:migrate
+Créer le crud
+    php bin/console make:crud
 /////////////// PAGES
 Faire un controller
     php bin/console make:controller
