@@ -16,8 +16,11 @@ Créer le fichier de migration
     php bin/console make:migration
 Créer la bdd
     php bin/console doctrine:migrations:migrate
+        ou php bin/console d:m:m
 Créer le crud
     php bin/console make:crud
+Gestion des users
+    php bin/console make:user
 /////////////// PAGES
 Faire un controller
     php bin/console make:controller
@@ -83,6 +86,8 @@ Créer une entitée
         property = colonne
     Pour faire une relation (foreign key) : créer la property (colonne), avec le type relation
         >Donner le nom de l'entité (table) à laquelle elle est reliée
+/!\Il est mieux de faire les relations entre table après avoir fait toutes les entités, car on ne peut pas modifier un champs.
+    La technique quand il y a des interdépendances, c'est de créer les tables sauf les champs avec une relation, et d'ajouter le champs après que toutes les entitées et leurs ID soient créés. Si on a déjà créé le champ, on peut le supprimer dans /src/Entity/<nomEntitée>
 Une fois les entitées créées, créer un fichier de migration vers la BDD
     php bin/console make:migration
         le fichier va apparaitre dans migration/<version>.php
@@ -101,6 +106,23 @@ L'objet $form
     Pour ajouter un attribut à un input de builder dans src/Form/<nomController>Type.php :
         $builder->add('<nomColonneBdd>', null, ['attr' => ['<nomAttribut>' => '<dansLattribut>']]);
 
+/////////////// GESTION DES USER
+Pour créer les utilisateurs et une entité dédiée pour la migration
+    php bin/console make:user
+        Créé une entité dans /src/Entity/<nomEntity>
+        Créé un repository dans /src/<nomEntity>Repository.php
+Une fois l'user créé, il faut faire une migration.
+Faire un système d'authentification, qui gère l'e-mail, le formulaire de login, les mdp
+    php bin/console make:auth
+        créé un fichier spécial dans /src/Security/<nomAuthentificator> qui gère les vérifications de sécurité
+        créé un controlleur dédié au login (si on a choisis l'option) dans /src/Controller/<nomControlleur>
+            créé aussi une vue associée à la route login dans templates/security/login.html.twig
+On aura aussi besoin d'un formulaire pour enregistrer un user
+    php bin/console make:registration-form
+        Ne créé pas d'entitée mais modifie celle créée par make:user
+        créé un formulaire dans /src/Form/<nomFormulaire>
+        créée un controlleur d'enregistrement dans /src/Controller/ResistrationController.php
+        créé une vue dans /templates/registration/register.html.twig
 
 /////////////// FORMULAIRES
 Utiliser un formulaire du CRUD avec twig
