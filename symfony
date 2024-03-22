@@ -1,10 +1,11 @@
-/////////////// EXEMPLE NOUVEAU PROJET
+/////////////// EXEMPLE NOUVEAU PROJET (Détaillé dans les autres parties)
 Pour voir si symfony est configuré correctement
     symfony check:requirements
 Créer le projet symfony
     symfony new <repertoireProjet> --version="7.0.*" --webapp
         --version="7.0.*" est optionel, par défaut sumfony prend la dernière version comptible avec la version de PHP utilisée
         --webapp pour un site internet
+    composer install si c'est sur un autre PC
 Dans .env, ajouter la BDD
     DATABASE_URL="mysql://<user>:<mdp>@<ip>:3306/<nomBdd>"
         le :<mdp> est optionel s'il n'y a pas de mot de passe
@@ -127,7 +128,7 @@ On aura aussi besoin d'un formulaire pour enregistrer un user
 /////////////// FORMULAIRES
 Utiliser un formulaire du CRUD avec twig
     form_start(form) et form_end(form) : fonctions qui crééent des balises <form>
-    form_row(form.<nomColonneBdd>) : Ajoute l'input qui servira à insérer <nomColonneBdd> en Bdd
+    form_widget(form.<nomColonneBdd>) : Ajoute l'input qui servira à insérer <nomColonneBdd> en Bdd
 Créer un formulaire dans le controlleur à partir d'un CRUD
     $form = $this->createForm(<tableBdd>Type::class, <objetEntity>);
 Pour réceptionner le formulaire, on peut le remplir avec la requête Request $request (à passer dans la méthode du controlleur de la page)
@@ -137,6 +138,11 @@ Pour réceptionner le formulaire, on peut le remplir avec la requête Request $r
             $form = $this->createForm(PaymentType::class, $payment);
             $form->handleRequest($request);
             $payment->getParticipant()->setCampaign($campaign);
+Pour modifier un attribut dans un formulaire, il faut aller dans le formulaire /src/Form/<nomFormulaire>Type.php, puis modifier le add
+    ->add('<champ>', null, ['attr' => ['class' => "<listeDesClasses>"]])
+        On ne peut pas modifier l'id comme ceci
+    Pour modifier un ID on utilisera par exemple {{ form_widget(registrationForm.agreeTerms, { 'id': 'accept-terms' }) }}
+
 
 /////////////// ELEMENTS
 dd(<variable>);
