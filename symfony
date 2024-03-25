@@ -159,6 +159,34 @@ Avoir la taille d'un tableau
 envoyer une requête get avec path(). exemple avec un id de l'objet campaign
     href="{{ path('<nomPage>', {'id' : campaign.id}) }}"
 
+
+/////////////// EASY ADMIN
+Pour télécharger easy admin :
+    composer require easycorp/easyadmin-bundle
+Installer un dashboard
+    php bin/console make:admin:dashboard
+        On choisis le nom du controlleur et son emplacement
+    A ce stade le dashboard est accessible dans /admin
+Faire le CRUD controller
+    php bin/console make:admin:crud
+        Toutes les tables que l'admin peut gérer
+Une fois les CRUD créés, il faut modifier le controlleur du dashboard (par défaut DashboardController)
+    Dans la route /admin, index(), commenter le premier return, et décommenter l'option choisie.
+        Attention option 1 : il faut rajoutter le use de AdminUrlGenerator
+            Par exemple : use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
+    dans la méthode $adminUrlGenerator->setController(), il faut aussi changer le type de la classe qu'on veut cruder par défaut en arrivant sur /admin. Par défaut ces crud sont dans le dossier src/Controller/Admin/<crudController>
+        Par exemple : return $this->redirect($adminUrlGenerator->setController(UserCrudController::class)->generateUrl());
+            car j'ai un UserCrudController.php dans src/Controller/Admin/
+Pour ajouter un crud au menu admin, il fautr aller dans le DashboardController (nom par défaut)
+    Dans la méthode public function configureMenuItems(), les yeld représentent les entrées du menu, les crud de chaque entités.
+    Décommenter et modifier la ligne qui deviendra une entrée du menu admin :  // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
+        'The Label' : L'affichage dans le menu admin
+        'fas fa-list' : L'icône
+        EntityClass : Le nom de l'entité à CRUD (dans /src/controller/Entity, ne pas oublier le use)
+        le yeld est un return qui n'arrête pas la suite de l'execution du bloc de code, au contraire du return
+
+
+
 ////// Exemple de cours
 formulaire sans crud
     ajouter les names sur l'input
