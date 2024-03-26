@@ -51,6 +51,7 @@ Ajouter une route
             }
     On peut rediriger sur une autre reoure dans le return de la méthode route
         return $this->redirectToRoute(<nomPage>, [], Response::HTTP_SEE_OTHER);
+    ATTENTION, il peut y avoir des conflits de route, la première route compatible est prise en compte.
 Modèle base
     Chaque page peut être héritée d'un modèle qui se trouve dans templates/base.html.twig
     On peut y écrire la structure html, et y définir l'endroit de blocs appelés par la page
@@ -124,6 +125,10 @@ On aura aussi besoin d'un formulaire pour enregistrer un user
         créé un formulaire dans /src/Form/<nomFormulaire>
         créée un controlleur d'enregistrement dans /src/Controller/ResistrationController.php
         créé une vue dans /templates/registration/register.html.twig
+Configurer le rôle admin et ses droits :
+    Dans le fichier config/packages/security.yaml, décommenter le rôle - { path: ^/admin, roles: ROLE_ADMIN } pour l'activer
+    Dans la BDD, l'user a une colonne r$ole, il faut y ajouter ["ROLE_ADMIN"] (ce sera visible dans la barre de debug symfony)
+    On peut alors restrindre n'importe quelle route en ajoutant #[IsGranted("ROLE_ADMIN")] au dessus de n'importe quelle route d'un contrôlleur
 
 /////////////// FORMULAIRES
 Utiliser un formulaire du CRUD avec twig
@@ -184,10 +189,12 @@ Pour ajouter un crud au menu admin, il fautr aller dans le DashboardController (
         'fas fa-list' : L'icône
         EntityClass : Le nom de l'entité à CRUD (dans /src/controller/Entity, ne pas oublier le use)
         le yeld est un return qui n'arrête pas la suite de l'execution du bloc de code, au contraire du return
+Pour modifier le contenu d'une page admin
 
 
 
-////// Exemple de cours
+
+////// Exemple de cours pour récupérer une requête et l'enregistrer en BDD
 formulaire sans crud
     ajouter les names sur l'input
     {{ app.request.query.get("id") }}
