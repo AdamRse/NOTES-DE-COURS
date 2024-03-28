@@ -1,0 +1,22 @@
+//adam@141.94.22.233
+Ajouter une Bdd
+    databases > add new database > Assigner son user
+        Si ça ne fonctionne pas, révoke l'user et ré-assigner les droits pour le mettre à jour.
+Ajouter un projet
+    cliquer sur le bouton "deploy new web app" dans le dashboard
+    Onglet empty web app
+    User (Owner of this Web Application) > Adamo
+    Régles du serveur pour les projets :
+        <nomUser>-<nomProjet>projets.p8.garage404.com
+    cocher enable autoSSL
+    Pour linker la database : settings > Scroller jusqu'à linked database
+    Aller dans webapp et faire un clone http avec ./ en argument pour ne pas cloner le projet dans un dossier
+        en https, on a besoin du token en tant que mot de passe
+    Pour symfony
+        composer install --no-dev --optimize-autoloader
+        composer dump-env prod
+        composer require symfony/apache-pack
+            mettre yes
+            Si ça ne marche pas, effacer le package avec composer remove symfony/apache-pack puis le refaire
+        Nettoyer le cache
+            APP_ENV=prod APP_DEBUG=0 php bin/console cache:clear
