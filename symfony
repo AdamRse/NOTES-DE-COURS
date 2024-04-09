@@ -73,6 +73,7 @@ Page
     On peut utiliser les assets avec un chemin absolu asset()
         par exemple src="{{ asset('css/styles.css') }}" irra chercher assets/css/styles.css
         On utilise les assets pour les feuilles de style, images, js, etc
+            Si le chemin ne fonctionne pas, vérifier l'installation avec composer require symfony/asset
     On peut érire le chemin d'une page par son nom (<nameRoute>)
         par ex : href="{{ path('<nameRoute>') }}"
             on trouve <nameRoute> dans le controller à la ligne #[Route(<nomRoute>, name: <nameRoute>)] de la page correspondante
@@ -147,7 +148,12 @@ Pour modifier un attribut dans un formulaire, il faut aller dans le formulaire /
     ->add('<champ>', null, ['attr' => ['class' => "<listeDesClasses>"]])
         On ne peut pas modifier l'id comme ceci
     Pour modifier un ID on utilisera par exemple {{ form_widget(registrationForm.agreeTerms, { 'id': 'accept-terms' }) }}
-
+Pour ajouter les valeurs (input) d'une autre entité dans un form :
+    Dans la méthode <Entity>Type->buildForm() on peu ajouter un autre formulaire d'une entité
+        $builder->add('<entity>', <Entity>>Type::class)
+Pour faire passer une valeur (input) dans le formulaire qui ne dépend pas d'une entité <Entity>Type->configureOptions()
+    Passer "allow_extra_fields" à true dans les options par défaut :
+        $resolver->setDefaults([ "allow_extra_fields" => true ]);
 
 /////////////// ELEMENTS
 dd(<variable>);
@@ -191,8 +197,23 @@ Pour ajouter un crud au menu admin, il fautr aller dans le DashboardController (
         le yeld est un return qui n'arrête pas la suite de l'execution du bloc de code, au contraire du return
 Pour modifier le contenu d'une page admin
 
+/////////////// .ENV
+Pour ajouter une variable exploitable
+    Dans le .env à la racine, ajouter une variable
+        par exemple API_TOKEN=mJxTXVXMfRzLg6ZdhUhM4F6Eutcm1ZiPk4fNmvBMxyNR4ciRsc8v0hOmlzA0vTaX
+    Dans config/services.yaml, ajouter un paramètre
+        parameters:
+            apitoken : '%env(API_TOKEN)%'
+    La variable est maintenant accessible dans le contrôleur via $this->getParameter(<variableService.yaml>);
+        par ex : $token = $this->getParameter('apitoken');
 
 
+/////////////// Erreurs fréquentes
+The target-entity "some entity" cannot be found
+    Lors de la relation, l'entitée a été liée avec une minuscule au début du nom. Pour corriger ça, aller dans l'entity qui apelle l'autre, et remettre une majuscule au type de l'attribut et des méthodes.
+        Par ex : private ?address $shipping = null;
+        devient : private ?Address $shipping = null;
+        (de même pour les setterset getters)
 
 ////// Exemple de cours pour récupérer une requête et l'enregistrer en BDD
 formulaire sans crud
@@ -212,3 +233,5 @@ récupérer une campagne
     $campaign = $campaignRepository->find($request->request->get("<nomInputCampaignId>"))
 ///
 On ne créé pas d'entité de table pivot (relation many to many)
+///
+return $this->json() pour renvoyer un json au lieu d'un twig dans le controller
