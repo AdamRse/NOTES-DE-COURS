@@ -119,6 +119,7 @@ mysql_secure_installation //configure l'utilisateur root et la BDD
 Dans /etc/mysql/conf.d/mysql.cnf
 [mysqld] # (/!\le d est important à la fin, parfois des en-têtes existent déjà avec juste [mysql])
 bind-address = 0.0.0.0
+systemctl restart mariadb
 
 //Configurer phpmyadmin
 Ajouter un blowfish secret
