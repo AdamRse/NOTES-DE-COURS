@@ -16,12 +16,14 @@ Executer le fichier compilé par tsc (.js)
 let str:string = "a";
 let nb:number = 3;
 let bl:boolean = true;
-let any = "any";
-let unknown:unknown = 0;
+let any = "any";//type any : type non défini, tous les types
+let unknown:unknown = 0;//c'est comme un type any
 let nl:null = null;
 let undef:undefined = undefined;
 function vd(message: string): void { console.log("coucou"); }
-function error(message: string): never { throw new Error(message); }
+function error(message: string): never { throw new Error(message); }//never pour retourner une erreur
 let arr:Array<number> = [0, 1];
-let tuple: [number, string] = [3, "Coucou"];
+let tuple: [number, string] = [3, "Coucou"];//défini le type de chaque row
 
+L'assertion de type : Quand on laisse typescript déduire le type d'une varable en fonction de la valeur qu'elle reçoit.
+    par ex: let a:any = 1; //Le type de a est number
