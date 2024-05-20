@@ -1,8 +1,7 @@
-//adam@141.94.22.233
-Ajouter une Bdd
-    databases > add new database > Assigner son user
-        Si ça ne fonctionne pas, révoke l'user et ré-assigner les droits pour le mettre à jour.
-Ajouter un projet
+//https://manage.runcloud.io/servers/209354/summary
+//ssh adam@141.94.22.233
+//bdd adamo:mdpClassique
+Ajouter un projet (symfony)
     cliquer sur le bouton "deploy new web app" dans le dashboard
     Onglet empty web app
     User (Owner of this Web Application) > Adamo
@@ -20,3 +19,22 @@ Ajouter un projet
             Si ça ne marche pas, effacer le package avec composer remove symfony/apache-pack puis le refaire
         Nettoyer le cache
             APP_ENV=prod APP_DEBUG=0 php bin/console cache:clear
+Ajouter une Bdd
+    databases > add new database > Assigner son user
+        Si ça ne fonctionne pas, révoke l'user et ré-assigner les droits pour le mettre à jour.
+
+
+///////////////////WORDPRESS
+choisir son thème
+    apparence > theme
+    utiliser l'éditeur de thème elementor
+        what you see is what you get (wysiwyg)
+Commentaire
+    c'est un élément d'une page
+posts
+    article de blog
+plugins
+    thème apparence et fonctionnalités
+    On peut avoir accès à de nouveaux onglets dans le menu principal
+
+Elementor

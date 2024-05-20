@@ -144,6 +144,10 @@ Pour réceptionner le formulaire, on peut le remplir avec la requête Request $r
             $form = $this->createForm(PaymentType::class, $payment);
             $form->handleRequest($request);
             $payment->getParticipant()->setCampaign($campaign);
+    Quand le formulaire est reçu et hydraté avec $request, on vérifie qu'il est legit et envoyé :
+        if($form->isSubmitted() && $form->isValid())
+            $form est de type Symfony\Component\Form\Form
+    Il faut le persist et le flush pour l'envoyer en bdd, lia l'entitymanagerinterface $em (qu'on ajoute aux arguments
 Pour modifier un attribut dans un formulaire, il faut aller dans le formulaire /src/Form/<nomFormulaire>Type.php, puis modifier le add
     ->add('<champ>', null, ['attr' => ['class' => "<listeDesClasses>"]])
         On ne peut pas modifier l'id comme ceci
@@ -154,6 +158,9 @@ Pour ajouter les valeurs (input) d'une autre entité dans un form :
 Pour faire passer une valeur (input) dans le formulaire qui ne dépend pas d'une entité <Entity>Type->configureOptions()
     Passer "allow_extra_fields" à true dans les options par défaut :
         $resolver->setDefaults([ "allow_extra_fields" => true ]);
+
+Si on persist un formulaire qui contient plusieurs entitées, il faut rajouter dans l'entité, dans l'attribut qui contient la relation avec l'autre entité, en précisant cascade : persist :
+    #[ORM\ManyToOne( <autres option> , cascade: ['persist'])]
 
 /////////////// ELEMENTS
 dd(<variable>);

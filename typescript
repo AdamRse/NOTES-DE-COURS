@@ -1,0 +1,27 @@
+//Installation
+sudo apt install npm
+npm install -g typescript
+    -g pour global
+Dans le répertoire du projet nodeJS, initialiser le projet en créant un package.json
+    npm init -y
+Initialiser un fichier de config typescript (sconfig.json)
+    tsc --init
+Créer un fichier avec une extension .ts
+Compiler le fichier .ts en un .js
+    tsc <fichier>
+Executer le fichier compilé par tsc (.js)
+    node <fichier>
+
+//Les types typescript
+let str:string = "a";
+let nb:number = 3;
+let bl:boolean = true;
+let any = "any";
+let unknown:unknown = 0;
+let nl:null = null;
+let undef:undefined = undefined;
+function vd(message: string): void { console.log("coucou"); }
+function error(message: string): never { throw new Error(message); }
+let arr:Array<number> = [0, 1];
+let tuple: [number, string] = [3, "Coucou"];
+

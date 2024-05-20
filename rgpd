@@ -1,0 +1,42 @@
+Règles d'or :
+    1 - Licéité
+    2 - Finalité : Données collectées dans un objectif défini
+    3 - Minimisation : Seules les données strictement nécéssaires
+    4 - Protection supplémentaire à respecter pour des données sensibles
+    5 - Archivage, supression ou anonymisation des données dès que l'objectif (le point 2) est atteint
+    6 - Obligation de sécurités
+    7 - Les personnes concernées voivent être éclairées en toute transparence
+    8 - Les personnes concernées peuvent faire valoir tous leurs droits
+
+Liceité (Légal au regard du droit et des dispositions informatique et libertés)
+    Le traitement : C'est le fait de dire à l'utilisateur à quoi vont servir ses données. 1 traitement = 1 finalité
+    Consentement pour chaque traitement SEPAREMENT.
+
+Finalité (objectif pour lequel est demmandé une donnée personnelle)
+    Détournement de la finalité : Utiliser ou vendre les données dans un autre but que celui affiché. C'est considéré comme illégal car l'utilisateur n'est pas éclairé, s'il conaissait cette information il n'aurait peut être pas renseigné ses informations.
+    Il est cependant possible de faire évoluer la finalité (avec une finalité considérée comme compatble)
+
+Minimisation (Ne collecter que les données strictement nécéssaires)
+    Quel ets l'objectif, quelles sont les données indispensables à cet objectif
+
+Durée de conservation
+    1 mois pour les images de vidéosurveillance
+    3 ans à partir de la collecte
+Archivage
+    durée de 5 ans max. L'archive doit être séparée physiquement et avec d'autres droits d'accès plus strictes.
+
+Garrants du RGPD
+    CNIL (France) 1978
+        -informer, protéger les droits
+        -accompagner la conformité/conseiller
+        -Anticipper et innover
+        -contrôler et sanctionner
+     CEPD (EU)
+        -Conseille la commission Européenne
+        -Se prononce sur des litiges (transfrontaliers)
+     CJUE (EU)
+        -Sanctionne les entités qui ne respectent pas
+        -Statue sur les recours
+
+Sont concernés par le RGPD, toute entité ayant un service en Europe et exploitrant des données personelles en Europe. Peu importe où elle se situe et où elle fait commerce.
+
