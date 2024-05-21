@@ -121,6 +121,11 @@ Dans /etc/mysql/conf.d/mysql.cnf
 bind-address = 0.0.0.0
 systemctl restart mariadb
 
+//Importer un CSV dans la bdd
+mysql <database>
+LOAD DATA INFILE '<cheminFichierCSVsurLaMachine>' INTO TABLE `<table>` FIELDS TERMINATED BY '<caractèreDeSéparationDeColonne>' LINES TERMINATED BY '<auto ou \n>';
+	Rajouts optionnels (au choix) : ENCLOSED BY '"' IGNORE <nbLignesAIgnorer> LINES
+
 //Configurer phpmyadmin
 Ajouter un blowfish secret
 	Dans phpmyadmin/config.inc.(sample).php
