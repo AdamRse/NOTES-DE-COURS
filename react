@@ -1,8 +1,7 @@
 ////////////////// VSCODE
 Les modules conseillés :
     ES7+ React/Redux/React-Native snippets par dsznajder
-        permet notament de créer des composants avec rafc (function)
-
+        permet notament de créer des composants avec rafce (function), rcc (objet)
 
 ////////////////// INSTALLATION
 npx create-react-app <répertoire>
@@ -24,7 +23,26 @@ ajouter un composant
 Le component renvoie (render) un unique élément html (on encapsule tout dans une div)
 Pour ajouter un component, ajouter un fichier .js  avec le nom du component qui commence par une maj.
 On peut déclarer un component sous forme de fonction ou de classe.
-
+Dans tout les cas le component doit contenir
+    import React from 'react'
+    Le composant : une fonction ou un objet qui rend un élément html
+    export default <nomFonctionOuObjet>
+COMPONENT FONCTION
+    const test = () => { return (<div>html</div>) }
+COMPONENT CLASS
+    Pour import le component, on peut le faire en même temps que le React
+        import React, { Component } from 'react'
+    Pour export la classe, on peut soit export default <className> à la fin, soit export default toute la classe
+    La classe extends Component
+    La classe doit comporter une méthode render() qui return l'élament html avec la même syntaxe que le component fonction
+    On peut y ajouter un constructeur qui commence par super();
+        constructor(){ super(); }
+    Pour faire de l'événementiel, on peut mettre des événements dans le html du render et lui faire appeler une méthode
+        <button onclick="{() => this.<methode>()}">clic</button>
+        ou : <button onclick="{this.<methode>().bind(this)}">clic</button>
+            On doit donner le contexte de this, sinon il est appelé automatiquement par le component sans passer la l'événement et fait une boucle infinie
+    la méthode créée accède aux props et states
+        par ex : add(){ this.setState({ cpt: this.state.cpt+1 }) }
 
 
 ////////////////// HOOKS
