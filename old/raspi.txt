@@ -1,0 +1,40 @@
+//Droits pour toucher aux GPIO
+sudo usermod -aG gpio <username>
+
+//Programme de config par défaut :
+sudo raspi-config
+
+//status
+pinout
+
+//check CPU température (°C/1000):
+nano /sys/class/thermal/thermal_zone0/temp
+
+//Ouvre et ferme un GPIO :
+#   Exports pin to userspace
+echo "3" > /sys/class/gpio/export                  
+# Sets pin 3 as an output
+echo "out" > /sys/class/gpio/gpio3/direction
+# Sets pin 3 to high
+echo "1" > /sys/class/gpio/gpio3/value
+# Sets pin 3 to low
+echo "0" > /sys/class/gpio/gpio3/value
+#   Close pin
+echo "3" > /sys/class/gpio/unexport
+##### 
+# As for input
+echo "3" > /sys/class/gpio/export
+echo "in" > /sys/class/gpio/gpio3/direction
+####
+# Check gpio state
+cat /sys/class/gpio/gpio4/value
+
+//Désactive la wifi (temporaire)
+sudo ifconfig wlan0 down
+
+
+/////////////////////////
+Mémoire :
+https://www.cyberciti.biz/faq/how-to-check-memory-debian-linux/
+https://opensource.com/article/18/7/how-check-free-disk-space-linux
+df --help

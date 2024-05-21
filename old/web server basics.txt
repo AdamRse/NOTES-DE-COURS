@@ -1,0 +1,256 @@
+//Changement langue
+dpkg-reconfigure locales
+
+//Mettre un utilisateur en admin
+sudo usermod -aG sudo <username>
+
+//Configurer la timezone
+timedatectl set-timezone Europe/Paris
+
+//Monitoring
+top
+
+//créer un mot de passe SHA (pour dovecot)
+doveadm pw -s SHA512-CRYPT -p "<password>" -r 5000
+
+//Installer SFTP :
+apt install openssh-server
+
+//sites ssl
+créer un dossier où seront les certificats
+apt-get install openssl
+dans le dossier prévu pour les clefs
+	openssl genrsa 4096 > <nom Clef 1>.key
+	openssl req -new -key <nom Clef 1>.key -x509 -days 365 -out <nom Clef 1>.pem
+éditer le fichier apache2 par défaut :
+	nano /etc/apache2/sites-available/default-ssl.conf
+Modifier les lignes pour
+	SSLCertificateFile       <chemin>/<nom Clef 1>.pem
+	SSLCertificateKeyFile  <chemin>/<nom Clef 1>.key
+a2enmod ssl
+a2ensite default-ssl
+Ajouter la condition de redirection https dans le fichier default (/etc/apache2/sites-availables/000-default.conf)
+	RewriteEngine on
+     RewriteCond %{SERVER_PORT} !^443$
+     RewriteRule ^/(.*) https://%{SERVER_NAME}/$1 [L,R]
+systemctl reload apache2 (ou service apache2 reload)
+
+//certifs SSL avec certbot
+sudo install snapd
+sudo snap install core; sudo snap refresh core
+Supprimer les anciennes versions s'il y en avait :
+	sudo apt-get remove certbot
+sudo snap install --classic certbot
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
+Lancer certbot
+	Pour que le bot détecte tous les sites installés et le configure en SSL :
+		sudo certbot --apache
+	Pour plusieur sous-domaines
+		sudo certbot --apache -d domain.fr -d sub1.domain.fr -d sub2.domain.fr
+	Pour faire la config sois-même sans que le bot édite les fichiers de config apache
+		sudo certbot certonly --apache
+Modifier la crontab en renouvellant la certif tous les mois
+	15 4 15 * * /usr/bin/certbot renew --quiet
+
+//Instaler openDKIM et spamass
+apt install opendkim opendkim-tools spamass-milter
+Dans le fichier /etc/opendkim.conf, ajouter : ----
+AutoRestart             Yes
+AutoRestartRate         10/1h
+UMask                   002
+Syslog                  yes
+SyslogSuccess           Yes
+LogWhy                  Yes
+
+Canonicalization        relaxed/simple
+
+ExternalIgnoreList      refile:/etc/opendkim/TrustedHosts
+InternalHosts           refile:/etc/opendkim/TrustedHosts
+KeyTable                refile:/etc/opendkim/KeyTable
+SigningTable            refile:/etc/opendkim/SigningTable
+
+Mode                    sv
+PidFile                 /var/run/opendkim/opendkim.pid
+SignatureAlgorithm      rsa-sha256
+
+UserID                  opendkim:opendkim
+
+Socket                  inet:12301@localhost
+----
+Dans le fichier /etc/default/opendkim, ajouter à la fin :
+	smtpd_milters = unix:/spamass/spamass.sock, inet:localhost:12301
+	non_smtpd_milters = unix:/spamass/spamass.sock, inet:localhost:12301
+mkdir /etc/opendkim
+mkdir /etc/opendkim/keys
+Dans le fichier /etc/opendkim/TrustedHosts, ajouter les noms de domaines trustables :
+	*.domaine.fr (ou) domaine.fr (ou) mail.domaine.fr
+Dans le fichier /etc/opendkim/KeyTable ajouter (remplacer les "<domaine.fr>") :
+	mail._domainkey.<domaine.fr> <domaine.fr>:mail:/etc/opendkim/keys/<domaine.fr>/mail.private
+Dans le fichier /etc/opendkim/SigningTable ajouter (remplacer les "<domaine.fr>") :
+	*@<domaine.fr> mail._domainkey.<domaine.fr>
+Si on utilis spamassassin, modifier le fichier /etc/default/spamass-milter avec :
+	OPTIONS="-u spamass-milter -i 127.0.0.1 -m -I -- --socket=/var/run/spamassassin/spamd.sock"
+cd /etc/opendkim/keys
+mkdir <domaine.fr>
+cd <domaine.fr>
+opendkim-genkey -s mail -d <domaine.fr>
+chown opendkim:opendkim mail.private
+cat mail.txt
+Ajouter au serveur DNS l'entrée donnée (jusqu'à la parenthèse fermée)
+service postfix restart
+service spamass-milter restart
+service opendkim restart
+
+//Activer le module rewrite (redirections) d'apache 2
+a2enmod rewrite
+
+//installer la librairie GD (création images)
+apt-get install php7.4-gd
+	Attention, bien renseigner la version de php utilisée
+
+//Installer php et mysql
+apt update
+apt install php php-cgi php-mysqli php-pear php-mbstring php-gettext libapache2-mod-php php-common php-phpseclib php-mysql
+apt install mariadb-server
+mysql_secure_installation //configure l'utilisateur root et la BDD
+(il ne reste plus qu'à télécharger le zip de phpmyadmin)
+
+//Autoriser l'accès externe de mysql
+Dans /etc/mysql/conf.d/mysql.cnf
+[mysqld] # (/!\le d est important à la fin, parfois des en-têtes existent déjà avec juste [mysql])
+bind-address = 0.0.0.0
+systemctl restart mariadb
+
+//Configurer phpmyadmin
+Ajouter un blowfish secret
+	Dans phpmyadmin/config.inc.(sample).php
+		remplir >=32 caractères dans $cfg['blowfish_secret']
+	Si le fichier de config ne s'appelle pas config.inc.php, le renomer come tel
+créer dans phpmyadmin un dossier tmp avec les droits pour www-data pour que phpmyadmin y ait accès
+si à l'accueil de phpmyadmin il y a un warning sur l'erreur de pmadb, cliquer sur "créer" pour créer la base dont il a besoin.
+
+//Pour phpmyadmin user root :
+mysql
+USE mysql;
+UPDATE user SET plugin='' WHERE User='root';
+FLUSH PRIVILEGES;
+
+//Configurer SSH
+sudo nano /etc/ssh/sshd_config
+	//Pour une cession plus longue (360 ping toutes les 120 secondes)
+	ClientAliveInterval 120
+	ClientAliveCountMax 360
+
+//crontab
+crontab -e
+	@reboot <command>
+
+//Configurer sudo
+sudo nano /etc/sudoers
+	(en fin de fichier)
+	<user_name> ALL=(ALL) NOPASSWD:ALL
+
+//Créer un raccourcis (lien symbolique)
+ln -s <dossier-Cible> <raccourcis>
+
+//USB Drive
+vérifier le nom du périphérique avec
+	fdisk –l
+créer un dossier d'accès mount
+	sudo mkdir /media/<nom d'acces> (j'ai mis hdd)
+Monter l'accès usb
+	sudo mount /dev/<nom peripherique, ex : sdb1> /media/<nom d'acces>/
+Pour formatter le disque :
+	sudo unmount /dev/<nom peripherique>
+	sudo mkfs.vfat /dev/<nom périphérique>
+
+//Browscap
+Télécharger le dernier browscap.ini (https://browscap.org/)
+Dans le php.ini, ajouter un lien vers le browscap.ini
+	browscap = "[chemin_vers_le_browscap.ini]"
+redémarrer apache2
+
+//Installer pi-hole
+apt install curl
+curl -sSL https://install.pi-hole.net | bash
+pihole -a -p //configurer le mot de passe de [IP]/admin
+
+//Installer node.js
+Accéder à un utilisateur sudo
+Aller dans un répertoire utilisateur sudo et créer un dossier nodePPA (nom optionel)
+	cd /home/<user>/nodePPA/
+Télécharger le script d'istallation de PPA (personal package archive). Voir sur google si pas de version plus récente que 12.x (à mettre tel quel dans l'url)
+	curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh
+sudo bash nodesource_setup.sh
+sudo apt install nodejs
+	On peut vérifier l'installation avec 'node -v' pour afficher la version
+	et 'npm -v'
+sudo apt install build-essential
+Installer Using NVM (pour checker la derniere version (ici 0.38.0), ici : https://github.com/creationix/nvm
+	curl -sL https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh -o install_nvm.sh
+bash install_nvm.sh
+source ~/.profile
+nvm ls-remote
+Noter la dernière version avec la note (Latest LTS: <nom>) et remplacer avec les version donné ci-dessous
+Installer cette version
+	nvm use 14.16.5
+nvm ls
+nvm alias default 14.16.5
+nvm use default
+
+//Désinstaller Node.js
+sudo apt remove nodejs
+Prendre la version à désinstaller
+	nvm current
+nvm deactivate
+node_version : version à désinstaller
+	nvm uninstall node_version
+
+//Samba
+Créer un utilisateur à partir d'un ustilisateur système existant
+	smbpasswd -a [user]
+Restart service
+	systemctl restart smbd
+Config nouvel [utilisateur] : nano /etc/samba/smb.conf
+[user]
+    comment = Partage windows
+    path = /media/hdd/partage/__dlna/
+    browseable = yes
+    writeable = yes
+    only guest = no
+    force group = www-data
+    public = no
+    force create mode = 0770
+    force directory mode = 0770
+
+//Lancer un programme au démarrage
+mettre un fichier avec le nom du programme dans /etc/init.d
+lui faire interpréter les arguments "start" et "stop" (start obligatoire, c'est lui qui doit lancer le programme)
+Mettre un chmod 775
+Ajouter LSB en entête :
+### BEGIN INIT INFO
+# Provides:          scriptname
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     1
+# Default-Stop:      0 1 6
+# Short-Description: Start daemon at boot time
+# Description:       Enable service provided by daemon.
+### END INIT INFO
+update-rc.d (nomScript) defaults
+Pour le supprimer, c'est update-rc.d -f (nomscript) remove
+
+/////////////////////////////////NOTES
+//chmod droits :
+	0	Aucun
+	1	Seulement exécuter
+	2	Seulement écrire
+	3	Ecrire/exécuter
+	4	Seulement lire
+	5	Lire/exécuter
+	6	Lire/écrire
+
+//afficher les erreurs php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);

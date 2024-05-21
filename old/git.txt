@@ -1,0 +1,33 @@
+////////////////NOUVEAU REPO SUR GITHUB
+-Créer un repo sur github
+	/// Si git n'est pas configuré
+	git config --global user.name "UtilisateurGitHub"
+	git config --global user.email "email"
+-Ouvrir git.exe sur le PC et aller à la racine du projet avec cd
+Initialiser le repo : git init
+ajouter tous les fichier présents dans le repo (ne pas oublier le point) : git add .
+envoyer : git commit -m "premier commit"
+créer la branche : git branch -m master
+ajouter l'origine pour le transfert (affiché sur le repo vide dans github) : git remote add origin git@github.com:AdamRse/<nomDuRepo>.git
+(Avant de push, il faut être authentifié par une clé privée)
+push le code dans la branche créée : git push -u origin master
+
+////////////////GESTION DES CLEFS
+Générer les clés : ssh-keygen -t ed25519 -C "bakaarion3@gmail.com"
+vérifier que ssh-agent est actif : eval "$(ssh-agent -s)"
+ajouter la clé privée nouvellement générée à ssh-agent (Je ne sais pas pourquoi une paire de clé s'est aussi générée dans le projet, elle fonctionne aussi) : ssh-add "<chemin de la clé>\<nomClé>"
+SUR GITHUB :
+Profil > settings > SSH and GPG keys > new ssh key
+Title : nom de la clé (de préférence l'ordinateur qui l'utilise)
+Key type : authentification key
+Key : Clé publique (avec le mail ça fonctionne)
+
+/////////////////UTILISATION
+AVANT DE COMMENCER mettre à jour le repo avec : git pull
+git add . pour ajouter tous les fichier à la zone de préparation (staging area)
+git commit -m "message" pour valider les modifications
+git push pour les envoyer sur le serveur
+
+/////////////////SI JE SUIS DECO SUR WINDOWS :
+invite de commande : ssh-add "C:\Users\adamr\.ssh\id_ed25519"
+redémarrer git bash
