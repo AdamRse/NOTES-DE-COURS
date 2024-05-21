@@ -1,0 +1,51 @@
+////////////////// VSCODE
+Les modules conseillés :
+    ES7+ React/Redux/React-Native snippets par dsznajder
+        permet notament de créer des composants avec rafc (function)
+
+
+////////////////// INSTALLATION
+npx create-react-app <répertoire>
+    répertoire est le répertoire de l'appli qui se créé
+cd <répertoire>
+    optionel : ajouter tailwind
+        npm install -D tailwindcss
+        npx tailwindcss init
+        ajouter les extension module.exports.content : "./src/**/*.{js,jsx,ts,tsx}"
+        Dans /src/index.css ajouter
+            @tailwind base;
+            @tailwind components;
+            @tailwind utilities;
+npm start ou npm run start (démarre le serveur local)
+ajouter un composant
+    créer un répertoire components dans /src
+
+////////////////// COMPONENT
+Le component renvoie (render) un unique élément html (on encapsule tout dans une div)
+Pour ajouter un component, ajouter un fichier .js  avec le nom du component qui commence par une maj.
+On peut déclarer un component sous forme de fonction ou de classe.
+
+
+
+////////////////// HOOKS
+Ce sont des fonctions qui commencent par use, dédiées à l'UI.
+
+render() ne retourne qu'un seul élément, en général on met tous le html dans une div.
+
+////////////////// PROPS (propriétés immutables) et STATES (propriétés mutables)
+PROPS
+    Dans l'app.js où le commponent est importé, ajouter un attribut et une valeur
+        <component attribut="val" />
+    La valeur est maintenant utilisable dans la class component, dans le html
+        par ex : <p>l'attribut est {this.prop.attribut}</p>
+STATES
+    déclarer le state dans le constructeur du component
+        par ex : constructor(){ super(); this.state = { cpt: 0 } }
+    L'accès à la valeur se fait dans le render de la classe component, dans le html
+        par ex : <p>Compteur : {this.state.cpt}</p>
+
+////////////////// CONVENTIONS
+Dans un constructeur en react, toujours mettre super(); dedans
+    Par ex : constructor(){ super(); this.state = { cpt: 0 } }
+
+////////////////// CODE EXEMPLE
