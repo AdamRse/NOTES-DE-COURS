@@ -35,6 +35,7 @@ COMPONENT CLASS
     Pour export la classe, on peut soit export default <className> à la fin, soit export default toute la classe
     La classe extends Component
     La classe doit comporter une méthode render() qui return l'élament html avec la même syntaxe que le component fonction
+        render() ne retourne qu'un seul élément, en général on met tous le html dans une div.
     On peut y ajouter un constructeur qui commence par super();
         constructor(){ super(); }
     Pour faire de l'événementiel, on peut mettre des événements dans le html du render et lui faire appeler une méthode
@@ -48,19 +49,21 @@ COMPONENT CLASS
 ////////////////// HOOKS
 Ce sont des fonctions qui commencent par use, dédiées à l'UI.
 
-render() ne retourne qu'un seul élément, en général on met tous le html dans une div.
 
 ////////////////// PROPS (propriétés immutables) et STATES (propriétés mutables)
+//https://openclassrooms.com/fr/courses/8228131-gerez-votre-application-react-avec-redux-et-redux-toolkit/8305841-decouvrez-le-state-management
+Les props descendent et les states remontent
 PROPS
     Dans l'app.js où le commponent est importé, ajouter un attribut et une valeur
-        <component attribut="val" />
-    La valeur est maintenant utilisable dans la class component, dans le html
-        par ex : <p>l'attribut est {this.prop.attribut}</p>
+        <component attribut={val} />
+    La valeur est maintenant utilisable dans le component
+        const UserName = ({ name }) => { return <p>{attribut}</p>
+    On peut avoir une cascade de props descendants qu'on appelle props drilling
 STATES
-    déclarer le state dans le constructeur du component
-        par ex : constructor(){ super(); this.state = { cpt: 0 } }
-    L'accès à la valeur se fait dans le render de la classe component, dans le html
-        par ex : <p>Compteur : {this.state.cpt}</p>
+    Affiche une variable dynamiquement (si on la modifie elle changera partout où elle est appelée dans le code html
+        const [myState, setMyState] = useState(0)
+    On l'utilise comme une variable et la modifie avec un setter (setMyState)
+        <span>Valeur du compteur: {MyState}</span> <button onClick={() => setMyState(MyState + 1)}>ajouter</button>
 
 ////////////////// CONVENTIONS
 Dans un constructeur en react, toujours mettre super(); dedans
