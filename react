@@ -7,6 +7,9 @@ Les modules conseillés :
 npx create-react-app <répertoire>
     répertoire est le répertoire de l'appli qui se créé
 cd <répertoire>
+    optionnel : ajouter redux toolik
+        npm install @reduxjs/toolkit
+            React bindings : npm install react-redux
     optionel : ajouter tailwind
         npm install -D tailwindcss
         npx tailwindcss init
@@ -18,6 +21,12 @@ cd <répertoire>
 npm start ou npm run start (démarre le serveur local)
 ajouter un composant
     créer un répertoire components dans /src
+
+
+////////////////// SPREAD OPERATOR
+Copie la valeur d'un objet ou tableau. Il symbolise son contenu, il ne peut donc pas être utilisé en dehors de son contexte [] ou {}
+    let a = [0, 1]; let b = [...a, 2] //b devient [0, 1, 2];
+
 
 ////////////////// COMPONENT
 Le component renvoie (render) un unique élément html (on encapsule tout dans une div)
@@ -44,6 +53,14 @@ COMPONENT CLASS
             On doit donner le contexte de this, sinon il est appelé automatiquement par le component sans passer la l'événement et fait une boucle infinie
     la méthode créée accède aux props et states
         par ex : add(){ this.setState({ cpt: this.state.cpt+1 }) }
+
+////////////////// ARCHITECTURE FLUX (REDUX)
+Composant--(action)-->Dispatcher---->[Reducer]Store[State]--(evenement)-->Composant-->(Lecture)-->[State]Store
+    Le Dispatcher centralise (reçoit) les changements du state global, il reçoit des Actions (= objet)
+    L'Action est composée d'un type de traitement à appliquer au state, et d'un payload (données)
+        {type:"TYPE", payload:{donnee:"donnee", donnee2: 2}}
+
+            dispatch envoie l'action au reducer'
 
 
 ////////////////// HOOKS
