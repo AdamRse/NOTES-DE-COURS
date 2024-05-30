@@ -8,8 +8,7 @@ npx create-react-app <répertoire>
     répertoire est le répertoire de l'appli qui se créé
 cd <répertoire>
     optionnel : ajouter redux toolik
-        npm install @reduxjs/toolkit
-            React bindings : npm install react-redux
+        npm install @reduxjs/toolkit react-redux
     optionel : ajouter tailwind
         npm install -D tailwindcss
         npx tailwindcss init
@@ -59,12 +58,15 @@ Composant--(action)-->Dispatcher---->[Reducer]Store[State]--(evenement)-->Compos
     Le Dispatcher centralise (reçoit) les changements du state global, il reçoit des Actions (= objet)
     L'Action est composée d'un type de traitement à appliquer au state, et d'un payload (données)
         {type:"TYPE", payload:{donnee:"donnee", donnee2: 2}}
-
-            dispatch envoie l'action au reducer'
-
+    Dispatch envoie l'action au reducer'
+/// COURS
+Le store appelle les clés des states qu'il stock via le reducer
+Le slice déclare les clées
 
 ////////////////// HOOKS
 Ce sont des fonctions qui commencent par use, dédiées à l'UI.
+useSelector
+    Pour souscrire au state global dans le store
 
 
 ////////////////// PROPS (propriétés immutables) et STATES (propriétés mutables)
@@ -87,3 +89,9 @@ Dans un constructeur en react, toujours mettre super(); dedans
     Par ex : constructor(){ super(); this.state = { cpt: 0 } }
 
 ////////////////// CODE EXEMPLE
+
+///////////////////A TRIER
+useSelector(state => state.store.monster);
+    state : state global de l'appli
+    fight : est une clé dans l'objet global slice
+    monster : propriété de l'état dans le slice

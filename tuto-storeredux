@@ -1,0 +1,26 @@
+/////////////// CREATION D'UN STORE AVEC L'EXEMPLE DU TP RUMBLE (https://github.com/AdamRse/react-combat404)
+------------------------------------------------------------------------------------------------------------
+STORE : Créer un store.js (c'est mieux de le ranger à part, dans src/store/store.js), y mettre :
+
+import { configureStore } from "@reduxjs/toolkit";
+
+export const store = configureStore({
+   reducer: {},
+});
+
+------------
+SLICE : Créer un slice dans src/features/fight/fightSlice.js :
+
+import { createSlice } from "@reduxjs/toolkit";
+
+const initialState = {
+  // TODO : Compléter 'players' et 'monster'
+  players: [],
+  monster: {},
+};
+export const fightSlice = createSlice({
+  name: "fight",
+  initialState,
+  reducers: {},
+});
+export default fightSlice.reducer;
