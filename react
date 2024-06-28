@@ -17,9 +17,19 @@ cd <répertoire>
             @tailwind base;
             @tailwind components;
             @tailwind utilities;
+    optionel : router pour navigation :
+        npm i react-router-dom --save styled-components
+    optionel : gsap :
+        npm install @gsap/react
 npm start ou npm run start (démarre le serveur local)
 ajouter un composant
     créer un répertoire components dans /src
+
+////////////////// EN CAS D'ERREUR APRES INSTALLATION DE NOUVEAUX COMPOSANTS
+On peut réinstaller le projet et tous ses composants :
+    Supprimer /package-lock.json
+    supprimet /node_modules
+    npm install
 
 
 ////////////////// SPREAD OPERATOR

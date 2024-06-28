@@ -1,0 +1,9 @@
+////////////////// NOUVEAU PROJET
+créer un dossier et entrer dedans puis taper
+    npm init
+Installer un package
+    npm install <package>
+        pour rafraichir automatiquement : npm install -g nodemon
+        multi-page : npm install body-parser
+            var bodyParser = require('body-parser')
+

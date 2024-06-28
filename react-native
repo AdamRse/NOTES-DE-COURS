@@ -1,0 +1,6 @@
+npx create-expo-app@latest
+    la commande va créer un répertoire dont on choisira le nom
+cd react-native-app
+npx expo start
+
+Sur tel (android) : installer expo go
