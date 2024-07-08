@@ -1,0 +1,42 @@
+////////// INSTALLATION
+composer create-project laravel/laravel <NomProjet>
+Installer Breeze (authentification)
+    composer require laravel/breeze --dev
+    php artisan breeze:install blade
+Démarrer le front-end
+    npm run dev
+Démarer le back-end
+    php artisan serve
+
+////////// CONTROLLEUR ET ROUTES
+Création du controlleur
+    php artisan make:model -mrc <Nom>
+        Créé le modèle dans app/Models/<Nom>
+        Créé la migration de table dans database/migrations/<timestamp>_create_<nom>_table.php
+        Créé le controlleur dans app/Http/Controllers/<Nom>>Controller.php
+On modifie la route dans routes/web.php? Par exemple en rajoutant :
+    Route::resource('<nomRoute>', <Nom>Controller::class)
+    ->only(['index', 'store'])
+    ->middleware(['auth', 'verified']);
+Dans le controlleur on modifie la route de base avec l'envoie d'un objet "Illuminate\Http\Response"
+    Par ex : use Illuminate\Http\Response;
+    public function index(): Response
+    {
+        return response('Hello, World!');
+    }
+
+
+////////// BASE DE DONNEES
+Recompiler la BDD
+    première fois :
+        php artisan migrate
+    les fois suivantes :
+        php artisan migrate:fresh
+Afficher les infos sur la base de données
+    php artisan db:show
+Afficher les infos d'une table
+    php artisan db:table users
+
+
+////////// DOC INFO
+Le middleware est utilisé pour filtrer des requêtes http. Il est par exemple capable de rediriger un utilisateur non connecté vers la page de connexion.
