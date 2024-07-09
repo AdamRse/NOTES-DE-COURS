@@ -2,11 +2,13 @@
 composer create-project laravel/laravel <NomProjet>
 Installer Breeze (authentification)
     composer require laravel/breeze --dev
+Installer le front-end
     php artisan breeze:install blade
 Démarrer le front-end
     npm run dev
 Démarer le back-end
     php artisan serve
+        Ne pas oublier de migrer la bdd avec
 
 ////////// CONTROLLEUR ET ROUTES
 Création du controlleur
@@ -32,11 +34,50 @@ Recompiler la BDD
         php artisan migrate
     les fois suivantes :
         php artisan migrate:fresh
+CRéer une table
+    php artisan make:model <nomTable> [-mrc]
+        -mrc : 3 options (flags) -mmmigration, --resource, --controller
+            Liste des commandes
+                -a, --all             Generate a migration, seeder, factory, policy, resource controller, and form request classes for the model
+                -c, --controller      Create a new controller for the model
+                -f, --factory         Create a new factory for the model
+                    --force           Create the class even if the model already exists
+                -m, --migration       Create a new migration file for the model
+                    --morph-pivot     Indicates if the generated model should be a custom polymorphic intermediate table model
+                    --policy          Create a new policy for the model
+                -s, --seed            Create a new seeder for the model
+                -p, --pivot           Indicates if the generated model should be a custom intermediate table model
+                -r, --resource        Indicates if the generated controller should be a resource controller
+                    --api             Indicates if the generated controller should be an API resource controller
+                -R, --requests        Create new form request classes and use them in the resource controller
+                    --test            Generate an accompanying PHPUnit test for the Model
+                    --pest            Generate an accompanying Pest test for the Model
+                -h, --help            Display help for the given command. When no command is given display help for the list command
+                -q, --quiet           Do not output any message
+                -V, --version         Display this application version
+                    --ansi|--no-ansi  Force (or disable --no-ansi) ANSI output
+                -n, --no-interaction  Do not ask any interactive question
+                    --env[=ENV]       The environment the command should run under
+                -v|vv|vvv, --verbose  Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
+
+
 Afficher les infos sur la base de données
     php artisan db:show
 Afficher les infos d'une table
     php artisan db:table users
 
+////////// NOTIFICATIONS
+php artisan make:notification <nomNotif>
+    Créé app/Notifications/<nomNotif>.php
+php artisan make:event <nomEvent>
+    Créé un événement dans app/Events/<nomEvent>.php
+php artisan make:listener <NomEventListener> --event=<nomEvent>
+    CRéé un event listener dans app/Listeners/<NomEventListener>.php
+
 
 ////////// DOC INFO
 Le middleware est utilisé pour filtrer des requêtes http. Il est par exemple capable de rediriger un utilisateur non connecté vers la page de connexion.
+1 modèle = 1 table comme sur symfony
+
+////////////////////////////
+$table->foreignid('')->contained()->onDelete()
