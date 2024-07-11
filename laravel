@@ -37,7 +37,7 @@ Recompiler la BDD
         php artisan migrate
     les fois suivantes :
         php artisan migrate:fresh
-CRéer une table
+Créer une table
     php artisan make:model <nomTable> [-mrc]
         -mrc : 3 options (flags) -mmmigration, --resource, --controller
             Liste des commandes
@@ -50,7 +50,7 @@ CRéer une table
                     --policy          Create a new policy for the model
                 -s, --seed            Create a new seeder for the model
                 -p, --pivot           Indicates if the generated model should be a custom intermediate table model
-                -r, --resource        Indicates if the generated controller should be a resource controller
+                -r, --resource        Indicates if the generated controller should be a resource controller (crud)
                     --api             Indicates if the generated controller should be an API resource controller
                 -R, --requests        Create new form request classes and use them in the resource controller
                     --test            Generate an accompanying PHPUnit test for the Model
@@ -62,6 +62,14 @@ CRéer une table
                 -n, --no-interaction  Do not ask any interactive question
                     --env[=ENV]       The environment the command should run under
                 -v|vv|vvv, --verbose  Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
+AJOUTER UN CHAMP BDD
+    modifier la migration /database/migrations/<date>_create_<table>_table.php
+        dans up(), et dans Schema::create, par exemple ajouter un champ $table->string('email')->unique();
+            on peut faire un migrate ou migrate:fresh pour mettre à jour la bdd
+    modifier le modèle /app/Models/<Table>.php
+        dans protected $fillable, ajouter le cham s'il doit être remplis par l'utilisateur
+    modifier le controlleur /app/Http/Controllers/<table>Controller.php
+
 
 
 Afficher les infos sur la base de données
@@ -75,7 +83,7 @@ php artisan make:notification <nomNotif>
 php artisan make:event <nomEvent>
     Créé un événement dans app/Events/<nomEvent>.php
 php artisan make:listener <NomEventListener> --event=<nomEvent>
-    CRéé un event listener dans app/Listeners/<NomEventListener>.php
+    Créé un event listener dans app/Listeners/<NomEventListener>.php
 
 
 ////////// DOC INFO
