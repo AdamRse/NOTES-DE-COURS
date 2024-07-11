@@ -50,7 +50,7 @@ Créer une table
                     --policy          Create a new policy for the model
                 -s, --seed            Create a new seeder for the model
                 -p, --pivot           Indicates if the generated model should be a custom intermediate table model
-                -r, --resource        Indicates if the generated controller should be a resource controller (crud)
+                -r, --resource        (CRUD) Indicates if the generated controller should be a resource controller
                     --api             Indicates if the generated controller should be an API resource controller
                 -R, --requests        Create new form request classes and use them in the resource controller
                     --test            Generate an accompanying PHPUnit test for the Model
