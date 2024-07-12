@@ -13,20 +13,19 @@ Générer une clé app
     php artisan key:generate
         La clé permet à l'application de fonctionner et est stockée dans le .env, il faut donc la générer quand on clone un projet'
 
-////////// CONTROLLEUR ET ROUTES
+////////// ROUTE
+On a besoin d'uncontrolleur, d'une route.
 Création du controlleur
     php artisan make:model -mrc <Nom>
         Créé le modèle dans app/Models/<Nom>
         Créé la migration de table dans database/migrations/<timestamp>_create_<nom>_table.php
         Créé le controlleur dans app/Http/Controllers/<Nom>>Controller.php
 On modifie la route dans routes/web.php? Par exemple en rajoutant :
-    Route::resource('<nomRoute>', <Nom>Controller::class)
-    ->only(['index', 'store'])
-    ->middleware(['auth', 'verified']);
-Dans le controlleur on modifie la route de base avec l'envoie d'un objet "Illuminate\Http\Response"
-    Par ex : use Illuminate\Http\Response;
-    public function index(): Response
-    {
+    Route::resource('<nomRoute>', <Nom>Controller::class)//La route <nomRoute> est créée en prenant comme modèle <Nom>Controller
+    ->only(['index', 'store'])//Les méthodes de <Nom>Controller utilisées
+    ->middleware(['auth', 'verified']);//Requiert l'authentification
+Dans le controlleur on modifie la route de base avec l'envoie d'un objet "use Illuminate\Http\Response"
+    public function index(): Response{
         return response('Hello, World!');
     }
 
@@ -67,7 +66,7 @@ AJOUTER UN CHAMP BDD
         dans up(), et dans Schema::create, par exemple ajouter un champ $table->string('email')->unique();
             on peut faire un migrate ou migrate:fresh pour mettre à jour la bdd
     modifier le modèle /app/Models/<Table>.php
-        dans protected $fillable, ajouter le cham s'il doit être remplis par l'utilisateur
+        dans protected $fillable, ajouter le champ s'il doit être remplis par l'utilisateur
     modifier le controlleur /app/Http/Controllers/<table>Controller.php
 
 
@@ -102,6 +101,21 @@ Vite manifest not found
     Installer le projet et executer vite :
         npm install
         npm run build
+Undefined variable $slot
+    Dans le template parent (/resources/views/layouts/app.blade.php), replacer {{ $slot }} par @yield('content')
+    Dans le template enfant, utiliser
+        @extends('layouts.app')
+        @section('content') <!-- code de la page ici --> @endsection
 
 ////////////////////////////
-$table->foreignid('')->contained()->onDelete()
+Pour faire un crud :
+    Créer le modèle et le controlleur, et la migration
+    /database/migrations/<date>_create_table>_table.php les $table-><colonne> dans la migration
+    /resources/views/<controlleur>/<crud>.blade.php : Faire la vue
+    /app/Http/Controllers/<table>Controller.php ajouter la route
+    /app/Models/<table>>.php : Ajouter les champs $fillable et les méthodes pour les clés étrangères
+    /app/Http/Controllers/<table>Controller.php : coder l'appel de la vue dans la méthode appropiée
+    /routes/web.php : Faire la route
+
+
+
