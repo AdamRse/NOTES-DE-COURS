@@ -1,5 +1,8 @@
 ////////// INSTALLATION
-composer create-project laravel/laravel <NomProjet>
+Nouveau projet
+    composer create-project laravel/laravel <NomProjet>
+Projet cloné
+    composer install
 Installer Breeze (authentification)
     composer require laravel/breeze --dev
 Installer le front-end
