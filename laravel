@@ -3,8 +3,14 @@ Nouveau projet
     composer create-project laravel/laravel <NomProjet>
 Projet cloné
     composer install
+Installer filament (admin)
+    composer require filament/filament:"^3.2" -W
+    php artisan filament:install --panels
+    php artisan make:filament-user
+        accessible dans /admin
 Installer Breeze (authentification)
     composer require laravel/breeze --dev
+
 Installer le front-end
     php artisan breeze:install blade
 Démarrer le front-end
@@ -17,7 +23,7 @@ Générer une clé app
         La clé permet à l'application de fonctionner et est stockée dans le .env, il faut donc la générer quand on clone un projet'
 
 ////////// ROUTE
-On a besoin d'uncontrolleur, d'une route.
+On a besoin d'un controlleur, d'une route.
 Création du controlleur
     php artisan make:model -mrc <Nom>
         Créé le modèle dans app/Models/<Nom>
@@ -79,6 +85,13 @@ Afficher les infos sur la base de données
 Afficher les infos d'une table
     php artisan db:table users
 
+
+////////// FILAMENT
+Créer un user avec des champs perso
+    php artisan make:command CreateCustomFilamentUser
+
+
+
 ////////// NOTIFICATIONS
 php artisan make:notification <nomNotif>
     Créé app/Notifications/<nomNotif>.php
@@ -109,6 +122,13 @@ Undefined variable $slot
     Dans le template enfant, utiliser
         @extends('layouts.app')
         @section('content') <!-- code de la page ici --> @endsection
+Erreur d'installation de filament :
+    Il manque parfois un module : Installation failed, reverting ./composer.json and ./composer.lock to their original content.
+    Installer le module correspondant, par exemple ma dernière erreur :
+    sudo apt install php8.3-zip
+Migration
+    Foreign key constraint is incorrectly formed
+        Il se peut que la table possédant une clé étrangère soit migrée avant la table primaire. Si c'ets le cas, mettre la table avec la clé étrangère après. Les tables sont executées dans l'ordre alphabétique du nom des fichiers migration
 
 ////////////////////////////
 Pour faire un crud :
