@@ -10,7 +10,8 @@ Installer filament (admin)
         accessible dans /admin
 Installer Breeze (authentification)
     composer require laravel/breeze --dev
-
+Installer des routes api (avec sanctum)
+    php artisan install:api
 Installer le front-end
     php artisan breeze:install blade
 Démarrer le front-end
@@ -20,7 +21,7 @@ Démarer le back-end
         Ne pas oublier de migrer la bdd avec
 Générer une clé app
     php artisan key:generate
-        La clé permet à l'application de fonctionner et est stockée dans le .env, il faut donc la générer quand on clone un projet'
+        La clé permet à l'application de fonctionner et est stockée dans le .env, il faut donc la générer quand on clone un projet, ou la reprendre depuis un .env
 
 ////////// ROUTE
 On a besoin d'un controlleur, d'une route.
@@ -28,10 +29,10 @@ Création du controlleur
     php artisan make:model -mrc <Nom>
         Créé le modèle dans app/Models/<Nom>
         Créé la migration de table dans database/migrations/<timestamp>_create_<nom>_table.php
-        Créé le controlleur dans app/Http/Controllers/<Nom>>Controller.php
+        Créé le controlleur dans app/Http/Controllers/<Nom>Controller.php
 On modifie la route dans routes/web.php? Par exemple en rajoutant :
     Route::resource('<nomRoute>', <Nom>Controller::class)//La route <nomRoute> est créée en prenant comme modèle <Nom>Controller
-    ->only(['index', 'store'])//Les méthodes de <Nom>Controller utilisées
+    ->only(['index', 'store'])//Préciser les méthodes de <Nom>Controller utilisées avec leur .blade associé
     ->middleware(['auth', 'verified']);//Requiert l'authentification
 Dans le controlleur on modifie la route de base avec l'envoie d'un objet "use Illuminate\Http\Response"
     public function index(): Response{
@@ -85,6 +86,14 @@ Afficher les infos sur la base de données
 Afficher les infos d'une table
     php artisan db:table users
 
+////////// CONTROLLER
+Pour récupérer un champ dans une requête, on a juste à créer un Validator, et le tester.
+    Utiliser l'objet Request en entrée de méthode du controlleur
+        par ex : public function create(Request $request){ }
+    $validator = Validator::make($request->all(), ["<champ>" => "<options>", ]);
+        exemple de champ et options : "firstname" => "required|string|max:63"
+    On peut tester si les option correspondent aux champs du formulaire envoyé via $request
+        if($validator->fails())
 
 ////////// FILAMENT
 Créer un user avec des champs perso
@@ -129,6 +138,8 @@ Erreur d'installation de filament :
 Migration
     Foreign key constraint is incorrectly formed
         Il se peut que la table possédant une clé étrangère soit migrée avant la table primaire. Si c'ets le cas, mettre la table avec la clé étrangère après. Les tables sont executées dans l'ordre alphabétique du nom des fichiers migration
+Erreur de requête SQL lors de la soumission d'un form
+    Vérifier le contenu de la requête SQL qui a été générée et passée dans le message d'erreur. S'il manque un champ, ajouter ce champ dans de model concerné, dans la propriété protected $fillable;
 
 ////////////////////////////
 Pour faire un crud :
@@ -139,6 +150,9 @@ Pour faire un crud :
     /app/Models/<table>>.php : Ajouter les champs $fillable et les méthodes pour les clés étrangères
     /app/Http/Controllers/<table>Controller.php : coder l'appel de la vue dans la méthode appropiée
     /routes/web.php : Faire la route
+
+Gérer des users avec des champs perso ?
+    php artisan make:command
 
 
 
