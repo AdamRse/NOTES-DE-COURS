@@ -97,9 +97,11 @@ Pour récupérer un champ dans une requête, on a juste à créer un Validator, 
 
 ////////// FILAMENT
 Créer un user avec des champs perso
-    php artisan make:command CreateCustomFilamentUser
-
-
+    Modifier les champs demmandés (ask) dans app/Console/Commands/CreateCustomFilamentUser.php
+    Créer l'user avec app:create-custom-filament-user
+    ajouter implements HasName and le controlleur app/Models/User.php (use Filament\Models\Contracts\HasName;)
+    Rajouter la méthode getFilamentName() qui retourne un champ perso dans le modèle User :
+        public function getFilamentName(): string{ return $this->getAttributeValue('<nomChampPersoBdd>'); }
 
 ////////// NOTIFICATIONS
 php artisan make:notification <nomNotif>
