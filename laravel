@@ -98,10 +98,21 @@ Pour récupérer un champ dans une requête, on a juste à créer un Validator, 
 ////////// FILAMENT
 Créer un user avec des champs perso
     Modifier les champs demmandés (ask) dans app/Console/Commands/CreateCustomFilamentUser.php
-    Créer l'user avec app:create-custom-filament-user
+    Créer l'user avec commande qui est dans la propriété $signature
+        protected $signature = 'app:create-custom-filament-user';
     ajouter implements HasName and le controlleur app/Models/User.php (use Filament\Models\Contracts\HasName;)
     Rajouter la méthode getFilamentName() qui retourne un champ perso dans le modèle User :
         public function getFilamentName(): string{ return $this->getAttributeValue('<nomChampPersoBdd>'); }
+
+////////// TELESCOPE
+Installation
+    composer require laravel/telescope
+    php artisan telescope:install
+    php artisan migrate[:refresh]
+Dans config/telescope.php, activer les logs avec level : debug et enabled : true
+    Watchers\LogWatcher::class => [ 'enabled' => env('TELESCOPE_LOG_WATCHER', true), 'level' => 'debug']
+Mettre les logs dans le code
+    Log::info('Un utilisateur s\'est connecté.', ['user_id' => auth()->user()->id]);
 
 ////////// NOTIFICATIONS
 php artisan make:notification <nomNotif>
