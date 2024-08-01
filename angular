@@ -1,0 +1,81 @@
+////////////// INSTALLATION
+installer angular en global
+    sudo npm install -g @angular/cli
+créer un nouveau projet
+    ng new <nomProjet>
+dans un projet git
+    npm install
+lancer le serveur angular
+    ng serve
+
+////////////// COMPOSANTS
+créer un composant en ligne de commande
+    ng generate component <nomComposant>
+Utiliser le component dans un autre component
+    import {<Component>} from './<cheminComponent>';
+    Dans le @Componant qui va importer, ajouter dans imports
+        imports: [<Component>],
+    On put alors utiliser le composant dans le template avec la balise référencée par le selector du composant importé, par ex : <app-home></app-home> si selector : 'app-home'
+contenu du @Component()
+    selector: référencement du composant dans angular
+    standalone: booléen si le composant requiert un NgModule.
+    imports: dépendances
+    template: contenu HTML
+    styleUrls: chemin des feuilles de style (par ex : ['./app.component.css'])
+
+////////////// INTERFACE
+L'interface est une structure de données de la même façon qu'on l'utilise en POO
+créer une interface en ligne de commande
+    ng generate interface <nomInterface>
+
+////////////// SERVICE
+créer un service en ligne de commande
+    ng generate service housing --skip-tests
+
+
+////////////// INPUTS
+Input est un composant qui permet de passer des données d'un parent à un enfant.
+Pour l'installer
+    import {Input} from '@angular/core';
+Utiliser Input dans un component :
+    export class HousingLocationComponent { @Input() <interfaceName>!: <ClassInterface>; }
+        le "!" signifie qu'on attends des données (non-null assertion operator)
+
+////////////// ROUTING
+Créer un composant de routing
+    ng generate component details
+créer le fichier /src/app/routes.ts
+dans /src/main.ts, importer le routeur et les routes précédement créées
+    import {provideRouter} from '@angular/router';
+    import routeConfig from './app/routes';
+toujours dans /src/main.ts, ajouter provideRouter(routeConfig) dans le provider
+    bootstrapApplication(AppComponent, { providers: [provideProtractorTestingSupport(), provideRouter(routeConfig)], }).catch((err) => console.error(err));
+Dans /src/app/app.component.ts, ajouter le routing
+    import {RouterModule} from '@angular/router';
+    Ajouter RouterModule aux imports
+        imports: [<autreComposants>, RouterModule],
+    Ajouter la route dans le html :
+        <a [routerLink]="['/']">
+    Ajouter le routeur qui rend les différentes routes (importé via RouterModule)
+        <router-outlet></router-outlet>
+Dans /src/app/routes.ts, ajouter le routeur et les composants routés
+    import {Routes} from '@angular/router';
+    import {<composant>} from './<cheminComposant>';
+    Configurer et exporter les routes :
+        const routeConfig: Routes = [
+        { path: '', component: <composant1>, title: 'Home page', },
+        { path: 'route/:id', component: <composant2>, title: 'route 1', }, ];
+        export default routeConfig;
+
+////////////// CONCEPTS ET VOCABLE
+ngFor
+    utilisé pour foreach des données, avec un composant, comme une boucle for
+        <composant *ngFor="let <variable> of <tableau>" [<variable>]="<variable>"></composant>
+service
+    data utilisées par n'importe quel composant, doit utiliser le composant Injectable.
+non-null assertion operator
+    pour indiquer qu'on attend des données, s'écrit "!" après une méthode
+property binding
+    le fait d'entourer un attribut html par des crochets [ ] pour dynamiser (synchroniser) l'attribut en cas de changement de valeur. Semblable aux props react.
+        <element [property]="expression"></element>
+
