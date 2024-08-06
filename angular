@@ -32,7 +32,6 @@ créer une interface en ligne de commande
 créer un service en ligne de commande
     ng generate service housing --skip-tests
 
-
 ////////////// INPUTS
 Input est un composant qui permet de passer des données d'un parent à un enfant.
 Pour l'installer
@@ -41,31 +40,14 @@ Utiliser Input dans un component :
     export class HousingLocationComponent { @Input() <interfaceName>!: <ClassInterface>; }
         le "!" signifie qu'on attends des données (non-null assertion operator)
 
-////////////// ROUTING
-Créer un composant de routing
-    ng generate component details
-créer le fichier /src/app/routes.ts
-dans /src/main.ts, importer le routeur et les routes précédement créées
-    import {provideRouter} from '@angular/router';
-    import routeConfig from './app/routes';
-toujours dans /src/main.ts, ajouter provideRouter(routeConfig) dans le provider
-    bootstrapApplication(AppComponent, { providers: [provideProtractorTestingSupport(), provideRouter(routeConfig)], }).catch((err) => console.error(err));
-Dans /src/app/app.component.ts, ajouter le routing
-    import {RouterModule} from '@angular/router';
-    Ajouter RouterModule aux imports
-        imports: [<autreComposants>, RouterModule],
-    Ajouter la route dans le html :
-        <a [routerLink]="['/']">
-    Ajouter le routeur qui rend les différentes routes (importé via RouterModule)
-        <router-outlet></router-outlet>
-Dans /src/app/routes.ts, ajouter le routeur et les composants routés
-    import {Routes} from '@angular/router';
-    import {<composant>} from './<cheminComposant>';
-    Configurer et exporter les routes :
-        const routeConfig: Routes = [
-        { path: '', component: <composant1>, title: 'Home page', },
-        { path: 'route/:id', component: <composant2>, title: 'route 1', }, ];
-        export default routeConfig;
+////////////// ROUTING (https://angular.dev/guide/routing/common-router-tasks)
+Dans de sichier /app/routes.ts, importer les composants
+        import { composant } from './<chemin>';
+    ajouter et utiliser le composant router
+        import { Routes } from '@angular/router';
+        export const routes: Routes = [  { path: '/<route>', component: <component> },  { <...> },];
+    utiliser la route dans le composant
+        <a routerLink="/first-component" routerLinkActive="active" ariaCurrentWhenActive="page">Home</a>
 
 ////////////// CONCEPTS ET VOCABLE
 ngFor
