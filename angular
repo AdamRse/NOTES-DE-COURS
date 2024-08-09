@@ -60,4 +60,6 @@ non-null assertion operator
 property binding
     le fait d'entourer un attribut html par des crochets [ ] pour dynamiser (synchroniser) l'attribut en cas de changement de valeur. Semblable aux props react.
         <element [property]="expression"></element>
+Partial<interface>
+    Placé devant un type, Partial permet de ne pas utiliser tous les champs de l'interface. En revanche Partial vérifie toujours qu'il n'y ai pas de champs inconnu de l'interface
 
