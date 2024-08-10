@@ -62,4 +62,6 @@ property binding
         <element [property]="expression"></element>
 Partial<interface>
     Placé devant un type, Partial permet de ne pas utiliser tous les champs de l'interface. En revanche Partial vérifie toujours qu'il n'y ai pas de champs inconnu de l'interface
+	
+///
 
