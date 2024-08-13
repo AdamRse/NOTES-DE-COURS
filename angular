@@ -28,7 +28,7 @@ L'interface est une structure de données de la même façon qu'on l'utilise en 
 créer une interface en ligne de commande
     ng generate interface <nomInterface>
 
-////////////// SERVICE
+////////////// SERVICES
 créer un service en ligne de commande
     ng generate service housing --skip-tests
 
