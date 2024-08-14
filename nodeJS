@@ -7,3 +7,5 @@ Installer un package
         multi-page : npm install body-parser
             var bodyParser = require('body-parser')
 
+////////////////// PROJET EXPLICATIF
+https://github.com/AdamRse/nodeJS-marvel
