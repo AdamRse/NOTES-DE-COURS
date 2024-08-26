@@ -39,7 +39,6 @@ Dans le controlleur on modifie la route de base avec l'envoie d'un objet "use Il
         return response('Hello, World!');
     }
 
-
 ////////// BASE DE DONNEES
 Recompiler la BDD
     première fois :
