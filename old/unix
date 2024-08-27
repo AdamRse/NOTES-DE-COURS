@@ -1,0 +1,2 @@
+Chercher un dossier
+    find / -xdev -name "<nomDossier>"
