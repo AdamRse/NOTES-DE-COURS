@@ -77,7 +77,10 @@ AJOUTER UN CHAMP BDD
     modifier le modèle /app/Models/<Table>.php
         dans protected $fillable, ajouter le champ s'il doit être remplis par l'utilisateur
     modifier le controlleur /app/Http/Controllers/<table>Controller.php
-
+AJOUTER UNE ENTREE A LA MIGRATION
+    dans /database/migrations/<date>_create_<table>_table.php, abouter
+        use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Hash;
+        DB::table('<table>>')->insert([['<champ>>' => '<valeur>','password' => Hash::make('<motDePasse>>'),'updated_at' => now()]],);
 
 
 Afficher les infos sur la base de données
@@ -95,7 +98,12 @@ Pour récupérer un champ dans une requête, on a juste à créer un Validator, 
         if($validator->fails())
 
 ////////// FILAMENT
+Installer filament (admin)
+    composer require filament/filament:"^3.2" -W
+    php artisan filament:install --panels
+    php artisan make:filament-user
 Créer un user avec des champs perso
+    ajouter les champs dans up() de database/migrations/0001_01_01_000000_create_users_table.php
     Modifier les champs demmandés (ask) dans app/Console/Commands/CreateCustomFilamentUser.php
     Créer l'user avec commande qui est dans la propriété $signature
         protected $signature = 'app:create-custom-filament-user';
