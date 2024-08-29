@@ -14,3 +14,10 @@ Pour ignorer un fichier
         par exemple exclure tout le dossier module
             **/module
         voir les nombreux patterns
+
+//////////////////
+Annuler un commit
+    git reset : annule le dernier commit par rapport à HEAD (pointeur de l'utilisateur dans l'arbre git)
+        git reset HEAD^
+    git revert : créé un nouveau commit qui annule les changement du commit précédent
+        git revert HEAD^
