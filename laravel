@@ -130,6 +130,14 @@ php artisan make:listener <NomEventListener> --event=<nomEvent>
     Créé un event listener dans app/Listeners/<NomEventListener>.php
 
 
+////////// MongoDB (NoSQL)
+composer global require "laravel/installer"
+export PATH=$PATH:$HOME/.composer/vendor/bin
+si pelc n'est pas installé : sudo apt install php-pear php-dev libssl-dev
+sudo pecl install mongodb
+Dans php.ini, ajouter : extension="mongodb.so"
+
+
 ////////// DOC INFO
 Le middleware est utilisé pour filtrer des requêtes http. Il est par exemple capable de rediriger un utilisateur non connecté vers la page de connexion.
 1 modèle = 1 table comme sur symfony

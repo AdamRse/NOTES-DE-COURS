@@ -1,6 +1,9 @@
 //Changement langue
 dpkg-reconfigure locales
 
+//Liste des paquets apt (répertoire de répertoires)
+/etc/apt/sources.list.d/
+
 //Mettre un utilisateur en admin
 sudo usermod -aG sudo <username>
 
