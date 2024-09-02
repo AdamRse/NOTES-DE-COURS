@@ -88,6 +88,13 @@ Afficher les infos sur la base de données
 Afficher les infos d'une table
     php artisan db:table users
 
+////////// SEEDER (insérer des valeurs en BDD)
+Créer un seeder
+    php artisan make:seeder
+    Il va créer un seeder dans /database/seeders/
+Lancer un seeder spécifique
+    php artisan db:seed --class=<nomSeeder>
+
 ////////// CONTROLLER
 Pour récupérer un champ dans une requête, on a juste à créer un Validator, et le tester.
     Utiliser l'objet Request en entrée de méthode du controlleur
