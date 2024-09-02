@@ -89,10 +89,11 @@ Afficher les infos d'une table
     php artisan db:table users
 
 ////////// SEEDER (insérer des valeurs en BDD)
-Créer un seeder
+Créer un seeder (dans /database/seeders/)
     php artisan make:seeder
-    Il va créer un seeder dans /database/seeders/
-Lancer un seeder spécifique
+Pour migrate en prenant en compte les seeders
+    php artisan migrate --seed
+Lancer un seeder spécifique, quand la BDD est déjà migrée
     php artisan db:seed --class=<nomSeeder>
 
 ////////// CONTROLLER
