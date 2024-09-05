@@ -1,2 +1,4 @@
 Chercher un dossier
     find / -xdev -name "<nomDossier>"
+Afficher les ports USB
+    lsusb

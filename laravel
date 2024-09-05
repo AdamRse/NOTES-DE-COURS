@@ -176,6 +176,9 @@ Migration
         Il se peut que la table possédant une clé étrangère soit migrée avant la table primaire. Si c'ets le cas, mettre la table avec la clé étrangère après. Les tables sont executées dans l'ordre alphabétique du nom des fichiers migration
 Erreur de requête SQL lors de la soumission d'un form
     Vérifier le contenu de la requête SQL qui a été générée et passée dans le message d'erreur. S'il manque un champ, ajouter ce champ dans de model concerné, dans la propriété protected $fillable;
+composer install ne fonctionne pas
+    Il manque des packages, notament essayer d'installer php-xml
+        sudo apt-get install php-xml
 
 ////////////////////////////
 Pour faire un crud :
