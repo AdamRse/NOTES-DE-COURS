@@ -1,6 +1,8 @@
-Scan bluetooth
+//Scan bluetooth
     sudo bluetoothctl
-Connecter la manette xbox
+//Enlever le mot de passe de sortie de veille
+    gsettings set org.gnome.desktop.screensaver ubuntu-lock-on-suspend false
+//Connecter la manette xbox
     sudo systemctl start bluetooth
         optionel si erreur
             sudo rfkill unblock bluetooth
