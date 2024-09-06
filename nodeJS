@@ -7,6 +7,12 @@ Installer un package
         multi-page : npm install body-parser
             var bodyParser = require('body-parser')
 
+installer nvm
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+        vérifier la dernière version sur https://github.com/nvm-sh/nvm
+installer npm avec nvm
+    nvm install --lts
+
 
 ////////////////// GERER LES VERSIONS NODE (avec n)
 npm install -g n
