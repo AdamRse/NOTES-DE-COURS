@@ -81,6 +81,8 @@ AJOUTER UNE ENTREE A LA MIGRATION
     dans /database/migrations/<date>_create_<table>_table.php, abouter
         use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Hash;
         DB::table('<table>>')->insert([['<champ>>' => '<valeur>','password' => Hash::make('<motDePasse>>'),'updated_at' => now()]],);
+Déclarer un ID smallInteger :
+    $table->smallIncrements('id'); $table->primary('id');
 
 
 Afficher les infos sur la base de données
@@ -136,14 +138,6 @@ php artisan make:event <nomEvent>
     Créé un événement dans app/Events/<nomEvent>.php
 php artisan make:listener <NomEventListener> --event=<nomEvent>
     Créé un event listener dans app/Listeners/<NomEventListener>.php
-
-
-////////// MongoDB (NoSQL)
-composer global require "laravel/installer"
-export PATH=$PATH:$HOME/.composer/vendor/bin
-si pelc n'est pas installé : sudo apt install php-pear php-dev libssl-dev
-sudo pecl install mongodb
-Dans php.ini, ajouter : extension="mongodb.so"
 
 
 ////////// DOC INFO
