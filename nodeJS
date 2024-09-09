@@ -12,6 +12,7 @@ installer nvm
         vérifier la dernière version sur https://github.com/nvm-sh/nvm
 installer npm avec nvm
     nvm install --lts
+    redémarrer le terminal
 
 
 ////////////////// GERER LES VERSIONS NODE (avec n)

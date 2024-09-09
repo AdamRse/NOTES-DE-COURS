@@ -144,11 +144,12 @@ php artisan make:listener <NomEventListener> --event=<nomEvent>
 Le middleware est utilisé pour filtrer des requêtes http. Il est par exemple capable de rediriger un utilisateur non connecté vers la page de connexion.
 1 modèle = 1 table comme sur symfony
 
-////////// Erreurs courrantes
+////////// Erreurs courantes
 Erreur Mysql : Impossible d'atteindre la table ou elle est vide
     Vérifier dans le .env les paramètres DB_*
 Could not find driver
     Vérifier que le paquet du driver associé est installé (par ex php8.3-mysql)
+    Laravel cherche à se connecter à la BDD du .env, remplir les variables (DB_CONNECTION, ...) et faire un migrate
 No application encryption key has been specified
     Pas de clé de l'application détéctée dans le .env, il faut la générer
         php artisan key:generate

@@ -1,6 +1,6 @@
 ////////////// INSTALLATION
 installer angular en global
-    sudo npm install -g @angular/cli
+    npm install -g @angular/cli
 créer un nouveau projet
     ng new <nomProjet>
 dans un projet git
