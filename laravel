@@ -47,7 +47,7 @@ Recompiler la BDD
         php artisan migrate:fresh
 Créer une table
     php artisan make:model <nomTable> [-mrc]
-        -mrc : 3 options (flags) -mmmigration, --resource, --controller
+        -mrc : 3 options (flags) --migration, --resource, --controller
             Liste des commandes
                 -a, --all             Generate a migration, seeder, factory, policy, resource controller, and form request classes for the model
                 -c, --controller      Create a new controller for the model
@@ -143,6 +143,30 @@ php artisan make:listener <NomEventListener> --event=<nomEvent>
 ////////// DOC INFO
 Le middleware est utilisé pour filtrer des requêtes http. Il est par exemple capable de rediriger un utilisateur non connecté vers la page de connexion.
 1 modèle = 1 table comme sur symfony
+
+////////// SANCTUM (https://laravel.com/docs/11.x/sanctum)
+php artisan install:api
+
+////////// ENVIRONEMENT
+Pour vérifier dans quel envirtonement on est (APP_ENV du .env)
+    php artisan env
+Passer en prod :
+    utiliser un .env avec :
+        APP_ENV=production, APP_DEBUG=false, APP_URL=https://www.site.com
+    générer le cache pour les routes
+        php artisan route:cache
+    ajouter les fichiers de config au cache
+        php artisan config:cache
+    optimiser le chargement des classes
+        php artisan optimize
+    mettre les vues en cache
+        php artisan view:cache
+    donner les droits apache
+        sudo chown -R www-data:www-data /site
+        sudo chmod -R 755 /site
+    composer install --optimize-autoloader --no-dev
+
+
 
 ////////// Erreurs courantes
 Erreur Mysql : Impossible d'atteindre la table ou elle est vide

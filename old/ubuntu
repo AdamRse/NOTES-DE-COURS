@@ -1,3 +1,12 @@
+//Appeler un programme par son nom (comme un package)
+nano ~/.bashrc
+A la fin du fichier :
+alias <nomProgramme>="nohup <cheminProgramme> >/dev/null 2>&1 &"
+    Exemple postman :
+    alias postman="nohup /home/adam/dev/repos_externes/postman/app/postman-agent --no-sandbox >/dev/null 2>&1 &"
+
+//Map interractive
+    telnet mapscii.me
 //Scan bluetooth
     sudo bluetoothctl
 //Enlever le mot de passe de sortie de veille
