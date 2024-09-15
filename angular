@@ -30,7 +30,7 @@ créer une interface en ligne de commande
 
 ////////////// SERVICES
 créer un service en ligne de commande
-    ng generate service housing --skip-tests
+    ng generate service <nomService> --skip-tests
 
 ////////////// INPUTS
 Input est un composant qui permet de passer des données d'un parent à un enfant.
