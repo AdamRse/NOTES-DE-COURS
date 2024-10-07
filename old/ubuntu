@@ -5,6 +5,10 @@ alias <nomProgramme>="nohup <cheminProgramme> >/dev/null 2>&1 &"
     Exemple postman :
     alias postman="nohup /home/adam/dev/repos_externes/postman/app/postman-agent --no-sandbox >/dev/null 2>&1 &"
 
+//Infos sur la fenêtre
+xwininfo
+    ou xprop
+
 //Map interractive
     telnet mapscii.me
 //Scan bluetooth

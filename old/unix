@@ -1,4 +1,5 @@
-Chercher un dossier
+Rechercher un dossier/fichier
     find / -xdev -name "<nomDossier>"
+    find / -type f -name "<nomFichier>"
 Afficher les ports USB
     lsusb
