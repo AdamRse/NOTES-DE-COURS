@@ -55,6 +55,32 @@ Lancer certbot
 Modifier la crontab en renouvellant la certif tous les mois
 	15 4 15 * * /usr/bin/certbot renew --quiet
 
+//Garder l'authentification SSH pour github après déco
+Créer un fichier de config ssh
+	touch ~/.ssh/config
+	chmod 600 ~/.ssh/config
+Y ajouter dedans :
+	Host *
+		AddKeysToAgent yes
+		IdentityFile <chemin/clé/privée>
+Pour démarer l'agent ssh à la connexion de l'user
+Créer un fichier de configuration
+	~/.config/systemd/user/ssh-agent.service
+Ajouter dedans
+	[Unit]
+	Description=SSH key agent
+
+	[Service]
+	Type=simple
+	Environment=SSH_AUTH_SOCK=%t/ssh-agent.socket
+	ExecStart=/usr/bin/ssh-agent -D -a $SSH_AUTH_SOCK
+
+	[Install]
+	WantedBy=default.target
+Lier le fichier à la config de ssh et redémarrer le service :
+	systemctl --user enable ssh-agent
+	systemctl --user start ssh-agent
+
 //Instaler openDKIM et spamass
 apt install opendkim opendkim-tools spamass-milter
 Dans le fichier /etc/opendkim.conf, ajouter : ----

@@ -1,3 +1,9 @@
+////////// DEPENDANCES
+Installer les dépendances
+    sudo apt install -y nginx php-fpm php-mysql php-mbstring php-xml php-curl php-zip unzip git
+Installer composer
+    curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+
 ////////// INSTALLATION
 Nouveau projet
     composer create-project laravel/laravel <NomProjet>

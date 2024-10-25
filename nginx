@@ -1,0 +1,7 @@
+///////////////Ajouter un site virtuel
+Tester les fichiers de config (sites-availables) de nginx
+    sudo nginx -t
+Ajouter un lien symbolique pour ajouter le site
+    sudo ln -s /etc/nginx/sites-available/<site> /etc/nginx/sites-enabled/
+Recharger NGINX
+    sudo systemctl reload nginx
