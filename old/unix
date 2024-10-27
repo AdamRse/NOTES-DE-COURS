@@ -3,3 +3,7 @@ Rechercher un dossier/fichier
     find / -type f -name "<nomFichier>"
 Afficher les ports USB
     lsusb
+Vider le contenu d'un fichier
+    > <fichier>
+Ecrire dans un fichier
+    echo -n "<texte>" > <fichier>

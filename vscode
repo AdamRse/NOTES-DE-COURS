@@ -1,5 +1,11 @@
-php executable path : Lancer devilbox
-	dans devilbox : whereis php
-	copier le chemin dans le json option
-
 Commenter/décommenter : ctrl+maj+:
+Personnaliser l'intelliscence
+	Installer le module : Path Intellisense
+	Dans le projet /.vscode/settings.json (s'il n'y est pas le créer)
+	Ajouter par exemple pour l'intelliscence des assets dans angular :
+	{
+		"path-intellisense.mappings": {
+			"/assets": "${workspaceFolder}/src/assets",
+			"assets": "${workspaceFolder}/src/assets"
+		}
+	}
