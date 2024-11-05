@@ -145,6 +145,10 @@ php artisan make:event <nomEvent>
 php artisan make:listener <NomEventListener> --event=<nomEvent>
     Créé un event listener dans app/Listeners/<NomEventListener>.php
 
+////////// DÉPLOIEMENT
+Publier les CORS
+    php artisan config:publish cors
+
 
 ////////// DOC INFO
 Le middleware est utilisé pour filtrer des requêtes http. Il est par exemple capable de rediriger un utilisateur non connecté vers la page de connexion.
