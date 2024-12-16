@@ -16,9 +16,9 @@ Instanciation d'objets dans un objet
 //Héritage
 Un parent qui hérite des méthodes et attributs d'un parent (seulement des public et protected)
 //Polymorphisme
-Permet à différentes classes d'être traitées de manière uniforme. Quand on apelle une méthode de différents objets (par ex $chien->cri(); $chat->cri();)
+Permet à différentes classes d'être traitées de manière uniforme. Quand on apelle une méthode de différents objets (par ex $chien->cri(); $chat->cri();) La donnée retournée doit être cohérente.
 //Classes abstraites
-Instanciation impossibles, elles doivent être héritées
+Instanciation impossibles, elles doivent être héritées. Applicable aux méthodes aussi.
 //Interfaces
 Modèle de classe qui impose des fonctionnalités à implémenter
 //Traits
