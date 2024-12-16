@@ -1,3 +1,27 @@
 //Programmation impérative
 Insctructions executées dans un ordre définis ans appel de fonctions, ça s'oppose à la programmation déclarative
 //
+
+
+
+
+
+/////////////NOTIONS :
+//Modularité
+Séparation des logiques, par exemple une classe ne s'occupe que des actions portées sur 1 sujet (Mail::Envoyer, Mail::Prepare)
+//Encapsulation
+Cacher les données derrière une interface pour controler leur accès (attribut > méthode)
+//Composition
+Instanciation d'objets dans un objet
+//Héritage
+Un parent qui hérite des méthodes et attributs d'un parent (seulement des public et protected)
+//Polymorphisme
+Permet à différentes classes d'être traitées de manière uniforme. Quand on apelle une méthode de différents objets (par ex $chien->cri(); $chat->cri();)
+//Classes abstraites
+Instanciation impossibles, elles doivent être héritées
+//Interfaces
+Modèle de classe qui impose des fonctionnalités à implémenter
+//Traits
+Méthodes qui peuvent être ajoutés à n'importe quelle classe (sorte de fonction)
+//Typage
+Restreindre une variable à un type de données (int, float, string, Classe, ...)
