@@ -181,6 +181,7 @@ Passer en prod :
 ////////// Erreurs courantes
 Erreur Mysql : Impossible d'atteindre la table ou elle est vide
     Vérifier dans le .env les paramètres DB_*
+    faire une migration, même sans base de données, pour avoir les tables par défauts (comme la session)
 Could not find driver
     Vérifier que le paquet du driver associé est installé (par ex php8.3-mysql)
     Laravel cherche à se connecter à la BDD du .env, remplir les variables (DB_CONNECTION, ...) et faire un migrate

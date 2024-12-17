@@ -7,6 +7,12 @@ Insctructions executées dans un ordre définis ans appel de fonctions, ça s'op
 
 
 /////////////NOTIONS :
+//Membre statique
+static : devant un attribut ou une classe pour pouvoir l'utiliser sans instancier un objet. Comme une simple variable ou fonction. (Classe::AttributStatique).
+//Clonage
+Copie d'un objet. $obj1 = $obj2 créé une réference, $obj1 clone $obj2 créé une copie conforme.
+
+////A Savoir
 //Modularité
 Séparation des logiques, par exemple une classe ne s'occupe que des actions portées sur 1 sujet (Mail::Envoyer, Mail::Prepare)
 //Encapsulation
