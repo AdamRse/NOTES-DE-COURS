@@ -1,0 +1,16 @@
+//controller xbox One (repo https://github.com/medusalix/xone)
+git clone https://github.com/medusalix/xone && cd xone && sudo ./install.sh
+sudo xone-get-firmware.sh
+    Pour installer le capteur bluetooth
+
+//Lutris
+Télécharger le .deb https://lutris.net/downloads
+Installer avec
+    sudo apt install./<.deb>
+        Permet de télécharger les dépendances de paquets
+
+//ckb-next pour driver souris corsair (https://github.com/ckb-next/ckb-next)
+sudo apt install build-essential cmake libudev-dev qtbase5-dev zlib1g-dev libpulse-dev libquazip5-dev libqt5x11extras5-dev libxcb-screensaver0-dev libxcb-ewmh-dev libxcb1-dev qttools5-dev git libdbusmenu-qt5-dev
+    Dépendances linux
+git clone https://github.com/ckb-next/ckb-next.git && cd ckb-next
+(sudo?) bash quickinstall

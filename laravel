@@ -145,6 +145,10 @@ php artisan make:event <nomEvent>
 php artisan make:listener <NomEventListener> --event=<nomEvent>
     Créé un event listener dans app/Listeners/<NomEventListener>.php
 
+////////// DÉPLOIEMENT
+Publier les CORS
+    php artisan config:publish cors
+
 
 ////////// DOC INFO
 Le middleware est utilisé pour filtrer des requêtes http. Il est par exemple capable de rediriger un utilisateur non connecté vers la page de connexion.
@@ -177,6 +181,7 @@ Passer en prod :
 ////////// Erreurs courantes
 Erreur Mysql : Impossible d'atteindre la table ou elle est vide
     Vérifier dans le .env les paramètres DB_*
+    faire une migration, même sans base de données, pour avoir les tables par défauts (comme la session)
 Could not find driver
     Vérifier que le paquet du driver associé est installé (par ex php8.3-mysql)
     Laravel cherche à se connecter à la BDD du .env, remplir les variables (DB_CONNECTION, ...) et faire un migrate
