@@ -7,3 +7,7 @@ Vider le contenu d'un fichier
     > <fichier>
 Ecrire dans un fichier
     echo -n "<texte>" > <fichier>
+//Ajouter un user à un groupe
+    usermod -aG <nom_du_groupe> <nom_de_l'utilisateur>
+//Lien symbolique
+    ln -s <fichierSourceExistant> <LienSymbolique>
