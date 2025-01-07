@@ -55,6 +55,9 @@ Lancer certbot
 Modifier la crontab en renouvellant la certif tous les mois
 	15 4 15 * * /usr/bin/certbot renew --quiet
 
+//Requête de certificat pour un nouveau site
+sudo certbot --apache -d nom.de.domaine
+
 //Garder l'authentification SSH pour github après déco
 Créer un fichier de config ssh
 	touch ~/.ssh/config

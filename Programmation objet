@@ -1,12 +1,19 @@
 //Programmation impérative
 Insctructions executées dans un ordre définis ans appel de fonctions, ça s'oppose à la programmation déclarative
-//
+
+/////////////ORGANISATION LARAVEL
+//Repository
+Accès aux données (crud) + formattage des données. En général on fait 1 repo par table.
+//Service
+Logique métier, traitement des données
+//Binding
+Instanciation de classes quand on l'appelle en paramètre d'une méthode de controlleur
+//provider
+Point d'entrée pour configurer un service dans une application
 
 
 
-
-
-/////////////NOTIONS :
+/////////////NOTIONS
 //Membre statique
 static : devant un attribut ou une classe pour pouvoir l'utiliser sans instancier un objet. Comme une simple variable ou fonction. (Classe::AttributStatique).
 //Clonage
