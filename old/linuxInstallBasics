@@ -14,3 +14,7 @@ sudo apt install build-essential cmake libudev-dev qtbase5-dev zlib1g-dev libpul
     Dépendances linux
 git clone https://github.com/ckb-next/ckb-next.git && cd ckb-next
 (sudo?) bash quickinstall
+
+//nvm (https://github.com/nvm-sh/nvm)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+    on peut installer npm avec sudo apt install npm
