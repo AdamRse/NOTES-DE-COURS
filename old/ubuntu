@@ -41,6 +41,12 @@ xwininfo
             sudo systemctl start bluetooth
         Réessayer le scan avec sudo bluetoothctl
 
+//asdf (gestionnaire de versions php, node et +)
+git clone https://github.com/asdf-vm/asdf.git
+dans ~/.bashrc, ajouter une ligne :
+    . "$HOME/<repo asdf>/asdf.sh
+        Ne pas oublier le "." au début
+
 //////////////INSTALLATIONS DE BASE
 //ckb-next (driver souris)
 sudo apt install build-essential cmake libudev-dev qtbase5-dev zlib1g-dev libpulse-dev libquazip5-dev libqt5x11extras5-dev libxcb-screensaver0-dev libxcb-ewmh-dev libxcb1-dev qttools5-dev git libdbusmenu-qt5-dev && git clone https://github.com/ckb-next/ckb-next.git && cd ckb-next

@@ -113,6 +113,12 @@ Pour récupérer un champ dans une requête, on a juste à créer un Validator, 
     On peut tester si les option correspondent aux champs du formulaire envoyé via $request
         if($validator->fails())
 
+////////// BREEZE
+Installer Breeze
+    composer require laravel/breeze --dev
+
+
+
 ////////// FILAMENT
 Installer filament (admin)
     composer require filament/filament:"^3.2" -W
