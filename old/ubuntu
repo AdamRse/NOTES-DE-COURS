@@ -46,6 +46,7 @@ git clone https://github.com/asdf-vm/asdf.git
 dans ~/.bashrc, ajouter une ligne :
     . "$HOME/<repo asdf>/asdf.sh
         Ne pas oublier le "." au début
+Si besoin recharger la console avec source ~/.bashrc
 
 //////////////INSTALLATIONS DE BASE
 //ckb-next (driver souris)
