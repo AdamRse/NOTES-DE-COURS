@@ -214,7 +214,7 @@ Erreur de requête SQL lors de la soumission d'un form
     Vérifier le contenu de la requête SQL qui a été générée et passée dans le message d'erreur. S'il manque un champ, ajouter ce champ dans de model concerné, dans la propriété protected $fillable;
 composer install ne fonctionne pas
     Il manque des packages, notament essayer d'installer php-xml
-        sudo apt-get install php-xml
+        sudo apt-get install php-xml php-dom
 
 ////////////////////////////
 Pour faire un crud :

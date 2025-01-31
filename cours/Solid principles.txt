@@ -1,0 +1,274 @@
+SOLID
+
+STUPID, QUESACO ?!
+C’est un acronyme qui décrit les mauvaises pratiques en POO
+Définition des lettres
+Singleton
+Tight Coupling
+Untestability
+Premature Optimization
+Indescriptive Naming
+Duplication
+STUPID est un acronyme représentant les mauvaises pratiques en Programmation Orientée Objet (POO).
+
+Ces pratiques mènent souvent à un code difficile à maintenir, tester ou faire évoluer.
+
+S : Singleton – Utilisation excessive ou mauvaise du pattern Singleton, rendant le code rigide et difficile à tester.
+T : Tight Coupling – Les classes sont trop dépendantes les unes des autres, limitant la flexibilité et la réutilisabilité.
+U : Untestability – Code difficile à tester en raison de dépendances cachées ou mal conçues.
+P : Premature Optimization – Optimiser trop tôt, avant d’avoir une vision claire des besoins, ce qui complique inutilement le code.
+I : Indescriptive Naming – Noms de variables, classes ou méthodes peu explicites, rendant le code peu lisible.
+D : Duplication – Répétition de code, au lieu de réutilisation, ce qui augmente la complexité et les risques d’erreurs.
+
+Reconnaître ces pièges permet de les éviter pour améliorer la qualité et la maintenabilité du code.
+
+SINGLETON
+Instance Unique
+Le singleton est un design pattern qui n’autorise qu’une seule instance d’une classe.
+DANGER DE COUPLAGE FORT de notre code à cette classe qui ressemble à un state global
+TRES CONTROVERSE 
+Le pattern Singleton garantit qu’une classe ne peut avoir qu’une seule instance dans l’ensemble de l’application.
+
+Souvent utilisé pour gérer des ressources partagées, comme des connexions à une base de données ou des paramètres de configuration.
+Dangers principaux :
+Couplage fort : En utilisant un Singleton, le code devient dépendant de cette instance unique. Cela s’apparente à un state global, ce qui complique les tests unitaires et réduit la modularité.
+Difficulté à tester : Les Singletons peuvent introduire des dépendances implicites, rendant les tests moins isolés et fiables.
+Bien que parfois utile, le Singleton est souvent considéré comme un anti-pattern lorsqu’il est abusé.
+
+Utiliser le Singleton avec prudence et uniquement lorsque justifié. Il vaut mieux rechercher des alternatives comme l’injection de dépendances pour réduire le couplage.
+
+
+
+TIGHT COUPLING
+COUPLAGE FORT
+Désigne la dépendance étroite d’une classe envers une ou plusieurs autres classes.
+Pose de gros soucis lors des tests ou encore lors de la mise à jour de librairies etc …
+Très important de ne pas tomber dans ce piège afin de pouvoir isoler son code métier de l’architecture
+Le couplage fort désigne la dépendance étroite d’une classe envers une ou plusieurs autres classes.
+
+Lorsque des classes sont fortement couplées, des changements dans l'une peuvent avoir un impact direct sur les autres.
+
+Problèmes majeurs :
+Tests : Un couplage fort rend difficile la création de tests unitaires isolés, car il faut souvent inclure plusieurs dépendances pour que les tests fonctionnent.
+Évolution du code : Les modifications d’une classe ou la mise à jour d’une librairie entraînent des effets en cascade, rendant le code fragile.
+Complexité accrue : La réutilisabilité est limitée, car chaque partie du code dépend fortement d’autres parties.
+Minimiser le couplage fort permet d’obtenir un code flexible, maintenable et testable. C’est une étape essentielle pour des projets de qualité.
+
+TIGHT COUPLING
+À gauche : Exemple de couplage fort.
+La classe MyClass crée directement une instance de MyConnexion.
+Cela signifie que MyClass dépend directement de MyConnexion, ce qui complique la réutilisation et les tests.
+À droite : Exemple de faible couplage.
+La dépendance est injectée via le constructeur.
+MyClass ne dépend pas directement de l’implémentation de Connexion, ce qui rend le code plus modulaire et testable.
+Toujours privilégier l’injection de dépendances pour réduire le couplage.
+
+Cette approche améliore la maintenabilité et la flexibilité du code.
+
+
+UNTESTABILITY
+NON TESTABILITÉ
+Tester un code ne devrait pas être complexe
+Un code non testable est quasi systématiquement un code qui ne suit pas le concept précédent de TIGHT COUPLING
+La testabilité du code est un critère clé pour garantir sa qualité et sa maintenabilité.
+
+Un code non testable rend les tests unitaires ou d’intégration difficiles, voire impossibles.
+
+Problème principal : Le manque de testabilité est souvent causé par un couplage fort :
+Les classes dépendent directement d’autres classes, ce qui complique l’isolation des composants pour les tests.
+Les dépendances cachées ou mal gérées (ex. instanciation directe au lieu d’injection) empêchent d’utiliser des mocks ou des fakes.
+Conséquences d’un code non testable :
+Augmente le risque de bugs non détectés, surtout lorsque le code évolue.
+Rend les cycles de développement plus longs, car les tests doivent être réalisés manuellement.
+Empêche une adoption efficace des pratiques de développement modernes, comme le TDD (Test-Driven Development).
+La testabilité ne doit pas être un luxe, mais un objectif dès la conception.
+
+Suivre des bonnes pratiques comme le faible couplage et l’architecture modulaire simplifie grandement les tests.
+
+
+PREMATURE OPTIMIZATION
+OPTIMISATION PRÉMATURÉE
+Premature optimization is the root of all evil
+La bonne façon de penser une application n’est de se lancer tout de suite, tête baissée dans la plus complexe architecture possible. Est à prendre en compte, le contexte, l’application, la durée de vie du projet …
+L’écriture d’un projet se fait par refactorisation perpétuelle
+Trop de complexité peut rendre le code ingérable et non maintenable
+/!\ Ne pas confondre, complexité objective et complexité d’apprentissage
+"Premature optimization is the root of all evil" – Donald Knuth.
+
+Optimiser prématurément signifie chercher à rendre le code plus performant et optimisé avant de bien comprendre les besoins réels ou le contexte du projet.
+
+Pourquoi l’optimisation prématurée est problématique ? :
+Contexte et besoins ignorés : Lancer directement une architecture complexe ou hautement optimisée peut être inapproprié si les besoins de l’application sont encore flous.
+Risque de sur-ingénierie : Un code inutilement complexe devient difficile à lire, à maintenir et à faire évoluer. Cela peut freiner le développement et allonger les délais sans bénéfices clairs.
+Gaspillage de temps : Optimiser trop tôt des parties du code qui n’affectent pas réellement la performance globale.
+Prioriser un code clair et maintenable plutôt qu’un code précocement optimisé.
+
+Se concentrer d’abord sur une solution simple et fonctionnelle, puis optimiser lorsque cela devient nécessaire.
+
+
+INDESCRIPTIVE NAMING
+NOMMAGE INDÉCHIFFRABLE 
+Le nom de chaque variable, chaque fonction, chaque classe doit être clair, évident, précis
+Ne pas faire d’abréviation, mais ne pas faire de phrase de plusieurs lignes non plus
+Il est normal de passer du temps, beaucoup de temps à choisir le JUSTE nom pour ses variables, classes, fonctions …
+DE GRÂCE, RESPECTER LES CONVENTIONS DE NOMMAGE
+Le nom de chaque variable, fonction, ou classe doit être clair, évident et précis.
+
+Un bon nommage améliore immédiatement la lisibilité et la compréhension du code par d’autres développeurs (ou par vous-même plus tard).
+
+Passer du temps à trouver le JUSTE NOM est un investissement, pas une perte de temps.
+
+Le nom doit refléter précisément le rôle ou la responsabilité de l’objet nommé.
+
+Les conventions favorisent une cohérence essentielle dans les équipes et sur des projets de grande taille.
+
+Un code bien nommé est plus facile à lire, à maintenir et à collaborer.
+
+N'oubliez pas : "Un bon nom vaut mille commentaires."
+
+
+DUPLICATION
+DON’T REPEAT YOURSELF : DRY 
+Garder son code simple est primordial
+Chaque répétition de code doit se faire poser la question : comment puis-je créer une nouvelle classe, une nouvelle fonction ?
+Le processus DRY est un élément clé de la refactorisation continue
+L’objectif est d’éviter toute duplication inutile dans le code.
+
+Chaque bloc de code qui se répète doit être remplacé par une abstraction comme une fonction, une classe, ou un composant réutilisable.
+Pourquoi éviter la duplication ? :
+Complexité accrue : Chaque duplication ajoute une charge de maintenance. Si vous devez modifier quelque chose, vous devez le faire dans plusieurs endroits.
+Risque d’incohérences : Lorsque des sections de code similaires évoluent différemment, cela peut introduire des bugs subtils et difficiles à détecter.
+Lisibilité réduite : Le code devient plus long et moins clair.
+Le DRY est une pratique centrale dans le processus de refactorisation continue, essentielle pour maintenir un code propre et évolutif.
+Respecter le principe DRY améliore la maintenabilité, la lisibilité et réduit les bugs.
+
+
+SOLID, QUESACO ?!
+C’est un acronyme qui décrit les bonnes pratiques en POO
+Michael Feathers et Robert C. Martin (aka Uncle Bob)
+Va nous permettre d’écrire du code maintenable, faiblement couplé et testable
+Définition des lettres
+SINGLE RESPONSIBILITY PRINCIPLE
+OPEN / CLOSED PRINCIPLE
+LISKOV SUBSTITUTION PRINCIPLE
+INTERFACE SEGREGATION PRINCIPLE
+DEPENDENCY INVERSION PRINCIPLE
+SOLID est un acronyme regroupant les bonnes pratiques en Programmation Orientée Objet (POO).
+Défini par Michael Feathers et popularisé par Robert C. Martin (Uncle Bob), SOLID vise à produire un code :
+Maintenable : facile à faire évoluer dans le temps.
+Faiblement couplé : indépendant des détails d'implémentation.
+Testable : conçu pour permettre des tests isolés et fiables.
+Pourquoi SOLID est important ? :
+Suivre ces principes conduit à un code :
+Plus lisible et compréhensible.
+Plus flexible face aux changements.
+Plus robuste et moins sujet aux bugs.
+S : Single Responsibility Principle (SRP) – Une classe doit avoir une seule responsabilité ou raison de changer.
+O : Open/Closed Principle (OCP) – Le code doit être ouvert à l'extension mais fermé à la modification.
+L : Liskov Substitution Principle (LSP) – Les objets d’une classe dérivée doivent pouvoir remplacer ceux de la classe de base sans altérer le comportement du programme.
+I : Interface Segregation Principle (ISP) – Les interfaces doivent être spécifiques et adaptées à chaque usage, évitant des dépendances inutiles.
+D : Dependency Inversion Principle (DIP) – Les modules haut niveau ne doivent pas dépendre des modules bas niveau, mais tous doivent dépendre d’abstractions.
+
+SOLID est une boussole pour écrire un code de qualité, évolutif et facile à maintenir.
+
+Ces principes s’appliquent progressivement et avec pragmatisme, en fonction des besoins du projet.
+
+
+SINGLE RESPONSIBILITY PRINCIPLE
+PRINCIPE DE RESPONSABILITÉ UNIQUE
+Une classe ne doit avoir qu’une seule responsabilité, en d’autres termes, elle ne doit avoir qu’une seule et unique raison de “changer”
+Le principe de responsabilité unique (Single Responsibility Principle - SRP) stipule qu'une classe ne doit avoir qu’une seule responsabilité.
+
+Cela signifie qu’une classe doit avoir une raison unique de changer.
+
+Pourquoi appliquer le SRP ? :
+Clarté : Une classe avec une seule responsabilité est plus simple à comprendre et à maintenir.
+Facilité de tests : Tester des classes aux responsabilités claires est plus aisé et moins sujet aux dépendances complexes.
+Réduction des effets de cascade : Si une classe gère plusieurs responsabilités, une modification pour une responsabilité peut introduire des erreurs dans les autres.
+Appliquer le SRP rend le code plus modulaire, maintenable et extensible.
+
+Ce principe est une pierre angulaire des bonnes pratiques SOLID.
+
+
+OPEN/CLOSE PRINCIPLE
+PRINCIPE OUVERT / FERMÉ
+Une classe devrait être OUVERTE à l’extension, et FERMÉE à la modification
+Pour ajouter une fonctionnalité, il faudra créer une nouvelle classe et non pas modifier celle que l’on aura créé
+A avoir en tête quand on se retrouve à écrire des if pour choisir des comportements / algorithmes ...
+Le principe ouvert/fermé (Open/Closed Principle - OCP) stipule qu’une classe doit être :
+Ouverte à l’extension : on peut ajouter de nouvelles fonctionnalités.
+Fermée à la modification : on ne modifie pas son code existant pour éviter de casser des comportements.
+Pourquoi appliquer l’OCP ? :
+Éviter les régressions : Modifier une classe existante peut introduire des bugs inattendus.
+Faciliter l’évolutivité : L’ajout de nouvelles fonctionnalités est simplifié grâce à l'extension.
+Modularité du code : Permet de rendre le code plus modulaire et indépendant.
+L’OCP encourage une conception orientée vers l’extensibilité et réduit les risques liés à la modification du code existant.
+
+Il guide vers des solutions plus propres et évolutives.
+
+
+PRINCIPE DE SUBSTITUTION DE LISKOV
+Si la classe T a une dépendance de type S alors on doit pouvoir remplacer  cette dépendance par tous types dérivés de S
+Un cas de violation serait de TROP redéfinir de code lors de l’héritage par exemple
+Cela implique de conserver le type des valeurs d’entrée et de retour des fonctions, et donc de TYPER son code
+LISKOV SUBSTITUTION PRINCIPLE
+Le principe de substitution de Liskov (Liskov Substitution Principle - LSP) stipule que si une classe T a une dépendance de type S, alors on doit pouvoir remplacer S par tous les types dérivés de S sans modifier le comportement attendu.
+
+Ce principe a été défini par Barbara Liskov en 1987.
+
+Pourquoi appliquer le LSP ? :
+Garantir la cohérence : Les classes dérivées doivent respecter le contrat établi par la classe de base.
+Faciliter l’utilisation des héritages : Permet aux utilisateurs d’une classe de travailler avec ses sous-classes sans surprises ou bugs inattendus.
+Le LSP garantit une interopérabilité entre les classes et leurs dérivées.
+
+En respectant ce principe, on évite des comportements inattendus et on maintient un code robuste et fiable.
+
+
+PRINCIPE DE SÉGRÉGATION DES INTERFACES
+Il s’agit du principe de responsabilité unique appliquée aux interfaces
+Plusieurs interfaces sont plus pertinent qu’une interface énorme dont certaines méthodes seront implémentées vides car non utiles
+Tout en veillant à ne pas violer le SRP, il est important de se rappeler qu’une classe peut implémenter plusieurs interfaces 
+INTERFACE SEGREGATION PRINCIPLE
+Le principe de ségrégation des interfaces (Interface Segregation Principle - ISP) applique l’idée de responsabilité unique aux interfaces.
+
+Une interface ne doit contenir que les méthodes nécessaires à un client spécifique, et non un ensemble générique et massif.
+
+Avantages de l’ISP :
+Flexibilité accrue : Les classes ne dépendent que des méthodes qu’elles utilisent réellement.
+Code plus clair : Les interfaces restent ciblées et faciles à comprendre.
+Meilleure modularité : Il devient plus simple de remplacer ou modifier des parties du code sans affecter tout le système.
+Respecter l’ISP permet d’éviter les dépendances inutiles et rend le code plus flexible et maintenable.
+
+Toujours réfléchir aux besoins réels des classes qui implémenteront l’interface.
+
+
+PRINCIPES D’INVERSION DE DÉPENDANCE
+Il s’agit probablement du plus important des principes à retenir
+Les classes doivent dépendre d’abstraction et non d’implémentation
+VA PERMETTRE D’ISOLER NOTRE CODE MÉTIER DE NOTRE ARCHITECTURE
+DEPENDENCY INVERSION PRINCIPLE
+Le principe d’inversion de dépendance (Dependency Inversion Principle - DIP) stipule que :
+Les classes doivent dépendre d’abstractions (interfaces ou classes abstraites).
+Elles ne doivent pas dépendre directement d’implémentations concrètes.
+Pourquoi le DIP est crucial ? :
+Isoler le code métier : Le DIP permet de découpler le code métier des détails d’implémentation comme l’architecture ou les outils (bases de données, frameworks, etc.). Le code devient plus flexible et adaptable à différents contextes.
+Faciliter les tests : En dépendant d’une abstraction, on peut injecter des mocks ou stubs pour tester les fonctionnalités sans dépendre des implémentations concrètes.
+Le DIP est l’un des principes les plus importants de SOLID car il favorise un code modulaire, testable et évolutif.
+
+Il permet de séparer les détails techniques du code métier, rendant le projet plus robuste face aux changements.
+
+
+Une question plus importante pourrait être de savoir comment savoir si vous devez appliquer les principes SOLID à votre code ou si vous écrivez du code qui n'est pas SOLID.
+Voici une liste de «tell», montrant que votre code pourrait avoir besoin d'être refactorisé :
+Beaucoup d'instructions "if" pour gérer différentes situations dans une méthode.
+Beaucoup de code qui ne fait rien pour satisfaire la conception de l'interface.
+Vous continuez à ouvrir la même classe pour changer le code.
+Vous écrivez du code dans des classes qui n'ont vraiment rien à voir avec cette classe. Par exemple, placer des requêtes SQL dans une classe en dehors de la classe de connexion à la base de données.
+REPÉRER LES CODES SMELLS
+
+SOLID n'est pas une méthodologie parfaite et peut conduire à des applications complexe, trop, et parfois conduire à l'écriture de code pas forcément nécessaire. Utiliser SOLID signifie écrire plus de classes et créer plus d'interfaces !!
+Néanmoins, cela oblige à séparer les responsabilités, à penser à l'héritage, à éviter la répétition du code et à aborder soigneusement la création d’application. Penser à la façon dont les objets s'assemblent dans une application est, après tout, ce qu'est la programmation orientée objet.
+CONCLUSION
+
+ALLER PLUS LOIN ...
+https://williamdurand.fr/2013/06/03/object-calisthenics/#1-only-one-level-of-indentation-per-method

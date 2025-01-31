@@ -1,3 +1,7 @@
+//Programmation STUPID
+//Singleton
+
+
 //Programmation impérative
 Insctructions executées dans un ordre définis ans appel de fonctions, ça s'oppose à la programmation déclarative
 
@@ -10,8 +14,6 @@ Logique métier, traitement des données
 Instanciation de classes quand on l'appelle en paramètre d'une méthode de controlleur
 //provider
 Point d'entrée pour configurer un service dans une application
-
-
 
 /////////////NOTIONS
 //Membre statique
