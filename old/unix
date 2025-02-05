@@ -1,11 +1,68 @@
-Rechercher un dossier/fichier
+//TRAITEMENT DE STRINGS/FICHIERS
+cat : lire/concaténer des fichiers
+    cat <fichier> : lis un fichier
+    cat <fichier1> <fichier2> : affiche le contenu de 2 fichiers à la suite
+    cat > <fichier> : écris un fichier avec le mode écriture activé (sortir avec ctrl+D ou ctrl+c)
+    cat -n <fichier> : Affiche le numéro de ligne
+grep : recherche de texte et affiche la ligne
+    grep "<pattern>" <fichier> : recherche un pattern dans un fichier
+    grep peux afficher autre chose que la ligne au pattern trouvé
+        grep -o "<pattern>" : n'affiche que le pattern
+        grep -A <N> "<pattern>" : (After) <N> est un entier, affiche la ligne trouvée + les N lignes suivantes
+        grep -B <N> "<pattern>" : (Before) <N> est un entier, affiche la ligne trouvée + les N lignes précédentes
+        grep -C <N> "<pattern>" : (Context) <N> est un entier, affiche la ligne trouvée + les N lignes suivantes et précédentes
+    grep s'utilise aussi avec une entrée donnée par un pipe "|", par exemple : cat <fichier> | grep "<pattern>"
+sed : supprimer/remplacer/modifier les patterns d'une string (stream editor)
+    sed 's/<ancienPattern>/<nouveauPattern>/<flag>' : remplacer un pattern
+        sed 's/<ancienPattern>/<nouveauPattern>/g' : le /g signifie global, pour toutes les occurences
+        on peut utiliser -i pour modifier un fichier directement
+            par ex : sed -i 's/<ancienPattern>/<nouveauPattern>/g' <fichier>
+    flags utiles :
+        /g : global, remplace toutes les occurences
+        /d : delete, supprime la ou les lignes corrrespondantes
+            /d n'est pas un flag mais peut être utilisé comme tel, il peut aussi être utilisé autrement, voir l'exemple '1d'
+        /p : print, affiche les lignes modifiées
+        /<N> : N est un entier, signifie qu'il faut replacer la Nième occurence. Par exemple /2
+    sed '/<regex>/d' <fichier> : supprime les lignes fu fichier correspondant à la regex
+    sed '<N>d' <fichier> : N est un entier, supprime la Nième ligne du fichier
+        sed '<N1>,<N2>d' <fichier> : pour supprimer plusieurs lignes
+awk : recherche de texte par colonne (espace et tab sont les séparateurs par défaut)
+    Fonctionnement : awk parcourt le fichier (ou l'entrée donnée avec un pipe) ligne par ligne, et applique le pattern (la string) à chaque ligne.
+    Pattern (string) : S'il commence par un booléen, chaque ligne teste le booléen et n'affiche que les lignes qui commencent avec un pattern true.
+        awk '$1 == "error" {print $0}' : N'affichera que les lignes dont la première colonne est "error".
+        Voir les variables utiles en dessous
+    variables utiles dans le pattern-action block (string)
+        NR : Représente la ligne courante
+        NF : Représente le nombre de colonne
+        $0 : Ligne entière
+        /<expressionRégulière>/ : Pour utiliser une expression régulière
+        fonctions : substr(), index(), etc...
+    les blocs d'action '{ }' s'executent pour chaque ligne
+    le 'print' indique le pattern à afficher
+        '{print <X>}' indique donc le pattern X à afficher pour chaque ligne.
+    awk '{print $<N>}' <fichier> : <N> est un entier, affiche la colonne N dans le fichier.
+        les paramètres '{print $<N1>,$<N2>}' affichera 2 colonnes, N1 et N2
+    awk 'NR==<N1> {print $<N2>}' <fichier> : affiche une ligne N1 d'une colonne N2
+        NR==<N1> est une condition, qui apelle la suite si elle est à true
+    awk -F"<S>" '{print $<N>}' <fichier> : S est un signe spécifique qui délimitera les colonnes dans le fichier, par ex dans un CSV on pourrait faire -F";"
+        les paramètres -F"[<S1><S2><S3>]" considèreron ces 3 signes comme des séparateurs
+    awk '{for(i=2; i<=NF; i++) printf $i " "; print ""}' <fichier> : afficher toutes les colonnes à partir de la 2ème
+        pour la colonne 1 2 3 4 5 6 7 8 9, cette commande affichera 2 3 4 5 6 7 8 9
+tr : remplacer/modifier uniquement
+    tr 'a' 'A' : remplace les "a" par des "A"
+        tr 'abc' 'EFG' : remplacera tous les a par des E, les b par des F et les c par des G
+    tr -d 'a' : delete tous les 'a'
+cut : découper des colonnes
+
+
+//Rechercher un dossier/fichier
     find / -xdev -name "<nomDossier>"
     find / -type f -name "<nomFichier>"
-Afficher les ports USB
+//Afficher les ports USB
     lsusb
-Vider le contenu d'un fichier
+//Vider le contenu d'un fichier
     > <fichier>
-Ecrire dans un fichier
+//Ecrire dans un fichier
     echo -n "<texte>" > <fichier>
 //Ajouter un user à un groupe
     usermod -aG <nom_du_groupe> <nom_de_l'utilisateur>
