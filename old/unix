@@ -62,7 +62,7 @@ wc : word count
         -c : compte les caractères
         -m : compte les multi-octets
         -L : Longueur de la ligne la plus longue
-    Note, retourne le nombre de ligne uniquement quand utilisé avec un pipe, et donne aussi le nom du fichier quand pointe sur un fichier
+    Note : retourne le nombre de ligne uniquement quand utilisé avec un pipe, et donne aussi le nom du fichier quand pointe sur un fichier
 cut : découper des colonnes et strings
     cut -c<N> <fichier> : -c = par caractère, N est un entier. Sélectionne le caractère positionné en N seulement
         cut -c<N>- : sélectionne le reste de la string a partir de la position N inclus
