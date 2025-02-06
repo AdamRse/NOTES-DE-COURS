@@ -11,7 +11,10 @@ grep : recherche de texte et affiche la ligne
         grep -A <N> "<pattern>" : (After) <N> est un entier, affiche la ligne trouvée + les N lignes suivantes
         grep -B <N> "<pattern>" : (Before) <N> est un entier, affiche la ligne trouvée + les N lignes précédentes
         grep -C <N> "<pattern>" : (Context) <N> est un entier, affiche la ligne trouvée + les N lignes suivantes et précédentes
-    grep s'utilise aussi avec une entrée donnée par un pipe "|", par exemple : cat <fichier> | grep "<pattern>"
+    grep -l "<pattern>" * : afficher le nom de tous les fichiers qui contiennent le pattern
+    options intéressantes :
+        -r : affiche tous les résultats dans tous les fichiers récursif
+        -h : sans afficher le chemin du fichier dans lequel est trouvé le pattern
 sed : supprimer/remplacer/modifier les patterns d'une string (stream editor)
     sed 's/<ancienPattern>/<nouveauPattern>/<flag>' : remplacer un pattern
         sed 's/<ancienPattern>/<nouveauPattern>/g' : le /g signifie global, pour toutes les occurences
@@ -52,6 +55,14 @@ tr : remplacer/modifier uniquement
     tr 'a' 'A' : remplace les "a" par des "A"
         tr 'abc' 'EFG' : remplacera tous les a par des E, les b par des F et les c par des G
     tr -d 'a' : delete tous les 'a'
+wc : word count
+    wc [options] [fichier] avec les options suivantes :
+        -l : compte les lignes
+        -w : compte les mots
+        -c : compte les caractères
+        -m : compte les multi-octets
+        -L : Longueur de la ligne la plus longue
+    Note, retourne le nombre de ligne uniquement quand utilisé avec un pipe, et donne aussi le nom du fichier quand pointe sur un fichier
 cut : découper des colonnes et strings
     cut -c<N> <fichier> : -c = par caractère, N est un entier. Sélectionne le caractère positionné en N seulement
         cut -c<N>- : sélectionne le reste de la string a partir de la position N inclus
@@ -67,6 +78,9 @@ tail : afficher les dernières lignes / surveiller un fichier
     tail -n <N> <fichier> : Affiche les N dernières lignes
         fonctionne aussi avec tail -<N> <fichier>
     tail -n +<N> <fichier> : affiche les dernières lignes à partir le la Nième ligne
+////////////////////////////utiles
+find :
+    find -name "*.doc" -delete : supprimer tous les .doc du répertoire
 
 
 //Rechercher un dossier/fichier
