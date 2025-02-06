@@ -52,7 +52,21 @@ tr : remplacer/modifier uniquement
     tr 'a' 'A' : remplace les "a" par des "A"
         tr 'abc' 'EFG' : remplacera tous les a par des E, les b par des F et les c par des G
     tr -d 'a' : delete tous les 'a'
-cut : découper des colonnes
+cut : découper des colonnes et strings
+    cut -c<N> <fichier> : -c = par caractère, N est un entier. Sélectionne le caractère positionné en N seulement
+        cut -c<N>- : sélectionne le reste de la string a partir de la position N inclus
+        cut -c-<N> : à l'inverse, sélectionne' le début de la string jusqu'à N inclus
+        cut -c<N1>,<N2> : Sélectionne les caractères aux position N1 et N2 seulement
+    cut -d"<délimiteur>" -f<N> <fichier> : pour chaque ligne, affiche la colonne N, le délimiteur sépare les colonnes
+        cut -d"<délimiteur>" -f<N1>,<N2> : afficher les colonnes N1 et N2
+        cut -d"<délimiteur>" -f<N1>-<N2> : afficher toutes les colonnes de N1 à N2 incluses
+        cut -d"<délimiteur>" -f-<N1> : affiche les colonnes de la première à Nième
+        cut -d"<délimiteur>" -f<N>- : affiche les colonnes à partir de la Nième colonne incluse
+
+tail : afficher les dernières lignes / surveiller un fichier
+    tail -n <N> <fichier> : Affiche les N dernières lignes
+        fonctionne aussi avec tail -<N> <fichier>
+    tail -n +<N> <fichier> : affiche les dernières lignes à partir le la Nième ligne
 
 
 //Rechercher un dossier/fichier
