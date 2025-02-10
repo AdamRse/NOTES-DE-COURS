@@ -9,3 +9,8 @@ Personnaliser l'intelliscence
 			"assets": "${workspaceFolder}/src/assets"
 		}
 	}
+
+Minimiser tous les blocs :
+ctrk+K+à (ctrl+k+0)
+Rouvrir tous les blocs :
+ctrl+k+j

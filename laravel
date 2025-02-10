@@ -182,7 +182,11 @@ Passer en prod :
         sudo chmod -R 755 /site
     composer install --optimize-autoloader --no-dev
 
-
+////////// TIPS
+Déconnexion
+    Avec Breeze, utiliser une route post pour se déconnecter plutôt que get, pour éviter des problème de sécurité lié au cache navigateur.
+    Il est conseillé de regénérer un token csrf égallement
+        request()->session()->invalidate(); request()->session()->regenerateToken();
 
 ////////// Erreurs courantes
 Erreur Mysql : Impossible d'atteindre la table ou elle est vide
@@ -215,6 +219,8 @@ Erreur de requête SQL lors de la soumission d'un form
 composer install ne fonctionne pas
     Il manque des packages, notament essayer d'installer php-xml
         sudo apt-get install php-xml php-dom
+Formulaire d'inscription Breeze : "The password field confirmation does not match", alors que les inputs envoyés sont les mêmes
+    Le nom des input doit être exactement "password" et "password_confirmation"
 
 ////////////////////////////
 Pour faire un crud :
