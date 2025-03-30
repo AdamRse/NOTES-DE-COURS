@@ -28,6 +28,10 @@ git add . pour ajouter tous les fichier à la zone de préparation (staging area
 git commit -m "message" pour valider les modifications
 git push pour les envoyer sur le serveur
 
+/////////////////ANNULER LES MODIFICATION LOCALES (avant un commit)
+git restore <. ou nom de fichier>
+git pull
+
 /////////////////SI JE SUIS DECO SUR WINDOWS :
 invite de commande : ssh-add "C:\Users\adamr\.ssh\id_ed25519"
 redémarrer git bash
