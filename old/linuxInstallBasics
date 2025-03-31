@@ -18,3 +18,10 @@ git clone https://github.com/ckb-next/ckb-next.git && cd ckb-next
 //nvm (https://github.com/nvm-sh/nvm)
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
     on peut installer npm avec sudo apt install npm
+
+//Ajout .bashrc
+Pour éviter de poluer le dossier $HOME
+    export XDG_CONFIG_HOME="$HOME/.config"
+    export XDG_DATA_HOME="$HOME/.local/share"
+    export XDG_CACHE_HOME="$HOME/.cache"
+        Ne pas oublier de créer les répertoires associés

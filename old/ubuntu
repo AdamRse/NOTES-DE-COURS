@@ -1,3 +1,6 @@
+//Couper un fichier audio avec ffmpeg
+ffmpeg -i <input.mp3> -t <duration 00:00:00> -c copy <output.mp3>
+
 //Appeler un programme par son nom (comme un package)
 nano ~/.bashrc
 A la fin du fichier :

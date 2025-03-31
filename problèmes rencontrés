@@ -1,0 +1,4 @@
+//Pourquoi appeler des interfaces pour instancier un service/repo ?
+J'ai essayé d'instancier directement les classes dans le provider sans passer par interface.
+Mais quand un service a besoin d'un autre service, il faut le gérer au niveau du provider en lui passant une instance du service/repo dont il a besoin.
+Comme ça devient ingérable et trop complexe, on instancie l'interface à la place qui va gérer automatiquement les dépendances de services à d'autres services.
