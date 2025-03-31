@@ -28,8 +28,15 @@ git add . pour ajouter tous les fichier à la zone de préparation (staging area
 git commit -m "message" pour valider les modifications
 git push pour les envoyer sur le serveur
 
+/////////////////RÉCUPÉRER LE CODE D'UNE AUTRE BRANCHE (PULL)
+git pull origin <branche distante>
+
 /////////////////ANNULER LES MODIFICATION LOCALES (avant un commit)
 git restore <. ou nom de fichier>
+git pull
+
+/////////////////ANNULER LES MODIFICATION LOCALES (après un commit) (DANGER)
+git reset --hard origin/<branche distante>
 git pull
 
 /////////////////SI JE SUIS DECO SUR WINDOWS :
