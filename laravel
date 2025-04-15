@@ -182,6 +182,13 @@ Passer en prod :
         sudo chmod -R 755 /site
     composer install --optimize-autoloader --no-dev
 
+////////// REGLES DE NOMMAGE LARAVEL (Eloquent)
+Élément	Convention	Exemple (votre cas)
+Nom de table	Pluriel (snake_case)	incomes, income_types
+Modèle (classe)	Singulier (PascalCaseW)	Income, IncomeType
+Relation (méthode)	Singulier (camelCase pour belongsTo) / Pluriel (pour hasMany)	incomeType() (dans Income), incomes() (dans IncomeType)
+Clé étrangère	[relation]_id (snake_case)	income_type_id (dans incomes)
+
 ////////// TIPS
 Déconnexion
     Avec Breeze, utiliser une route post pour se déconnecter plutôt que get, pour éviter des problème de sécurité lié au cache navigateur.
