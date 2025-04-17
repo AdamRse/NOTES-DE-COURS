@@ -197,6 +197,8 @@ Déconnexion
     Avec Breeze, utiliser une route post pour se déconnecter plutôt que get, pour éviter des problème de sécurité lié au cache navigateur.
     Il est conseillé de regénérer un token csrf égallement
         request()->session()->invalidate(); request()->session()->regenerateToken();
+Les champs timestamp des modèles (created_at, updated_at) sont par dévaut même si on les les ajoute pas dans la migration.
+    Pour les retirer, ajouter public $timestamps = false; dans le modèle
 
 ////////// Erreurs courantes
 Erreur Mysql : Impossible d'atteindre la table ou elle est vide
