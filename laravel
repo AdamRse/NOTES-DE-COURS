@@ -159,6 +159,9 @@ Publier les CORS
 ////////// DOC INFO
 Le middleware est utilisé pour filtrer des requêtes http. Il est par exemple capable de rediriger un utilisateur non connecté vers la page de connexion.
 1 modèle = 1 table comme sur symfony
+Redirect() et View()
+    Les 2 semblent similaires, mais redirect permet de casser la soumission involontaire d'un formulaire une 2ème fois.
+    Après redirect(), on peut recharger la page, après vieuw, le formulaire sera proposé d'être renvoyé
 
 ////////// SANCTUM (https://laravel.com/docs/11.x/sanctum)
 php artisan install:api
