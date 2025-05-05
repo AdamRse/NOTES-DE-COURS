@@ -1,0 +1,10 @@
+//Installer les dépendances
+Installer nvm (https://github.com/nvm-sh/nvm)
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+        choisir la dernière version
+Installer npm
+    nvm install --lts
+OU Mettre à jour npm
+    npm install -g npm@latest
+Installer angular (-g global)
+    npm install -g @angular/cli

@@ -19,6 +19,12 @@ git clone https://github.com/ckb-next/ckb-next.git && cd ckb-next
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
     on peut installer npm avec sudo apt install npm
 
+//npm (+maj)
+npm install -g npm@latest
+
+//Angular
+npm install -g @angular/cli
+
 //Ajout .bashrc
 Pour éviter de poluer le dossier $HOME
     export XDG_CONFIG_HOME="$HOME/.config"
