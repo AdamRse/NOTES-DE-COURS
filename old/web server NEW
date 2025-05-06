@@ -1,0 +1,36 @@
+//Nouvel utilisateur
+sudo adduser <nomUser>
+sudo usermod -aG sudo <nomUser>
+    passer l'utilisateur en admin
+
+//Gérer le compte root si non donné :
+sudo -i
+passwd
+
+//authentification par clé SSH
+En local
+    ssh-keygen -t ed25519 -a 100
+    ssh-copy-id -i <cheminCléSSH>.pub <user>@<serverIpOuDomaine>
+Sur le serveur
+    dans /etc/ssh/sshd_config :
+        PubkeyAuthentication yes
+        AuthorizedKeysFile .ssh/authorized_keys
+            prendra /home/<user> comme racine
+    sudo systemctl restart sshd
+Pour simplifier l'utilisation avec un hostname ssh dédié (en local) :
+    dans ~/.ssh/config (créer si non présent)
+        Host <nomPersonnaliséUtiliséParSsh>
+        HostName <OpOuAdresse>
+        User <nomUserServeur>
+        IdentityFile <cléPrivéeGénérée>
+
+
+//Timezones
+timedatectl list-timezones | grep <MotCléTimezone>
+    Vérifie que la timezone ciblée existe bien dans la liste interne
+    par exemple pour la France : timedatectl list-timezones | grep Paris
+sudo timedatectl set-timezone "<Ma/Timezone>"
+    Europe/Paris en France
+timedatectl status
+    Pour vérifier que l'heure est bien réglée
+
