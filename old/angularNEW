@@ -8,3 +8,17 @@ OU Mettre à jour npm
     npm install -g npm@latest
 Installer angular (-g global)
     npm install -g @angular/cli
+
+//Paramétrage Angular
+générer les composant dans un répertoire dédié avec ng generate, ajouter à angular.json, dans "projects" -> "<nomDuProjet>" -> "schematics" :
+    "projects"{ "<nomDuProjet>" { "schematics": {
+        "@schematics/angular:component": {
+          "path": "src/app/components"
+        }
+      },
+TailwindCSS (https://tailwindcss.com/docs/installation/framework-guides/angularw)
+    npm install tailwindcss @tailwindcss/postcss postcss --force
+    créer "./.postcssrc.json" avec :
+        {"plugins": { "@tailwindcss/postcss": {}}}
+    dans "./src/styles.css" ajouter : @import "tailwindcss";
+    (re)démarrer le server (ng serve)

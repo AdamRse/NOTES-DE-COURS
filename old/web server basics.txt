@@ -1,3 +1,6 @@
+//Check version debian
+cat /etc/os-release
+
 //Changement langue
 dpkg-reconfigure locales
 
@@ -6,6 +9,9 @@ dpkg-reconfigure locales
 
 //Mettre un utilisateur en admin
 sudo usermod -aG sudo <username>
+
+//supprimer un utilisateur avec tous ses dossiers
+sudo userdel -r nom_utilisateur
 
 //Configurer la timezone
 timedatectl set-timezone Europe/Paris
@@ -18,6 +24,11 @@ doveadm pw -s SHA512-CRYPT -p "<password>" -r 5000
 
 //Installer SFTP :
 apt install openssh-server
+
+//Logs intéressants
+retrouver les paquets installés
+	/var/log/apt/history.log(.tar.gz pour les archives)
+
 
 //sites ssl
 créer un dossier où seront les certificats
@@ -172,6 +183,18 @@ USE mysql;
 UPDATE user SET plugin='' WHERE User='root';
 FLUSH PRIVILEGES;
 
+//Mot de passe root perdu
+sudo systemctl stop mysql
+sudo mysqld_safe --skip-grant-tables --skip-networking &
+mysql -u root
+	FLUSH PRIVILEGES;
+	ALTER USER 'root'@'localhost' IDENTIFIED BY '<nouveamMotDePasse>';
+	FLUSH PRIVILEGES;
+	exit;
+sudo killall mysqld
+sudo systemctl start mysql
+
+
 //Installer MongoDB (NoSQL)
 curl -fsSL https://www.mongodb.org/static/pgp/server-7.0.asc | sudo gpg --dearmor -o /usr/share/keyrings/mongodb-server-7.0.gpg
 echo "deb [ signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] http://repo.mongodb.org/apt/debian bullseye/mongodb-org/7.0 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
@@ -286,6 +309,39 @@ Ajouter LSB en entête :
 ### END INIT INFO
 update-rc.d (nomScript) defaults
 Pour le supprimer, c'est update-rc.d -f (nomscript) remove
+
+//Créer un service
+Il faut au moins un utilisateur dédié et un script de lancement
+sudo nano /etc/systemd/system/<nomService>.service
+	[Unit]
+	Description=Description du service
+	After=network.target  # Dépendances (ex: réseau disponible)
+
+	[Service]
+	User=nom_utilisateur
+	Group=nom_utilisateur
+	WorkingDirectory=/chemin/vers/dossier  # Optionnel
+	ExecStart=/chemin/vers/commande ou script
+	Restart=always                         # Redémarrage automatique
+	RestartSec=5s                          # Délai avant redémarrage
+	StandardOutput=journal                 # Logs dans journalctl
+	StandardError=journal                  # Logs d'erreurs
+
+	[Install]
+	WantedBy=multi-user.target            # Démarre avec le système
+sudo systemctl daemon-reload
+démarrer/arrêter
+	sudo systemctl <start/stop> <nomService>
+active le service au démarrage
+	sudo systemctl enable teamspeak
+Voir les logs
+	journalctl -u <nomService> -f
+Vérifier le statut
+	sudo systemctl status mon_service
+Logs dans un fichier à part (dans /etc/systemd/system/<nomService>.service) :
+	StandardOutput=file:/var/log/mon_service.log
+	StandardError=file:/var/log/mon_service_error.log
+
 
 /////////////////////////////////NOTES
 //chmod droits :

@@ -1,7 +1,17 @@
+//éviter de polluer le dossier user
+copier dans ~/.bashrc (remplacer adam par l'utilisateur si différent)
+    export XDG_CONFIG_HOME=/home/adam/.config
+    export XDG_CACHE_HOME=/home/adam/.local/cache
+    export XDG_DATA_HOME=/home/adam/.local/data
+mkdir -p /home/adam/.local/cache /home/adam/.local/cache /home/adam/.local/data
+
 //Nouvel utilisateur
-sudo adduser <nomUser>
-sudo usermod -aG sudo <nomUser>
-    passer l'utilisateur en admin
+Pour un humain
+    sudo adduser <nomUser>
+    sudo usermod -aG sudo <nomUser>
+        passer l'utilisateur en admin
+pour un service (minimaliste)
+    sudo useradd --system --no-create-home --user-group --shell /usr/sbin/nologin <nomUser>
 
 //Gérer le compte root si non donné :
 sudo -i
@@ -24,6 +34,10 @@ Pour simplifier l'utilisation avec un hostname ssh dédié (en local) :
         User <nomUserServeur>
         IdentityFile <cléPrivéeGénérée>
 
+//authentification github
+ssh-keygen -t ed25519 -C "bakaarion3@gmail.com"
+ssh-add "<chemin de la clé>\<nomCléPrivée>"
+Ajouter la clé publique sur github
 
 //Timezones
 timedatectl list-timezones | grep <MotCléTimezone>
@@ -34,3 +48,31 @@ sudo timedatectl set-timezone "<Ma/Timezone>"
 timedatectl status
     Pour vérifier que l'heure est bien réglée
 
+//Nouvelles installations
+php
+    sudo apt install -y ca-certificates apt-transport-https software-properties-common curl lsb-release
+    sudo wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
+    echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/php.list
+    sudo apt update -y
+    Pour checker les versions dispos et que le repo de sury a bien été pris en compte : sudo apt policy php
+        Le résultat est peu lisible mais regarder à Candidate: <nbCandidats>:<versionPHP><Reste string package>
+nvm & npm & angular
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+        vérifier la dernière version sur https://github.com/nvm-sh/nvm
+    nvm install --lts
+    source ~/.bashrc
+    npm install -g @angular/cli
+    pour optimiser le chargement du bash, ajouter --no-use au chargement de nvm
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use  # This loads nvm
+certbot
+    sudo apt install snapd
+    sudo snap install certbot
+    si la commande "certbot --nginx" (pour tester, puis annuler) ne fonctionne pas, mettre un alias dans ~/.bashrc
+        alias certbot="sudo /snap/bin/certbot"
+        source ~/.bashrc
+phpmyadmin (https://www.phpmyadmin.net/downloads/)
+    sudo apt install php-fpm php-mbstring php-bcmath php-xml php-mysql php-common php-gd php-cli php-curl php-zip php-gd
+    télécharger le package
+    sudo dpkg -t <nomPackage)
+Reste
+    sudo apt update -y && sudo apt install -y btop git nginx php bzip2

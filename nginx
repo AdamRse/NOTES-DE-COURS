@@ -4,4 +4,12 @@ Tester les fichiers de config (sites-availables) de nginx
 Ajouter un lien symbolique pour ajouter le site
     sudo ln -s /etc/nginx/sites-available/<site> /etc/nginx/sites-enabled/
 Recharger NGINX
-    sudo systemctl reload nginx
+    sudo systemctl restart (ou reload) nginx
+
+
+//certbot avec nginx
+requêter un certificat, ATTENTION, il faut avoir rendu le site accessible en http avec nginx
+    certbot --nginx -d <nomDeDomaine>
+certbot renew --dry-run
+
+//Contenu d'un fichier de config
