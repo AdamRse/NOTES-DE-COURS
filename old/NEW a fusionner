@@ -1,0 +1,11 @@
+NEW SErVEr
+
+//Install QuestDB
+Télécharger le fichier binaire : https://questdb.com/docs/quick-start/
+tar -xvf questdb-8.3.1-rt-linux-x86-64.tar.gz
+    s'installe dans $HOME/.questdb
+sudo mkdir -p /var/lib/questdb /var/log/questdb
+sudo chown -R $USER:$USER /var/lib/questdb /var/log/questdb
+bash <questDBArchiveDecompressée>/bin/questdb.sh start -d /var/lib/questdb -n
+les fichiers de config se crééent dans :
+    /var/lib/questdb/conf
