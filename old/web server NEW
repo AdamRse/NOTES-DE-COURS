@@ -48,6 +48,15 @@ sudo timedatectl set-timezone "<Ma/Timezone>"
 timedatectl status
     Pour vérifier que l'heure est bien réglée
 
+//Pare-feu
+sudo apt install ufw
+autoriser un port
+    sudo ufw allow <port>/<protocole>
+        par ex : sudo ufw allow 9000/tcp (pour questDB)
+    sudo ufw reload
+vérifier le status du pare-feu
+    sudo ufw status
+
 //Nouvelles installations
 php
     sudo apt install -y ca-certificates apt-transport-https software-properties-common curl lsb-release
@@ -74,5 +83,75 @@ phpmyadmin (https://www.phpmyadmin.net/downloads/)
     sudo apt install php-fpm php-mbstring php-bcmath php-xml php-mysql php-common php-gd php-cli php-curl php-zip php-gd
     télécharger le package
     sudo dpkg -t <nomPackage)
+questDB (en tant que service systemd) (https://questdb.com/docs/deployment/systemd/)
+    sudo useradd --system --no-create-home --user-group --shell /usr/sbin/nologin questdb
+    sudo apt install sudo apt install openjdk-17-jdk
+    cd /opt/questdb/
+    wget "https://dl.questdb.io/snapshots/questdb-latest-no-jre-bin.tar.gz"
+    tar -xf questdb-latest-no-jre-bin.tar.gz
+    ln -s <répertoireQuestDbDécompressé> latest
+    sudo mkdir -p /var/lib/questdb && sudo chown -R questdb:questdb /var/lib/questdb
+        là où va s'executer questdb, option -d dans la commande de ExecStart de questdb.service
+    nano /etc/systemd/system/questdb.service
+        copier les paramètres suivants :
+            ```
+            [Unit]
+            Description=QuestDB Time Series Database
+            Documentation=https://www.questdb.com/docs/
+            After=network.target
+
+            [Service]
+            Type=simple
+            User=questdb
+            Group=questdb
+            Restart=always
+            RestartSec=2
+            EnvironmentFile=/opt/questdb/latest/env.sh
+            WorkingDirectory=/opt/questdb/latest
+            ExecStart=/usr/bin/java \
+            --add-exports java.base/jdk.internal.math=io.questdb \
+            -p /opt/questdb/latest/questdb.jar \
+            -m io.questdb/io.questdb.ServerMain \
+            -DQuestDB-Runtime-66535 \
+            -ea -Dnoebug \
+            -XX:+UnlockExperimentalVMOptions \
+            -XX:+AlwaysPreTouch \
+            -XX:+UseParallelOldGC \
+            -d /var/lib/questdb
+
+            ExecReload=/bin/kill -s HUP $MAINPID
+
+            # Security hardening
+            ProtectSystem=full
+            PrivateTmp=true
+            NoNewPrivileges=true
+            StandardError=syslog
+            SyslogIdentifier=questdb
+            LimitNOFILE=1048576
+
+            [Install]
+            WantedBy=multi-user.target
+            ```
+    modifications server.con optionelles
+        Là où questdb s'execute, si aucun changement c'est : nano /var/lib/questdb/server.conf
+        Décommenter : http.user et http.password pour créer un comtpe
+    augmenter la taille des fichiers (warning dans l'interface web)
+        nano /etc/sysctl.conf
+            ajouter :
+                fs.file-max=1048576
+                vm.max_map_count=1048576
+                    # fs.file-max : nombre max de fichiers ouverts simultanéement
+                    # vm.max_map_count : zone mémoire qu'un processus peut utiliser
+
+        sysctl -p
+            rechargement de la configuration
+    sudo systemctl daemon-reload
+    sudo systemctl enable questdb.service
+    sudo systemctl start questdb.service
+    sudo systemctl status questdb.service
+        optionnel, pour tester
+    On peut tester l'injection avec curl (Attention, l'option -u uniquement si un utilisateur a été ajouté dans le conf.server) :
+        curl "http://<IP>:9000/exec?query=INSERT%20INTO%20<table>%20VALUES(<VALEUR1>[,<valeur2>])" -u "<utilisateur>:<mot de passe>"
+
 Reste
-    sudo apt update -y && sudo apt install -y btop git nginx php bzip2
+    sudo apt update -y && sudo apt install -y btop git nginx php bzip2 dnsutils

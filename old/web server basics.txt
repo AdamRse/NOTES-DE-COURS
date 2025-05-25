@@ -333,7 +333,7 @@ sudo systemctl daemon-reload
 démarrer/arrêter
 	sudo systemctl <start/stop> <nomService>
 active le service au démarrage
-	sudo systemctl enable teamspeak
+	sudo systemctl enable <nomService>
 Voir les logs
 	journalctl -u <nomService> -f
 Vérifier le statut
