@@ -13,3 +13,13 @@ requêter un certificat, ATTENTION, il faut avoir rendu le site accessible en ht
 certbot renew --dry-run
 
 //Contenu d'un fichier de config
+
+
+//////////////TIPS
+Les logs d'erreur se trouvent dans /var/log/nginx/error.log
+nginx ne retourne pas d'erreur de configuration pour un fichier de configuration .conf mal nommé (sans le .conf)
+//////////////ERREURS ET TIPS
+403 forbidden + logs d'erreur : essaye d'ouvrir "/var/www/html/index.nginx-debian.html"
+    C'est le fichier de config par défaut qui tente d'ouvrir le site, le bon fichier n'est pas pris en compte
+    S'il est dans /etc/nginx/conf.d/ vérifier qu'il y a bien un .conf à la fin du fichier.
+    S'il est dans /etc/nginx/sites-available, vérifier qu'il y a bien un lien symbolique qui pointe sur le fichier de config sans /etc/nginx/sites-enabled/
