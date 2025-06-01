@@ -31,6 +31,31 @@ npm install -g @angular/cli
 //Ajout .bashrc
 Pour éviter de poluer le dossier $HOME
     export XDG_CONFIG_HOME="$HOME/.config"
-    export XDG_DATA_HOME="$HOME/.local/share"
+    export XDG_DATA_HOME="$HOME/.local/data"
     export XDG_CACHE_HOME="$HOME/.cache"
-        Ne pas oublier de créer les répertoires associés
+    export XDG_STATE_HOME="$HOME/.local/data"
+    export XDG_DATA_DIRS="$HOME/.local/data"
+    export XDG_CONFIG_DIRS="$HOME/.config"
+        Ne pas oublier de créer les répertoires associés :
+            mkdir -p $XDG_CONFIG_HOME $XDG_DATA_HOME $XDG_CACHE_HOME $XDG_STATE_HOME $XDG_DATA_DIRS $XDG_CONFIG_DIRS
+A tester
+    export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
+    export DOTNET_CLI_HOME="$XDG_DATA_HOME/dotnet"
+    export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java"
+    export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/config"
+    export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
+    export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+    export LIBVIRT_DEFAULT_URI="qemu:///system"
+    export VAGRANT_HOME="$XDG_DATA_HOME/vagrant"
+    export VAGRANT_ALIAS_FILE="$XDG_DATA_HOME/vagrant/aliases"
+    export PYTHONHISTFILE="$XDG_CACHE_HOME/python/history"
+    export PYTHONUSERBASE="$XDG_DATA_HOME/python"
+    export WINEPREFIX="$XDG_DATA_HOME/wine"
+    export STEAM_COMPAT_DATA_PATH="$XDG_DATA_HOME/Steam/steamapps/compatdata"
+        mkdir -p \
+            "$XDG_CONFIG_HOME"/{npm,git,python,ssh,gtk-2.0,putty} \
+            "$XDG_DATA_HOME"/{gnupg,wine,ollama,dotnet,Steam,steamapps/compatdata,vagrant,java,node_modules,nvm} \
+            "$XDG_CACHE_HOME"/{mozilla,pip,npm,python,thumbnails} \
+            "$HOME"/.local/{bin,lib,share} \
+            "$XDG_STATE_HOME"/{bash,less,zsh} \
+            "$XDG_RUNTIME_DIR"
