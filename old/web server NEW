@@ -83,7 +83,7 @@ phpmyadmin (https://www.phpmyadmin.net/downloads/)
     sudo apt install php-fpm php-mbstring php-bcmath php-xml php-mysql php-common php-gd php-cli php-curl php-zip php-gd
     télécharger le package
     sudo dpkg -t <nomPackage)
-questDB (en tant que service systemd) (https://questdb.com/docs/deployment/systemd/)
+questDB (en tant que service systemd) (https://questdb.com/docs/deployment/systemd/ ET https://questdb.com/docs/quick-start/)
     sudo useradd --system --no-create-home --user-group --shell /usr/sbin/nologin questdb
     sudo apt install sudo apt install openjdk-17-jdk
     cd /opt/questdb/

@@ -20,7 +20,9 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 recharger le bash (fermer et réouvrir le terminal)
 nvm install --lts
 
-
+//Créer une clé PGP
+gpg --full-generate-key
+    choisir RSA
 
 //npm (+maj)
 npm install -g npm@latest
