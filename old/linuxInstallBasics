@@ -1,4 +1,6 @@
 //controller xbox One (repo https://github.com/medusalix/xone)
+Débrancher le dongle xbox (capteur usb bluetooth)
+sudo apt install dkms cabextract
 git clone https://github.com/medusalix/xone && cd xone && sudo ./install.sh
 sudo xone-get-firmware.sh
     Pour installer le capteur bluetooth
