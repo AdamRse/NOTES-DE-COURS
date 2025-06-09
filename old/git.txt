@@ -39,6 +39,23 @@ git pull
 git reset --hard origin/<branche distante>
 git pull
 
+/////////////////FAIRE UN REBASE
+git stash (optionnel, pour sauvegarder le code)
+git pull --rebase
+Résoudre les conflits de chaque fichiers marqués en conflit
+	Pour résourdre comparer les 2 versions en conflit, ouvrir le fichier qui a été modifié avec <<<HEAD <code1> ==== <code2> >>>>>
+		garder code1 ou code2 ou un mix des 2, mais enlever les <<<< ==== >>>>, puis enregistrer
+	pour garder le code distant d'un fichier  :
+		git checkout --theirs <fichier>
+	pour garder le code local d'un fichier :
+		git checkout --ours <fichier>
+git add <fichier>
+	pour chaque fichier
+git rebase --continue
+git push --force-with-lease
+	--force-with-lease : force mais en avertissant si des changement ont été fait sur le repo distant entre temps
+
+
 /////////////////SI JE SUIS DECO SUR WINDOWS :
 invite de commande : ssh-add "C:\Users\adamr\.ssh\id_ed25519"
 redémarrer git bash
