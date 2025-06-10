@@ -1,3 +1,26 @@
+//MULTI PARTITIONNEMENT
+Sur le SSD rapide
+    EFI System partition (ESP) : Permet de booter
+        format de partition : fat32
+        taille : 300-500Mo
+        point de montage : /boot/efi
+        flag : boot et ESP (si présents)
+    Swap (optionnel) : extension de RAM sur le SSD en cas de problème
+        format de partition : swap
+        taille : 2-4-8Go
+        point de montage : aucun
+        flag : swap (si précisé, sinon aucun)
+    Racine : Racine de l'architecture
+        format de partition : ext4
+        taille : reste
+        point de montage : /
+        flag : root (si précisé, sinon aucun)
+Sur le disque de stockage
+    format de partition : ext4
+    taille : tout
+    point de montage : /home
+    flag : aucun
+
 //controller xbox One (repo https://github.com/medusalix/xone)
 Débrancher le dongle xbox (capteur usb bluetooth)
 sudo apt install dkms cabextract
