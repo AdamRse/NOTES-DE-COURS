@@ -21,6 +21,11 @@ Sur le disque de stockage
     point de montage : /home
     flag : aucun
 
+//Formatter un disque
+sudo apt install gparted
+sudo gparted
+On peut modifier les partitions des disques sélectionnées, mais rien ne s'écrit. Ensuite il faut aller sur Edit > "apply all operations" pour écrire le partitionnement défini.
+
 //controller xbox One (repo https://github.com/medusalix/xone)
 Débrancher le dongle xbox (capteur usb bluetooth)
 sudo apt install dkms cabextract
