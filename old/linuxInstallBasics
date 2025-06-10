@@ -26,6 +26,12 @@ sudo apt install gparted
 sudo gparted
 On peut modifier les partitions des disques sélectionnées, mais rien ne s'écrit. Ensuite il faut aller sur Edit > "apply all operations" pour écrire le partitionnement défini.
 
+//Grub
+Regénérer le fichier de configuration de GRUB (si changement de partitions bootable)
+    sudo update-grub
+Options grub
+    sudo nano /etc/default/grub
+
 //controller xbox One (repo https://github.com/medusalix/xone)
 Débrancher le dongle xbox (capteur usb bluetooth)
 sudo apt install dkms cabextract
