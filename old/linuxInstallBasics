@@ -32,6 +32,11 @@ Regénérer le fichier de configuration de GRUB (si changement de partitions boo
 Options grub
     sudo nano /etc/default/grub
 
+//nano et + en Français
+sudo apt install language-pack-fr
+sudo dpkg-reconfigure nano
+
+
 //controller xbox One (repo https://github.com/medusalix/xone)
 Débrancher le dongle xbox (capteur usb bluetooth)
 sudo apt install dkms cabextract
