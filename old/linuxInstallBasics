@@ -62,13 +62,20 @@ git clone https://github.com/ckb-next/ckb-next.git && cd ckb-next
 (sudo?) bash quickinstall
 
 //nvm (https://github.com/nvm-sh/nvm) / npm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 recharger le bash (fermer et réouvrir le terminal)
 nvm install --lts
 
 //Créer une clé PGP
 gpg --full-generate-key
     choisir RSA
+obtenir l'ID des clés enregistrées
+    gpg --list-secret-keys
+modifier une clé
+    gpg --edit-key <id ou email>
+Supprimer une clé
+    gpg --delete-secret-key <id ou email>
+
 
 //npm (+maj)
 npm install -g npm@latest
