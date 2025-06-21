@@ -40,7 +40,7 @@ sudo dpkg-reconfigure nano
 //controller xbox One (repo https://github.com/medusalix/xone)
 Débrancher le dongle xbox (capteur usb bluetooth)
 sudo apt install dkms cabextract
-git clone https://github.com/medusalix/xone && cd xone && sudo ./install.sh
+git clone git@github.com:dlundqvist/xone.git && cd xone && sudo ./install.sh
 sudo xone-get-firmware.sh
     Pour installer le capteur bluetooth
 
@@ -82,11 +82,3 @@ npm install -g npm@latest
 
 //Angular
 npm install -g @angular/cli
-
-//Ajout .bashrc
-Pour éviter de poluer le dossier $HOME
-    export XDG_CONFIG_HOME="$HOME/.config"
-    export XDG_DATA_HOME="$HOME/.local/data"
-    export XDG_CACHE_HOME="$HOME/.cache"
-        Ne pas oublier de créer les répertoires associés :
-            mkdir -p $XDG_CONFIG_HOME $XDG_DATA_HOME $XDG_CACHE_HOME
