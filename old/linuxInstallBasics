@@ -82,3 +82,12 @@ npm install -g npm@latest
 
 //Angular
 npm install -g @angular/cli
+
+//argbash (gestion de paramètres pour script bash + doc)
+sudo apt install autoconf make
+git clone git@github.com:matejak/argbash.git
+cd argbash/resources
+sudo make install PREFIX=/usr
+    Installe pour tous les utilisateurs
+argbash --version
+    Pour tester si fonctionnel
