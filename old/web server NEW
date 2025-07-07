@@ -1,10 +1,3 @@
-//éviter de polluer le dossier user
-copier dans ~/.bashrc (remplacer adam par l'utilisateur si différent)
-    export XDG_CONFIG_HOME=/home/adam/.config
-    export XDG_CACHE_HOME=/home/adam/.local/cache
-    export XDG_DATA_HOME=/home/adam/.local/data
-mkdir -p /home/adam/.local/cache /home/adam/.local/cache /home/adam/.local/data
-
 //Nouvel utilisateur
 Pour un humain
     sudo adduser <nomUser>
@@ -30,9 +23,11 @@ Sur le serveur
 Pour simplifier l'utilisation avec un hostname ssh dédié (en local) :
     dans ~/.ssh/config (créer si non présent)
         Host <nomPersonnaliséUtiliséParSsh>
-        HostName <OpOuAdresse>
+        HostName <IpOuAdresse>
         User <nomUserServeur>
         IdentityFile <cléPrivéeGénérée>
+optionel : rajouter un alias pour simplifier encore la connexion.
+    par ex : alias <commandeChoisie>="ssh <nomPersonnaliséUtiliséParSsh>"
 
 //authentification github
 ssh-keygen -t ed25519 -C "bakaarion3@gmail.com"
