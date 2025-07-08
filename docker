@@ -23,6 +23,7 @@ docker run <image>
     options :
         -d : processus en arrière plan
         -it : en mode interactif (--interactive (STDIN ouvert) + --tty (affichage correct des commandes))
+        --name <nom> : nomme le conteneur, sert à le sélectionner pour certaines commandes
 docker pull <nom_image>
     télécharge une image sans l'executer
 docker images
@@ -34,12 +35,16 @@ docker ps
     liste des conteneurs en cours d'execution
     options : -a
         liste les conteneurs stopés
-docker rm <ID_conteneur>
+docker rm <id_conteneur>
     supprime un conteneur (lister les conteneurs pour obtenir l'identifiant ave docker ps [-a])
 docker top <id_conteneur>
     Affiche les processus du conteneur
 docker logs <id_conteneur>
     Affiche les logs
+    options :
+        -f : logs en temps réel
+docker start <id_conteneur>
+    démarre un conteneur
 docker stop <id_conteneur>
     Envoie un ordre d'arrêt du conteneur en laissant le processus se terminer
 docker kill <id_conteneur>
