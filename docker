@@ -21,3 +21,7 @@ sudo docker ps
         liste les conteneurs stopés
 sudo docker rm <ID_conteneur>
     supprime un conteneur (lister les conteneurs pour obtenir l'identifiant ave docker ps [-a])
+
+//Technique
+Volume
+    c'est un endroit qui relie l'interieur et l'exterieur d'un conteneur, comme un lien symbolique. De cette façon, les données persistent après arrêt ou destruction du conteneur.
