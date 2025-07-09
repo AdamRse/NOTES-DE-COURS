@@ -1,4 +1,4 @@
-//Installation
+//Installation docker
 sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
 sudo chmod a+r /etc/apt/keyrings/docker.asc
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
@@ -11,6 +11,25 @@ pour éviter de taper sudo à chaque Commandes
     sudo usermod -aG docker $USER
     newgrp docker
         les changements ne sont pris en compte qu'après redémarrage, sauf avec la commande ci dessus
+
+//Nouveaux projets via docker
+Nouveau projet angular :
+    docker run -it --rm -v "<répertoire_local>:/app" -w /app -u "$(id -u):$(id -g)" node:latest npx @angular/cli@latest new <projet> --skip-git
+        <répertoire_local> : répertoire dans lequel executer new <project>
+        -u "$(id -u):$(id -g)" : pour créer le projet en tant qu'utilisateur courant et non root
+        --skip-git : option de angular qui skip l'installation de git dans le conteneur
+    créer un docker-compose.yml dans la racine du projet :
+        ```
+services:
+  dev:
+    image: node:latest
+    working_dir: /app
+    volumes:
+      - .:/app
+    ports:
+      - "4200:4200"
+    command: sh -c "npm install && npx ng serve --host 0.0.0.0"
+```
 
 //Utilisation
 Dockerfile -> build -> image -> run -> conteneur
@@ -39,6 +58,7 @@ docker run <image>:<tag>
         -it : en mode interactif (--interactive (STDIN ouvert) + --tty (affichage correct des commandes))
         --name <nom> : nomme le conteneur, sert à le sélectionner pour certaines commandes
         --rm : supprime le conteneur quand celui ci est arrêté
+        -w <répertoire> : définis le WORKDIR côté conteneur
 docker pull <image>
     télécharge une image sans l'executer
 docker images
