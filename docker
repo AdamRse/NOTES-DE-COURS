@@ -12,19 +12,34 @@ pour éviter de taper sudo à chaque Commandes
     newgrp docker
         les changements ne sont pris en compte qu'après redémarrage, sauf avec la commande ci dessus
 
+//Utilisation
+Dockerfile -> build -> image -> run -> conteneur
+
+//Dockerfile
+FROM <image>:<version> : Image de base (ou FROM scratch pour aucune image)
+WORKDIR <répertoire> : Répertoire dans le conteneur, pour résoudre les instructions qui ont besoin d'un chemin absolu
+COPY <hote> <conteneur> : copie un répertoire de l'hote vers le conteneur.
+    ATTENTION : Les chemins relatifs sont résolus à partir du dockerfile, non pas de WORKDIR
+RUN <commande_shell> : écris des commandes dans le conteneur
+ENV <variable> : écris des variables d'environnement, accessible pendant la phase d'éxecution, ex :
+    ENV MESSAGE="hello"
+ARG <variable> : écris les variables d'environnement accessibles pendant la phase de construction
+ENTRYPOINT ["<chemin_executable>", "<instruction>"] : définis le processus parent (par ex: /usr/bin/dumb-init, un gestionnaire de processus)
+LABEL <variable> ... : Permet d'ajouter des étiquettes sur l'image, par ex : LABEL description="Conteneur A pour l'application X"
 
 //Tips
 Pour l'adressage, par exemple de port, c'est toujours dans l'ordre <machine>:<conteneur>
 
 //COMMANDES UTILES
 //Images/////////////
-docker run <image>
+docker run <image>:<tag>
     lance un conteneur à partir d'une image
     options :
         -d : processus en arrière plan
         -it : en mode interactif (--interactive (STDIN ouvert) + --tty (affichage correct des commandes))
         --name <nom> : nomme le conteneur, sert à le sélectionner pour certaines commandes
-docker pull <nom_image>
+        --rm : supprime le conteneur quand celui ci est arrêté
+docker pull <image>
     télécharge une image sans l'executer
 docker images
     liste des images dispo localement
@@ -51,7 +66,18 @@ docker kill <id_conteneur>
     Tue le processus du conteneur sans ordre d'arrêt
 docker cp <id_conteneur>:/conteneur/path /local/path
     Copie les fichiers d'un conteneur vers la machine locale
+//Autres/////////////
+docker tag <image>:<tag> <nouveau_tag>
+    Le tag ets listé dans docker images comme une nouvelle ligne, mais il n'y a pas de nouvelle image créée (l'ID est le même)
+docker rmi <image>:<tag>
+    supprime le tag
+docker commit <image_cible> <nouvelle_image>:<nouveau_tag>
+    Snapshot du container docker dans une nouvelle image, sans sauvegarder le volume
+    ex : docker commit image1 image1:backup
 
 //Technique
 Volume
     c'est un endroit qui relie l'interieur et l'exterieur d'un conteneur, comme un lien symbolique. De cette façon, les données persistent après arrêt ou destruction du conteneur.
+Dockerfile
+    -Layering : Instructions ajoutant un layer dans le dockerfile (RUN, COPY, ...)
+    -Metadata : Instruction ajoutant des métadonnées à l'image (EXPOSE, ENV, MAINTAINER, ...)
