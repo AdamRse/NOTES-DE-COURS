@@ -1,0 +1,6 @@
+//about:config
+
+Désactiver le swipe gauche et droite au pad
+    browser.gesture.swap
+Désactiver le scroll intertiel
+    apz.gtk.kinetic_scroll.enabled
