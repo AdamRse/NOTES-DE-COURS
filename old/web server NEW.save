@@ -88,7 +88,7 @@ nvm & npm & angular
         [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use  # This loads nvm
 certbot
     sudo apt install snapd
-    sudo snap install certbot
+    sudo snap install --classic certbot
     si la commande "certbot --nginx" (pour tester, puis annuler) ne fonctionne pas, mettre un alias dans ~/.bashrc
         alias certbot="sudo /snap/bin/certbot"
         source ~/.bashrc
