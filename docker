@@ -25,21 +25,36 @@ pour éviter de taper sudo à chaque Commandes
 
 //Nouveaux projets via docker
 Nouveau projet angular :
-    docker run -it --rm -v "<répertoire_local>:/app" -w /app -u "$(id -u):$(id -g)" node:latest npx @angular/cli@latest new <projet> --skip-git
+    docker run -it --rm -v "<répertoire_local>:/app" -w /app -u "$(id -u):$(id -g)" node:latest bash -c "npx @angular/cli@latest new dadametdev --skip-git && echo 'Node.js version utilisée :' && node --version"
         <répertoire_local> : répertoire dans lequel executer new <project>
         -u "$(id -u):$(id -g)" : pour créer le projet en tant qu'utilisateur courant et non root
-        --skip-git : option de angular qui skip l'installation de git dans le conteneur
+        bash -c : execute la commande bash suivante
+            --skip-git : option de angular qui skip l'installation de git dans le conteneur
+            node --version : Afficher la version de node utilisée par le conteneur à la fin de l'installation, pour faciliter la création du dockerfile dans le projet
+    créer un dockerfile à la racine du projet :
+        ```
+FROM node:<Version_Node_du_conteneur_d'installation>-slim
+WORKDIR /appw
+COPY package*.json ./
+RUN npm ci
+COPY . .
+EXPOSE 4200
+CMD ["npm", "start", "--", "--host", "0.0.0.0", "--poll", "1000"]
+```
     créer un docker-compose.yml dans la racine du projet :
         ```
 services:
-  dev:
-    image: node:latest
-    working_dir: /app
-    volumes:
-      - .:/app
+  angular-app:
+    build: .
     ports:
       - "4200:4200"
-    command: sh -c "npm install && npx ng serve --host 0.0.0.0"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    command: npm start -- --host 0.0.0.0
 ```
 
 //Utilisation
