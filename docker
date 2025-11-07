@@ -44,7 +44,7 @@ CMD ["npm", "start", "--", "--host", "0.0.0.0", "--poll", "1000"]
     créer un docker-compose.yml dans la racine du projet :
         ```
 services:
-  angular-app:
+  <NOM SERVICE>:
     build: .
     ports:
       - "4200:4200"
@@ -56,6 +56,7 @@ services:
       - CHOKIDAR_USEPOLLING=true
     command: npm start -- --host 0.0.0.0
 ```
+    <NOM SERVICE> : Nom du service pour executer des commandes dans le container
 
 //Utilisation
 Dockerfile -> build -> image -> run -> conteneur
