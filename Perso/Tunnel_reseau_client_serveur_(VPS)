@@ -1,0 +1,74 @@
+//Côté serveur (almalinux)
+sudo dnf update -y
+sudo dnf install wireguard-tools -y
+Génération des clés
+    sudo chmod +x /etc/wireguard
+    cd /etc/wireguard
+    sudo wg genkey | sudo tee privatekey | sudo wg pubkey | sudo tee publickey
+Créer le fichier de configuration
+    sudo nano /etc/wireguard/wg0.conf
+        coller :
+    ```
+[Interface]
+PrivateKey = <contenu de /etc/wireguard/privatekey généré sur le serveur>
+Address = 10.0.0.1/24
+ListenPort = 51820
+SaveConfig = false
+
+[Peer]
+PublicKey = <CLÉ_PUBLIQUE_DU_CLIENT>
+AllowedIPs = 10.0.0.2/32
+    ```
+Activer le forwarding IP
+    echo 'net.ipv4.ip_forward=1' | sudo tee -a /etc/sysctl.conf
+    sudo sysctl -p
+Configurer le firewall (firewalld)
+    sudo firewall-cmd --permanent --add-port=51820/udp
+    sudo firewall-cmd --permanent --add-masquerade
+    sudo firewall-cmd --reload
+
+//Côté client
+sudo apt update
+sudo apt install wireguard -y
+Générer les clés client
+    sudo chmod +x /etc/wireguard
+    cd /etc/wireguard
+    sudo wg genkey | sudo tee privatekey | sudo wg pubkey | sudo tee publickey
+Créer le fichier de configuration
+    sudo nano /etc/wireguard/wg0.conf
+        coller :
+        ```
+[Interface]
+PrivateKey = <contenu de /etc/wireguard/privatekey généré sur le client>
+Address = 10.0.0.2/24
+DNS = 1.1.1.1, 8.8.8.8
+
+[Peer]
+PublicKey = <CLÉ_PUBLIQUE_DU_SERVEUR>
+Endpoint = <IP_DU_VPS>:51820
+AllowedIPs = 0.0.0.0/0
+        ```
+Attention de bien compléter, sur le serveur, la clé publique du client
+    Sur le serveur
+        sudo nano /etc/wireguard/wg0.conf
+            PublicKey = <CLÉ_PUBLIQUE_DU_CLIENT>
+
+//Côté serveur
+Activer le tunnel
+    sudo systemctl enable wg-quick@wg0
+    sudo systemctl start wg-quick@wg0
+
+//Côté client
+    sudo systemctl enable wg-quick@wg0
+    sudo systemctl start wg-quick@wg0
+
+//////////////////////////////////////// EN PLUS
+
+//Arrêter le tunnel (client)
+sudo wg-quick down wg0
+
+//Démarrer le tunnel (client)
+sudo wg-quick up wg0
+
+//Vérifier l'état du tunnel
+sudo wg show
