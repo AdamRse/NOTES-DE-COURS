@@ -11,21 +11,30 @@ Créer le fichier de configuration
     ```
 [Interface]
 PrivateKey = <contenu de /etc/wireguard/privatekey généré sur le serveur>
-Address = 10.0.0.1/24
+Address = 10.0.0.1/24, fd00:1234:5678::1/64
 ListenPort = 51820
 SaveConfig = false
 
 [Peer]
 PublicKey = <CLÉ_PUBLIQUE_DU_CLIENT>
-AllowedIPs = 10.0.0.2/32
+AllowedIPs = 10.0.0.2/32, fd00:1234:5678::2/128
     ```
-Activer le forwarding IP
+        pour ajouter d'autres périfériques qui peuvent utiliser le tunnel, ajouter une autre paire [Peer] :
+            ```
+[Peer]
+PublicKey = <CLÉ_PUBLIQUE_DU_CLIENT>
+AllowedIPs = 10.0.0.3/32, fd00:1234:5678::3/128
+            ```
+            attention à bien changer AllowedIPs, 2 [Peer] ne doivent pas avoir la même adresse
+Activer le forwarding IP (v4 + v6)
     echo 'net.ipv4.ip_forward=1' | sudo tee -a /etc/sysctl.conf
+    echo 'net.ipv6.conf.all.disable_ipv6=0' | sudo tee -a /etc/sysctl.conf
+    echo 'net.ipv6.conf.default.disable_ipv6=0' | sudo tee -a /etc/sysctl.conf
     sudo sysctl -p
 Configurer le firewall (firewalld)
     sudo firewall-cmd --permanent --add-port=51820/udp
-    sudo firewall-cmd --permanent --add-masquerade
-    sudo firewall-cmd --reload
+    sudo firewall-cmd --permanent --add-masquerade --permanent
+    sudo firewall-cmd --reloadw
 
 //Côté client
 sudo apt update
@@ -61,8 +70,15 @@ Activer le tunnel
 //Côté client
     sudo systemctl enable wg-quick@wg0
     sudo systemctl start wg-quick@wg0
+Ajouter un alias de commande (optionel)
+    nano ~/.bashrc
+        ```
+alias vpn-down="sudo wg-quick down wg0"
+alias vpn-up="sudo wg-quick up wg0"
+alias vpn-test="sudo wg show"
+        ```
 
-//////////////////////////////////////// EN PLUS
+//////////////////////////////////////// COMMANDES
 
 //Arrêter le tunnel (client)
 sudo wg-quick down wg0
@@ -72,3 +88,55 @@ sudo wg-quick up wg0
 
 //Vérifier l'état du tunnel
 sudo wg show
+
+//////////////////////////////////////// RAJOUTER UNE PAIR (UN CLIENT)
+//Côté client
+Instraller wireguard
+    sudo apt update && sudo apt install wireguard wireguard-tools
+Générer les clés
+    sudo chmod +x /etc/wireguard && cd /etc/wireguard
+    sudo wg genkey | sudo tee privatekey | sudo wg pubkey | sudo tee publickey
+Créer le fichier de configuration
+    sudo nano /etc/wireguard/wg0.conf
+        ajouter :
+        ```
+[Interface]
+PrivateKey = <Vlé privée générée dans /etc/wireguard/privatekey>
+Address = 10.0.0.<X+1>/24, fd00:1234:5678::<X+1>/128
+DNS = 1.1.1.1, 8.8.8.8
+
+[Peer]
+PublicKey = <CLÉ_PUBLIQUE_DU_SERVEUR>
+Endpoint = <IP_DU_SERVEUR>:51820
+AllowedIPs = 0.0.0.0/0
+        ```
+        <X+1> : Incrémenter une adresse IP Par rapport à la pair [Peer] précedente sur le serveur (étape suivante)
+ajouter les droits
+    sudo chmod 600 /etc/wireguard/wg0.conf && sudo chmod 600 /etc/wireguard/privatekey
+//Côté serveur
+Changer le fichier de config
+    sudo nano /etc/wireguard/wg0.conf
+Ajouter une paire [Peer]
+    ```
+[Peer]
+PublicKey = <Clé publique générée sur le nouveau client dans /etc/wireguard/publickey>
+AllowedIPs = 10.0.0.<X+1>/32, fd00:1234:5678::<X+1>/128
+    ```
+Redémarrer le tunnel sur le serveur
+    sudo wg-quick down wg0 && sudo wg-quick up wg0
+//Côté client
+Redémarrer le serveur
+    sudo systemctl daemon-reload
+    sudo systemctl start wg-quick@wg0
+Ajouter un alias de commande (optionel)
+    nano ~/.bashrc
+        ```
+alias vpn-down="sudo wg-quick down wg0"
+alias vpn-up="sudo wg-quick up wg0"
+alias vpn-test="sudo wg show"
+        ```
+
+
+//////////////////////////////////////// EN PLUS
+Si le tunnel s'active au démarrage de l'ordinateur, pour désactiver
+    sudo systemctl disable wg-quick@wg0.service
