@@ -55,6 +55,16 @@ git rebase --continue
 git push --force-with-lease
 	--force-with-lease : force mais en avertissant si des changement ont été fait sur le repo distant entre temps
 
+///////////////// SITUATIONS
+```
+Erreur modifications locales écrasées par la fusion
+erreur : Vos modifications locales aux fichiers suivants seraient écrasées par la fusion :
+        <liste des fichiers>
+Veuillez valider ou remiser vos modifications avant la fusion.
+```
+	Ajouter le(s) fichier(s), faire un commit, et gérer la fusion ou le rebasage avec put pull --rebase ou --fusion
+	Ensuite push
+
 
 /////////////////SI JE SUIS DECO SUR WINDOWS :
 invite de commande : ssh-add "C:\Users\adamr\.ssh\id_ed25519"
