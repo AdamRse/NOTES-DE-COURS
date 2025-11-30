@@ -54,7 +54,7 @@ DNS = 1.1.1.1, 8.8.8.8
 
 [Peer]
 PublicKey = <CLÉ_PUBLIQUE_DU_SERVEUR>
-Endpoint = <IP_DU_VPS>:51820
+Endpoint = <IP_DU_SERVEUR>:51820
 AllowedIPs = 0.0.0.0/0
         ```
 Attention de bien compléter, sur le serveur, la clé publique du client
