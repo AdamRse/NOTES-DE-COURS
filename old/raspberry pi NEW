@@ -1,0 +1,13 @@
+//Ajouter une IP fixe
+Identifier le réseau
+    nmcli connection show
+modifier le réseau
+    ```
+sudo nmcli connection modify "<noim du réseau, colonne NAME>" \
+ipv4.method manual \
+ipv4.addresses <nouvelle IP>/24 \
+ipv4.gateway <routeur> \
+ipv4.dns "<routeur> <dns de secours>"
+```
+redémarrer
+    sudo reboot
