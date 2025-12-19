@@ -11,3 +11,11 @@ ipv4.dns "<routeur> <dns de secours>"
 ```
 redémarrer
     sudo reboot
+//éteindre les leds
+nano /boot/firmware/config.txt
+A la fin, coller :
+    ```
+dtparam=act_led_trigger=none
+dtparam=act_led_activelow=off
+dtparam=pwr_led_trigger=none
+    ```
