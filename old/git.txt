@@ -65,6 +65,14 @@ Veuillez valider ou remiser vos modifications avant la fusion.
 	Ajouter le(s) fichier(s), faire un commit, et gérer la fusion ou le rebasage avec put pull --rebase ou --fusion
 	Ensuite push
 
+Les fichiers ajoutés au .gitignore continuent d'être mis à jour
+	Les fichiers sont déjà suivis, le gitignore ne supprime pas ce suivi, il empêche l'indexation.
+	Retirer les fichiers de l'index :
+		git rm --cached <fichier>
+		git add .gitignore
+		git commit -m "<message>"
+		git push
+
 
 /////////////////SI JE SUIS DECO SUR WINDOWS :
 invite de commande : ssh-add "C:\Users\adamr\.ssh\id_ed25519"
