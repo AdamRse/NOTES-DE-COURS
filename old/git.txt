@@ -39,6 +39,11 @@ git pull
 git reset --hard origin/<branche distante>
 git pull
 
+/////////////////SUPPRIMER UNE BRANCHE
+git branch -d <branche>
+Pour supprimer en remote
+	git push origin --delete <branche>
+
 /////////////////FAIRE UN REBASE
 git stash (optionnel, pour sauvegarder le code)
 git pull --rebase
