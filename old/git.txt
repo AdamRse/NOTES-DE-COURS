@@ -44,6 +44,16 @@ git branch -d <branche>
 Pour supprimer en remote
 	git push origin --delete <branche>
 
+/////////////////RETIRER LE TRACKING D'UN FICHIER (Ajouter au gitignore après qu'il ait été tracké)
+git rm --cached <fichier>
+ajouter le fichier au .gitignore
+git add .gitignore
+git commit -m "Stop tracking <Fichier>"
+
+///////////////// CRÉER UNE ARCHIVE (SANS LES FICHIERS NON TRACKÉS)
+git archive --format=<format> -o <path> HEAD
+	exemple concret : git archive --format=tar.gz -o ./install/conteur.tar.gz HEAD
+
 /////////////////FAIRE UN REBASE
 git stash (optionnel, pour sauvegarder le code)
 git pull --rebase
