@@ -42,7 +42,7 @@ git pull
 /////////////////SUPPRIMER UNE BRANCHE
 git branch -d <branche>
 Pour supprimer en remote
-	git push origin --delete <branche>
+	git push origin --delete refs/heads/<branche>w
 
 /////////////////RETIRER LE TRACKING D'UN FICHIER (Ajouter au gitignore après qu'il ait été tracké)
 git rm --cached <fichier>
