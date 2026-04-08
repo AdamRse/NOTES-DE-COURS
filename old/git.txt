@@ -77,7 +77,11 @@ erreur : Vos modifications locales aux fichiers suivants seraient écrasées pa
         <liste des fichiers>
 Veuillez valider ou remiser vos modifications avant la fusion.
 ```
-	Ajouter le(s) fichier(s), faire un commit, et gérer la fusion ou le rebasage avec put pull --rebase ou --fusion
+Annuler la modification locale :
+	git checkout -- <liste des fichiers>
+	git pull
+OU
+	Ajouter le(s) fichier(s), faire un commit, et gérer la fusion ou le rebasage avec git pull --rebase ou --fusion
 	Ensuite push
 
 Les fichiers ajoutés au .gitignore continuent d'être mis à jour

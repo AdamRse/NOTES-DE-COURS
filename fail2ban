@@ -1,0 +1,35 @@
+//installer
+sudo apt install fail2ban
+
+//Créer un fichier de configuration local
+sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+    Note : .local vient surcharger jail.con, voilà l'ordre des priorités des fichiers de config :
+        4. /etc/fail2ban/jail.conf (Le fichier par défaut, ne pas modifier).
+        3. /etc/fail2ban/jail.d/*.conf (Utilisé par certains paquets tiers).
+        2. /etc/fail2ban/jail.local (config utilisateur).
+        1. /etc/fail2ban/jail.d/*.local
+
+
+//config : /etc/fail2ban/jail.local
+/!\ A chaque modification de la config, redémarrer le service pour prise en compte
+    systemctl restart fail2ban
+```
+[DEFAULT]
+bantime.increment = true
+bantime.rndtime = 300
+bantime.overalljails = true
+bantime.maxtime = 2m
+ignoreip = 127.0.0.1 192.168.0.0/24 home.adam.rousselle.me
+
+bantime   = 10m
+findtime  = 10m
+maxretry  = 3
+```
+bantime : Temps de punition
+findtime : Fenêtre d'observation des logs
+maxretry : Nombre d'essais permis durant la fenêtre d'observation (findtime)
+bantime.increment : alonge la durée de banissement pour une IP déjà bannie (x2 chaque banissement par défaut, configurable avec bantime.formula ou bantime.multipliers)
+bantime.rndtime : ajoute une durée aléatoire pour le banissement entre 0 et bantime.rndtime
+bantime.overalljails : Check si l'IP a été bannie par un autre filtre, consiéré comme récidiviste à la première tentative
+bantime.maxtime : Temps que le banissement ne peut eccéder (pour éviter une saturation)
+ignoreip : liste blanche
