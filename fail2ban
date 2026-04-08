@@ -9,7 +9,6 @@ sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
         2. /etc/fail2ban/jail.local (config utilisateur).
         1. /etc/fail2ban/jail.d/*.local
 
-
 //config : /etc/fail2ban/jail.local
 /!\ A chaque modification de la config, redémarrer le service pour prise en compte
     systemctl restart fail2ban
@@ -33,3 +32,35 @@ bantime.rndtime : ajoute une durée aléatoire pour le banissement entre 0 et ba
 bantime.overalljails : Check si l'IP a été bannie par un autre filtre, consiéré comme récidiviste à la première tentative
 bantime.maxtime : Temps que le banissement ne peut eccéder (pour éviter une saturation)
 ignoreip : liste blanche
+
+//Config pour un service spécifique (exemple : mysql)
+Dans /etc/fail2ban/jail.local, ajouter le service
+    sudo nano /etc/fail2ban/jail.local
+Ajouter le service
+    ```
+[mysqld-auth]
+enabled = true
+port = 3306
+filter = mysqld-auth
+backend = systemd
+journalmatch = _SYSTEMD_UNIT=mariadb.service
+maxretry = 3
+findtime = 50m
+bantime = 2m
+    ```
+        enabled : Activer la surveillance du service (jail), par défaut elles sont presque toutes désactivées
+        port : port à fermer en cas de ban
+        filter : nom du fichier qui contient la regex du filtre. Avec filter = mysqld-auth, le fichier sera dans /etc/fail2ban/filter.d/mysqld-auth
+        backend : quel mode de logs à analyser, un fichier ou dans le journalctl de systemd
+        journalmatch : fichier log à scanner, ou précision de l'unité systemd avec _SYSTEMD_UNIT pour le journal
+        maxretry, findtime, bantime : peuvent être renseignés spécifiquement pour ce service, sinon ce sont ces valeurs renseignées dans [DEFAULT] qui seront appliquées
+Vérifier qu'il y a des match dans le logs
+    sudo fail2ban-client status mysqld-auth
+
+Si aucun match dans les logs alors qu'il y a des access denied, il faut changer la regex de fail2ban pour ce service. Dans le même principe que le fichier de config .local, on n'écrase pas la config par défaut et on créé un .local qui sera prioritaire. avec <nom du filtre>.local
+    nano /etc/fail2ban/filter.d/mysqld-auth.local
+    ```
+[Definition]
+failregex = Access denied for user '.*'@'<HOST>'
+    ```
+        <HOST> désigne le pattern de l'adresse IP à filtrer
