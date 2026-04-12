@@ -64,3 +64,12 @@ Si aucun match dans les logs alors qu'il y a des access denied, il faut changer 
 failregex = Access denied for user '.*'@'<HOST>'
     ```
         <HOST> désigne le pattern de l'adresse IP à filtrer
+
+//Commandes utiles
+Vérifier l'état global
+    sudo fail2ban-client status
+Détails d'une jail
+    sudo fail2ban-client status <nom_de_la_jail>
+        La liste des <nom_de_la_jail> apparait dans la commande sudo fail2ban-client status
+Annuler un bannissement
+    sudo fail2ban-client set <nom_de_la_jail> unbanip <adresse_ip>
