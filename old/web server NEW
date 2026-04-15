@@ -13,7 +13,7 @@ Pour un humain
     sudo usermod -aG sudo <nomUser>
         passer l'utilisateur en admin
 pour un service (minimaliste)
-    sudo useradd --system --no-create-home --user-group --shell /usr/sbin/nologin <nomUser>
+    sudo adduser --system --no-create-home --shell /usr/sbin/nologin --group --disabled-password <monUser>
 
 //Gérer le compte root si non donné :
 sudo -i
