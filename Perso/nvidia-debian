@@ -1,0 +1,42 @@
+// Vérifier le pilote installé par défaut
+lspci -nnk | grep -i vga -A3
+	Kernel driver in use :
+		nouveau : libre, pas de capacité graphique
+		nvidia : pilote nvidia installé
+// Accepter les composants controb et non-free
+sudo nano /etc/apt/sources.list
+	Ajouter à la fin de chaque ligne, si elle n'y est pas : contrib non-free
+		Par exemple : deb http://deb.debian.org/debian/ trixie main contrib non-free non-free-firmware
+		contrib : Contient les scripts d'installation (comme nvidia-detect).
+		non-free : Contient le cœur du pilote Nvidia.
+sudo apt update
+//Installer et configurer nvidia-detect
+sudo apt install nvidia-detect
+nvidia-detect
+	donne le nom du paquet à installer
+//Installer le pilote
+sudo apt install nvidia-driver firmware-misc-nonfree
+	Le pilote donné par nvidia-detect
+Un message de remplacement du piote va s'afficher, cliquer sur <Ok>
+
+//En cas de warning :
+Attention : L'opération a été interrompue avant de se terminer
+	Plus haut s'il y a eu le warning 'WARNING: No kernel headers were found, skipping module build.'
+	sudo apt install linux-headers-amd64
+		installation des headers
+	sudo dpkg-reconfigure nvidia-kernel-dkms
+		recompilation du module avec DKMS
+	
+	
+//Redémarrage impossible
+Failed to start nvidia_persistence au redémarrage, impossible de rallumer
+	Désactiver le secure boot
+	Désinstaller les pilotes en mode recovery (super user)
+		apr purge '*nvidia*'
+Session qui ne charge pas (renvoi sur l'écran de mdp après un écran noir
+	Passer sous X11 (en bas à gauche), ou redémarrer en recovery mode (super user)
+	Ajouter le modeset dans grub
+		sudo nano /etc/default/grub
+		Ajouter nvidia-drm.modeset=1 à GRUB_CMDLINE_LINUX_DEFAULT
+			GRUB_CMDLINE_LINUX_DEFAULT="quiet nvidia-drm.modeset=1"
+		sudo update-grub
