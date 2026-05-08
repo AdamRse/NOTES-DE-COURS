@@ -26,6 +26,10 @@ Exemple de script :
 xwininfo
     ou xprop
 
+
+//Créer une clé gpg
+gpg --full-generate-key
+
 //Map interractive
     telnet mapscii.me
 //Scan bluetooth
