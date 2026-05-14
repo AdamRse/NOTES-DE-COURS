@@ -1,0 +1,9 @@
+Space engineers
+    supprimer la vidéo d'intro
+        rm ~/.steam/steam/steamapps/common/SpaceEngineers/Content/Videos/KSH.wmv
+
+//LAUNCH OPTIONS
+Dota
+--novid
+Baldur's gate 3
+--skip-launcher --vulkan
