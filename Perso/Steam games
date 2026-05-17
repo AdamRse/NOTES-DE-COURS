@@ -7,3 +7,12 @@ Dota
 --novid
 Baldur's gate 3
 --skip-launcher --vulkan
+Space engineers
+__GL_SHADER_DISK_CACHE_SKIP_CLEANUP=1 %command% -nosplash -skipintro
+
+//Installer proton-GE (version communautaire)
+Installer le flatpak "ProtonUp-Qt", c'ets l'interface graphique
+Vérifier que steam est sélectionné dans "installer pour"
+Cliquer sur ajouter une version et installer proton-GE
+Redémarrer steam
+Dans steam, dans les paramètres du jeu, onglet compatibilité, possibilité de sélectionner proton-GE
