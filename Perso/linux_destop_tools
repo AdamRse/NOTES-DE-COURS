@@ -4,3 +4,20 @@ convert <imageCible> -define icon:auto-resize="256,128,64,48,32,16" -background 
 // Rechercher un terme dans des PDF
 sudo apt install pdfgrep
 pdfgrep "<terme>" *.pdf
+//Écran noir à la sortie de veille sur config NVIDIA
+Activer la gestion de la VRAM NVIDIA
+    echo "options nvidia NVreg_PreserveVideoMemoryAllocations=1" | sudo tee /etc/modprobe.d/nvidia-power-management.conf
+    sudo systemctl enable nvidia-suspend.service
+    sudo systemctl enable nvidia-hibernate.service
+    sudo systemctl enable nvidia-resume.service
+    sudo update-initramfs -u
+    redémarrer
+Si ça ne suffit pas
+    vérifier quel est le numéro de carte nvidia
+        ls -l /sys/class/drm/card*/device/driver
+            la ligne avec nvidia est reliée à un répertoire card<No>/, par exemple, nvidia est card2 :
+            lrwxrwxrwx 1 root root 0 May 23 13:14 /sys/class/drm/card1/device/driver -> ../../../bus/pci/drivers/i915
+            lrwxrwxrwx 1 root root 0 May 23 13:14 /sys/class/drm/card2/device/driver -> ../../../../bus/pci/drivers/nvidia
+    sudo nano /etc/environment
+        ajouter
+        KWIN_DRM_DEVICES=/dev/dri/card<No>

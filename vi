@@ -1,0 +1,28 @@
+// Modes
+Échap : Passer en mode Commande (indispensable pour taper les touches ci-dessous)
+    i : Passer en mode Insertion (pour écrire du texte)
+
+// Quitter et Enregistrer (En mode Commande)
+:q : Quitter le fichier (ne fonctionne que si aucune modification n'a été faite)
+:q! : Quitter immédiatement sans enregistrer les modifications
+:w : Enregistrer les modifications (sauvegarder)
+:wq : Enregistrer les modifications et quitter le fichier
+
+// Déplacements (En mode Commande)
+Flèches directionnelles : Déplacer le curseur dans le texte
+    h : Déplacer le curseur vers la gauche (alternative aux flèches)
+    j : Déplacer le curseur vers le bas (alternative aux flèches)
+    k : Déplacer le curseur vers le haut (alternative aux flèches)
+    l : Déplacer le curseur vers la droite (alternative aux flèches)
+G : Aller directement à la toute dernière ligne du fichier
+gg : Aller directement à la toute première ligne du fichier
+
+// Effacer et Modifier (En mode Commande)
+x : Effacer le caractère situé sous le curseur
+dd : Effacer (supprimer) la ligne entière où se trouve le curseur
+u : Annuler la dernière action (équivalent du Ctrl+Z)
+
+// Recherche (En mode Commande)
+/<mot> : Rechercher un mot dans le texte
+    Exemple : /port
+    n : Passer au résultat suivant de la recherche
