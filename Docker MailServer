@@ -1,2 +1,23 @@
 // Repo :   https://github.com/docker-mailserver/docker-mailserver
 // Doc :    https://docker-mailserver.github.io/docker-mailserver/latest/
+
+
+//Ajouter un compte sur un nouveau domaine
+Dans le conteneur socker MailServer :
+    setup email add <user>@<domain>
+Si le nom de domaine est nouveau, il faut configurer sa zone DNS comme suit :
+    // DKIM
+    Dans le conteneur mailserveur :
+        setup config dkim domain <nom de domaine>
+            le sous domaine par défaut est "mail", mais il est possible de le changer avec : setup config dkim selector <sous domaine> domain <nom de domaine>
+        La clé va se générer dans un fichier texte dans "/tmp/docker-mailserver/opendkim/keys/<nom de domaine>/"
+    La ligne de configuration DNS à ajouter à la zone DNS est aussi générée dans : "/tmp/docker-mailserver/opendkim/keys/<nom de domaine>/mail.txt"
+        Ajouter cette ligne à la zone DNS
+    Pour l'aide :
+        setup config dkim help
+    //DMARC
+    Ligne par défaut à ajouter à la zone DNS :
+    _dmarc        IN TXT     "v=DMARC1; p=none; rua=mailto:<adresse email de rapport>; sp=none; aspf=r"
+    //SPF
+    Ligne par défaut à ajouter à la zone DNS :
+        IN TXT     "v=spf1 mx ~all"
