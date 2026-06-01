@@ -2,7 +2,7 @@
 // Doc :    https://docker-mailserver.github.io/docker-mailserver/latest/
 
 
-//Ajouter un compte sur un nouveau domaine
+// Ajouter un compte sur un nouveau domaine
 Dans le conteneur socker MailServer :
     setup email add <user>@<domain>
 Si le nom de domaine est nouveau, il faut configurer sa zone DNS comme suit :
@@ -21,3 +21,21 @@ Si le nom de domaine est nouveau, il faut configurer sa zone DNS comme suit :
     //SPF
     Ligne par défaut à ajouter à la zone DNS :
         IN TXT     "v=spf1 mx ~all"
+    //Redémarrage du conteneur
+    Le conteneur doit être détruit et relancé :
+        docker compose down
+        docker compose up -d
+    ATTENTION : sur dockge, il faut bien sélectionner "arrêter et rendre inactif", pas arrêter ou redémarrer, ce qui préserve le conteneur, et mailserver va skipper la mise à jour du volume !
+    On peut vérifier que les clés sont prises en compte si elles aparaissent dans /etc/opendkim/SigningTable
+
+// Configuration des adresses
+QUOTAS
+    Quota par boîte
+        setquota <email> <taille>
+            Par exemple : setquota adresse@email.com 1G
+        aide :
+            setquota help
+    Supprimer un quota
+        delquota <email>
+    Consulter les quotas d'un utilisateur
+        doveadm quota get -u <email>
