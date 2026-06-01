@@ -39,3 +39,6 @@ QUOTAS
         delquota <email>
     Consulter les quotas d'un utilisateur
         doveadm quota get -u <email>
+// Commandes utiles
+Ajouter un alias
+    setup alias add <email alias> <email principal>
