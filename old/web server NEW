@@ -25,6 +25,16 @@ sudo dpkg-reconfigure locales
 	sélectionner fr_FR
 reboot
 
+//Mises à jour de sécu automatique
+installer unattended-upgrades
+    sudo apt install unattended-upgrades apt-listchanges
+sudo dpkg-reconfigure -plow unattended-upgrades
+    Sélectionner <Yes>
+Configuration plus poussée dans /etc/apt/apt.conf.d/50unattended-upgrades
+    Unattended-Upgrade::Mail
+    Unattended-Upgrade::Automatic-Reboot
+    Unattended-Upgrade::Automatic-Reboot-Time
+
 //authentification par clé SSH
 En local
     ssh-keygen -t ed25519 -a 100
