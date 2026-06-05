@@ -1,0 +1,18 @@
+// Créer un projet
+python3 -m venv <nom projet>
+
+// Gérer le projet
+Activer le projet
+    source <chemin projet>/bin/activate
+Installer un module
+    pip install nom_du_module
+Sauvegarder les requirements
+    pip freeze > requirements.txt
+
+// Quitter l'environement virtuel
+deactivate
+    A taper simplement dans le terminal.
+    Attention, pas deSactivate
+
+// Git
+Attention, le gitignore doit contenir le répertoire .venv !

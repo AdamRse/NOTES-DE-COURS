@@ -1,0 +1,27 @@
+// Pourquoi un grand nombre de projets data échouent ?
+Données de mauvaise qualité
+- Donées de mauvaise Qualité
+- Avoir la mauvaise équipe
+- Résoud le mauvais problème
+- Non déploiement du projets
+- Oublier l'éthique
+- Oublier l'élément culturel
+
+// La méthodologie
+- Façon de penser : "Un projet data c'est comme un voyage"
+- Sans méthodologie :
+    - On part sans carte, sans itinéraire, et on se perd
+- Avec méthodologie
+    - On définit une destination (problématique)
+    - On planifie l'itinéraire (étapes du cycle de vie des données)
+    - On vérifie régulièrement sa position (validation des hypothèses)
+
+// Cycle de vie des données
+Collecte
+1ère archive
+Traiter
+2ème archive
+Manipulation (Analyse)
+Visualisation
+Présentation
+Archivage (Selon la situation)
