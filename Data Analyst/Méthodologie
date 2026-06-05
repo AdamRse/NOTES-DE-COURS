@@ -25,3 +25,22 @@ Manipulation (Analyse)
 Visualisation
 Présentation
 Archivage (Selon la situation)
+
+// Méthodologie d'analyse
+1. Formuler la problématique
+    - Une bonne problématique est spécifique, mesurable et actionnable
+    - exemple : Pourquoi les ventes de la catégorie Électronique ont baissé de 15% en Q1 2026 ?
+2. Émettre des hypothèses
+    - Lister des causes possibles avant d'analyser les données
+    - Exemple : La concurrence a baissé ses prix, campagne marketting inefficace
+3. Identifier les données nécéssaires
+    - Quelles données permettent de valider/Invalider des hypothèses
+    - Exemple : Historique des ventes par région et par catégories
+4. Analyser les données
+    - Nettoyer les données, calculer des indicateurs pertinents, visualiser les tendances.
+5. Valider les hypothèses et conclure
+    - Quelles hypothèses sont confirmées Lesquelle sont infirmées ? Quelles actions recommender ?
+
+// Note perso
+Lors des hypothèses, essayer de les trier en cathégories/sous catégories et mettre en valeur les liens entre elles
+
