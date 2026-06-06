@@ -2,6 +2,23 @@
 // Doc :    https://docker-mailserver.github.io/docker-mailserver/latest/
 
 
+// Ajouter un filtre côté serveur (Sieve : https://docker-mailserver.github.io/docker-mailserver/latest/config/advanced/mail-sieve/)
+Dans le docker compose, ajouter :
+    ```
+    environment:
+        - ENABLE_MANAGESIEVE=1
+    ```
+    Pour gérer Sieve depuis un protocole (par exemple extension thunderbird ou roundcube), ajouter aussi les ports
+        ```
+    ports:
+    - "4190:4190"
+        ```
+Ajouter un fichier de règles sieve dans la config (Depuis l'emplacement du docker compose de docker mailserver) docker-data/dms/config/
+    nano <email concerné>.dovecot.sieve
+    Ajouter les règles puis enregistrer
+redémarer le conteneur docker mailserver
+    Attention, le redémarrage doit supprimer l'ancien conteneur, un simple restart ou "docker stop" ne suffit pas.
+
 // Ajouter un compte sur un nouveau domaine
 Dans le conteneur socker MailServer :
     setup email add <user>@<domain>
@@ -39,6 +56,39 @@ QUOTAS
         delquota <email>
     Consulter les quotas d'un utilisateur
         doveadm quota get -u <email>
+
+// Fail2ban du serveur hôte (pas celui du conteneur docker)
+Repérer le fichier de logs, s'il n'est pas dans le docker compose, l'ajouter dans les volumes
+    ```
+    volumes:
+        - ./docker-data/dms/mail-logs/:/var/log/mail/
+    ```
+        Le fichier de logs est donc dans "docker-data/dms/mail-logs/" (à partir du docker compose de docker mailserver)
+Service :
+    sudo nano /etc/fail2ban/jail.local
+    ```
+[docker-mailserver]
+enabled  = true
+port     = pop3,pop3s,imap,imaps,smtp,smtps,submission
+filter   = docker-mailserver
+logpath  = /opt/stacks/docker-mailserver/docker-data/dms/mail-logs/mail.log
+backend  = auto
+maxretry = 3
+findtime = 10m
+    bantime  = 1h
+    ```
+regex :
+    sudo nano /etc/fail2ban/filter.d/docker-mailserver.conf
+    ```
+[Definition]
+failregex = dovecot: auth: passwd-file\([^@]+@[^,]+,<HOST>,<[^>]{16}>\): (unknown user|Password mismatch)
+#failregex = dovecot: auth: passwd-file\(.+@.+\.([a-z])+,<HOST>,<.{16}>\): (unknown user|Password mismatch)
+    ```
+        Les 2 failregex ne semblent pas avoir de différence de performence notable, à tester
+Tester si les logs ont un exemple de connexion refusée
+    fail2ban-regex /opt/stacks/docker-mailserver/docker-data/dms/mail-logs/mail.log /etc/fail2ban/filter.d/docker-mailserver.conf
+sudo systemctl restart fail2ban
+
 // Commandes utiles
 Ajouter un alias
     setup alias add <email alias> <email principal>
