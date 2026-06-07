@@ -35,6 +35,18 @@ Configuration plus poussée dans /etc/apt/apt.conf.d/50unattended-upgrades
     Unattended-Upgrade::Automatic-Reboot
     Unattended-Upgrade::Automatic-Reboot-Time
 
+// Logs Docker dans journald
+sudo nano /etc/docker/daemon.json
+    Ajouter :
+    ```
+{
+    "log-driver": "journald"
+}
+    ```
+sudo systemctl restart docker
+ATTENTION, les conteneurs créés avant n'enverront pas les logs dans journald ! Pour ça il faut forcer l'arêt de chaque conteneur et les redémarrer avec --force-recreate :
+    docker compose down && docker compose up -d --force-recreate
+
 //authentification par clé SSH
 En local
     ssh-keygen -t ed25519 -a 100

@@ -1,0 +1,27 @@
+// Exemple de docker compose pour docker mailserver
+```
+services:
+  roundcube:
+    image: roundcube/roundcubemail:latest
+    container_name: roundcube-webmail
+    restart: unless-stopped
+    ports:
+      - 8000:80
+    environment:
+      # --- Configuration de la messagerie ---
+      - ROUNDCUBEMAIL_DEFAULT_HOST=tls://<mail.domaine.com>
+      - ROUNDCUBEMAIL_DEFAULT_PORT=143 # Ou 993 pour ssl://<mail.domaine.com>
+      - ROUNDCUBEMAIL_SMTP_SERVER=ssl://<mail.domaine.com>
+      - ROUNDCUBEMAIL_SMTP_PORT=465
+      # --- Base de données (SQLite interne) ---
+      - ROUNDCUBEMAIL_DB_TYPE=sqlite
+      # --- Options facultatives mais recommandées ---
+      - ROUNDCUBEMAIL_UPLOAD_MAX_FILESIZE=25M
+      - ROUNDCUBEMAIL_PLUGINS=archive,zipdownload
+    volumes:
+      # Persistance de la base de données SQLite (gérée par Dockge dans le dossier de la stack)
+      - ./db:/var/roundcube/db
+      # Persistance des pièces jointes temporaires
+      - ./temp:/tmp/roundcube-temp
+networks: {}
+```

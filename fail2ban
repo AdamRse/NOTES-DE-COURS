@@ -3,7 +3,7 @@ sudo apt install fail2ban
 
 //Créer un fichier de configuration local
 sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
-    Note : .local vient surcharger jail.con, voilà l'ordre des priorités des fichiers de config :
+    Note : .local vient surcharger jail.conf, voilà l'ordre des priorités des fichiers de config :
         4. /etc/fail2ban/jail.conf (Le fichier par défaut, ne pas modifier).
         3. /etc/fail2ban/jail.d/*.conf (Utilisé par certains paquets tiers).
         2. /etc/fail2ban/jail.local (config utilisateur).
@@ -66,7 +66,42 @@ failregex = Access denied for user '.*'@'<HOST>'
     ```
         <HOST> désigne le pattern de l'adresse IP à filtrer
 
-//Commandes utiles
+// Exemple de jail pour conteneur docker
+PRÉREQUIS : docker doit passer les logs à journald, ce qui n'est pas le cas par défaut. Si ce n'est pas le cas :
+    sudo nano /etc/docker/daemon.json
+    Ajouter :
+    ```
+{
+    "log-driver": "journald"
+}
+    ```
+    sudo systemctl restart docker
+    ATTENTION, les conteneurs créés avant n'enverront pas les logs dans journald ! Pour ça il faut forcer l'arêt de chaque conteneur et les redémarrer avec --force-recreate :
+        docker compose down && docker compose up -d --force-recreate
+Exemple de jail visant un conteneur http(s) :
+    sudo nano /etc/fail2ban/jail.local
+    ```
+[<conteneur>]
+enabled  = true
+port     = http,https
+filter   = <nom filtre>
+backend  = systemd
+journalmatch = CONTAINER_NAME=<nom du conteneur>
+banaction = iptables-allports[actname=iptables-docker, chain=DOCKER-USER]
+findtime = 3m
+maxretry = 3
+bantime  = 1h
+    ```
+    nano /etc/fail2ban/filter.d/<nom filtre>.conf
+    ```
+[Definition]
+failregex = <regex avec <HOTE> qui pointe vers l'IP à bannir>
+    ```
+    tester la regex
+        sudo journalctl CONTAINER_NAME=<nom conteneur> -f --no-pager | fail2ban-regex systemd /etc/fail2ban/filter.d/<nom filtre>.conf
+    systemctl restart fail2ban
+
+// Commandes utiles ------------------------------
 Vérifier l'état global
     sudo fail2ban-client status
 Détails d'une jail
