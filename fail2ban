@@ -100,7 +100,7 @@ bantime  = 1h
 failregex = <regex avec <HOTE> qui pointe vers l'IP à bannir>
     ```
     tester la regex
-        sudo journalctl CONTAINER_NAME=<nom conteneur> -f --no-pager | fail2ban-regex systemd /etc/fail2ban/filter.d/<nom filtre>.conf
+        sudo fail2ban-regex   "systemd-journal"   /etc/fail2ban/filter.d/<nom filtre>.conf   --journalmatch="CONTAINER_NAME=<nom conteneur>"   --print-all-missed 2>&1
     systemctl restart fail2ban
 
 // Commandes utiles ------------------------------
