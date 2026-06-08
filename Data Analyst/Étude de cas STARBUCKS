@@ -16,3 +16,7 @@ Des starbucks ont leurs ventes en baisse
     - Fin de promotion
     - Baisse du pouvoir d'achat
     - Fréquentation de la rue
+
+- Vérification des hypothèses
+    - Ventes f(distance concurrence) > pas de corrélation
+    - ventes f(piétons) > corrélation forte

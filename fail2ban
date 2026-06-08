@@ -92,6 +92,8 @@ findtime = 3m
 maxretry = 3
 bantime  = 1h
     ```
+        Pour <nom du conteneur>, on peut afficher la liste des noms avec la commande :
+            docker ps --format '{{.Names}}'
     nano /etc/fail2ban/filter.d/<nom filtre>.conf
     ```
 [Definition]
