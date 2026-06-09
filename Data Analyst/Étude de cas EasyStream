@@ -51,3 +51,9 @@ Qu'est-ce qui pousse le désabonnement ?
     Abonnement Basique  : 12 > 1 reste abonné (8.33%)
     Abonnement Premium  : 8 > 3 reste abonnés (37.5%)
     Conclusion : L'abonnement basique ne semble pas en effet retenir les clients.
+- Hypothèse 5 : L'age influe sur le désabonnement
+    Données :
+    Moyenne age totale          : 33.2 (moyenne), 30 (mediane)
+    Moyenne age désabonnements  : 34.6, 31
+    Moyenne age abonnements     : 27.5, 26.5
+    Conclusion : L'age semble peu influencer sur les désabonnements, les plus jeunes restent un peu plus abonnés
