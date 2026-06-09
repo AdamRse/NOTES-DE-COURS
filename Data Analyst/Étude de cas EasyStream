@@ -27,6 +27,7 @@ Qu'est-ce qui pousse le désabonnement ?
     - L'offre basique ne retient pas les clients - Yann
     - Certains canaux d'acquisition ne sont pas efficaces - Balkis
     - L'age influe sur le désabonnement
+    - La qualité du réseau pourrait influencer la satisfaction
 - Hypothèse 1 : La localisation géographique du client a une influence sur son désabonnement
     Données :
     Est     30% reste abonné
@@ -57,3 +58,12 @@ Qu'est-ce qui pousse le désabonnement ?
     Moyenne age désabonnements  : 34.6, 31
     Moyenne age abonnements     : 27.5, 26.5
     Conclusion : L'age semble peu influencer sur les désabonnements, les plus jeunes restent un peu plus abonnés
+- Hypothèse 6 : La concurrence
+    Pas de données
+- Hypothèse 7 : La qualité du réseau influe sur les désabonnements
+    Données :
+    Nord    : 784 signalements, pour 2 désabonnements (66%)
+    Sud     : 374, 4 désabonnements (100%)
+    Est     : 261, 7 désabonnement (70%)
+    Ouest   : 268, 3 désabonnements (100%)
+    Conclusion : Il n'y a pas de corrélation entre la qualité du réseau et les désabonnement
