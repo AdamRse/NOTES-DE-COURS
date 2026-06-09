@@ -59,21 +59,13 @@ Qu'est-ce qui pousse le désabonnement ?
     Moyenne age désabonnements  : 34.6, 31
     Moyenne age abonnements     : 27.5, 26.5
     Conclusion : L'age semble peu influencer sur les désabonnements, les plus jeunes restent un peu plus abonnés
-- Hypothèse 6 : La concurrence influe
-    Les concurrents de Twitch se divisent en deux catégories :
-    Concurrents directs (comme Kick et YouTube Live) :
-    Ils proposent le même service de streaming en direct.
-    Ils peuvent attirer les utilisateurs de Twitch.
-    Ils ont un impact fort sur le taux de désabonnement (churn).
-    Concurrents indirects (comme TwitchTracker et StreamCharts) :
-    Ils fournissent uniquement des analyses et des statistiques.
-    Ils ne proposent pas de streaming en direct.
-    Leur impact sur le churn est faible.
+- Hypothèse 6 : La concurrence influe sur les désabonnements
+    La concurrence est déjà installée avec Twitch qui est hégémonique, et Kick.
     Données :
-    Kick            : 237.25M visites
-    Twitch          : 1.02Md visites
-    Google trend n'indique aucune dynamique positive pour les différents acteurs
-    Conclusion : seuls les plateformes de streaming direct influencent réellement la perte d’utilisateurs, tandis que les sites d’analyse ont un impact indirect.
+    Kick            : 237.25M visites /mois
+    Twitch          : 1.02Md visites /mois
+    Google trend n'indique aucune dynamique positive pour les différents acteurs,.
+    Conclusion : Les concurrents ont une grande part de marché, mais pas de dynamique positive qui mettrait en évidence une fuite d'utilisateurs vers la concurrence.
 - Hypothèse 7 : La qualité du réseau influe sur les désabonnements
     Données :
     Nord    : 784 signalements, pour 2 désabonnements (66%)
