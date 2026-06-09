@@ -46,7 +46,7 @@ Qu'est-ce qui pousse le désabonnement ?
     Données :
     Basic       : 12 ET juste 1 reste abonné
     Premium     : 8 ET juste 2 reste abonné
-    Conclusion : Les clients de l'ffre basique sont moins satisfaits que l'offre premium
+    Conclusion : Les clients de l'offre basique sont moins satisfaits que l'offre premium
 - Hypothèse 4 : L'abonnement basique ne retient pas les clients
     Données:
     Abonnement Basique  : 12 > 1 reste abonné (8.33%)
@@ -77,4 +77,6 @@ Qu'est-ce qui pousse le désabonnement ?
     Ouest   : 268, 3 désabonnements (100%)
     Conclusion : Il n'y a pas de corrélation entre la qualité du réseau et les désabonnement
 
-
+// Solutions
+- Étude de satisfaction et campagne publicitaire ciblée sur les régions Sud et Ouest
+- Améliorer la qualité de l'offre basique (prix, fonctionnalités)
