@@ -1,7 +1,7 @@
 // Étude de cas n'°2
 Vous travaillez pour EasyStream, une plateforme de streaming vidéo. Votre manager vous demmande de faire une étude des données et de revenir vers lui avec un rapport
 
-//Problématiques
+// Problématiques
 Trouver la problématique, choix :
     - Qu'est-ce qui pousse le désabonnement ?
     - Pourquoi plus de désabonnement sur les offres basiques ?
@@ -18,3 +18,36 @@ Problématique secondaire
     - L'offre premium permet-elle de mieux garder ses clients ?
 Problématique tertiaire
     - Quel canal d'acquisition permet de mieux garder ses clients ?
+
+// Hypothèses
+Qu'est-ce qui pousse le désabonnement ?
+    - Prix trop élevé de l'offre - Wissem
+    - La concurrence
+    - La localisation géographique du client a une influence sur son désabonnement - Adam
+    - L'offre basique ne retient pas les clients - Yann
+    - Certains canaux d'acquisition ne sont pas efficaces - Balkis
+    - L'age influe sur le désabonnement
+- Hypothèse 1 : La localisation géographique du client a une influence sur son désabonnement
+    Données :
+    Est     30% reste abonné
+    Sud     0%
+    Nord	33%
+    Ouest	0%
+    Conclusion : La zone géographique du client semble bien influer sur le désabonnement. 0% d'utilisateur reste abonné dans Sud-Ouest, 30% reste abonné dans Nord-Est
+- Hypothèse 2 : Le canal d'acquisition a une influence sur la fidélité du client
+    Données :
+    Publicité           : 6
+    Réseaux sociaux     : 5
+    Bouche-à-oreille    : 5
+    Autre               : 4
+    Conclusion : Le canal d'acquisition semble avoir une légère influence sur la fidélité des clients. La publicité génère le plus d'abonnements actifs (6), suivie des réseaux sociaux et du bouche-à-oreille (5 chacun). Cependant, les écarts sont faibles, ce qui suggère que le canal d'acquisition n'est pas le facteur principal du désabonnement.
+- Hypothèse 3 : Prix trop élevé de l'offre
+    Données :
+    Basic       : 12 ET juste 1 reste abonné
+    Premium     : 8 ET juste 2 reste abonné
+    Conclusion : je pense que prix trop élevé de l'offre
+- Hypothèse 4 : L'abonnement basique ne retient pas les clients
+    Données:
+    Abonnement Basique  : 12 > 1 reste abonné (8.33%)
+    Abonnement Premium  : 8 > 3 reste abonnés (37.5%)
+    Conclusion : L'abonnement basique ne semble pas en effet retenir les clients.
