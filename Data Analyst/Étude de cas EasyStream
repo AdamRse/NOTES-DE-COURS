@@ -38,10 +38,10 @@ Qu'est-ce qui pousse le désabonnement ?
     Conclusion : La zone géographique du client semble bien influer sur le désabonnement. 0% d'utilisateur reste abonné dans Sud-Ouest, 30% reste abonné dans Nord-Est
 - Hypothèse 2 : Le canal d'acquisition a une influence sur la fidélité du client
     Données :
-    Publicité           : 6
-    Réseaux sociaux     : 5
-    Bouche-à-oreille    : 5
-    Autre               : 4
+    Publicité           : 6 > 4 désabonnements
+    Réseaux sociaux     : 5 > 3
+    Bouche-à-oreille    : 5 > 5
+    Autre               : 4 > 4
     Conclusion : Le canal d'acquisition semble avoir une légère influence sur la fidélité des clients. La publicité génère le plus d'abonnements actifs (6), suivie des réseaux sociaux et du bouche-à-oreille (5 chacun). Cependant, les écarts sont faibles, ce qui suggère que le canal d'acquisition n'est pas le facteur principal du désabonnement.
 - Hypothèse 3 : Prix trop élevé de l'offre
     Données :
