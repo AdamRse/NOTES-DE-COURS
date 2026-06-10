@@ -1,0 +1,60 @@
+// Statistiques et probabilités pour l'analyse de données
+Statistiques descriptives
+    Nous aide à simplifier et organiser de grandes quantités de données. Ça nous permet de décrire et résumer des données de grande taille (ex : moyenne, médiane).
+    Ex : "La moyenne des notes est de 12/20."
+Statistiques inférentielles
+    Faire des prédictions ou généraliser à partir d'un échantillon (ex : tests d'hypothèses, intervalles de confiance).
+    Ex : "Avec 95 % de confiance, la moyenne des notes de la population est entre 11,5 et 12,5."
+
+- Types de données
+Variables qualitatives :
+    Données généralement non numériques, qui décrivent des qualités, caractéristiques, ou attributs. Ces données sont surtout utilisées pour comprendre les opinions, comportements, expériences, et catégories.
+    - Nominales : Données utilisées pour labelliser, nommer ou classifier des variables sans ordre particulier (ex : couleur des yeux, genre).
+    - Ordinales : Données qui ont un ordre naturel. La différence exacte entre les catégories ne peut pas être mesurée (ex : niveau de satisfaction : faible, moyen, élevé).
+Variables quantitatives :
+    - Discrètes : Valeurs qu'on compte, valeurs entières (ex : nombre d'enfants, résultat d'un dé).
+    - Continues : Valeurs qu'on mesure, valeurs décimales (on peut mettre une infinité de valeurs entre 2 valeurs)(ex : taille, poids).
+
+//Population VS échantillon
+    Mesures de tendance centrale
+    - Moyenne :
+        Moyenne d'un groupe
+        est calculée en faisant la somme de tous les éléments qu'on a, et le divisant ensuite par le nombre d'éléments.
+        formule : (Σx)/N
+    - Médiane :
+        Valeur qui partage une série de données ordonnées en deux parties contenant chacune 50 % des observations
+        Est calculée en trouvant la valeur centrale pour un nombre impair d'observation, ou en faisant la moyenne des deux valeurs centrales pour un nombre pair d'observation.
+
+
+Mesures de tendance centrale
+    - Mode :
+        Valeur la plus fréquente.
+        Peut ne pas exister (si aucune valeur se répète). Solution peut être unimodale, bimodale, trimodale, multimodale.
+    - Classe modale :
+        Mode pour des données groupées.
+        Un groupe ou une intervalle de valeurs la plus fréquente.
+        La valeur du mode approximative (mode interpolé) peut parfois être calculée
+        formule :
+            Mode= (voir formule)
+            L = borne inférieure de la classe modale
+            h = largeur de la classe modale
+            f1 = fréquence de la classe modale
+            fo = fréquence de la classe précédente
+            f2 = fréquence de la classe suivante
+            Attention : si la classe précédente ou suivante n'existe pas on ne peut pas faire le calcul!
+            Peut être estimé de la façon suivante : 3 fois la médiane- 2 fois la moyenne
+
+Mesures de dispersion
+
+
+
+EXERCICE
+Moyenne = 5
+Médiane = 5
+Mode 2 = 5 et 6
+8-1 = 7
+Variance =
+16+4+1+0+0+1+1+4+9=36
+36/9=4
+Écart type = 2
+
