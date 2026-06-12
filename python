@@ -5,6 +5,8 @@ venv, pyenv
 Créer le répertoire du projet
     mkdir <répertoire du projet>
     cd <répertoire du projet>
+Choisir la version du projet
+    pyenv local 3.14.6
 Créer l'environement sandbox dans un répertoire .venv
     python3 -m venv .venv
 source .venv/bin/activate
@@ -16,6 +18,12 @@ Installer un module
     pip install nom_du_module
 Sauvegarder les dépendances
     pip freeze > requirements.txt
+Pour changer de version, il faut suprimer le .venv, il n'est pas écrasé par la commande python3 -m venv .venv
+    Sélectioner la version
+        pyenv local 3.14.6
+    Recréer le .venv pour la sandbox
+        python3 -m venv .venv
+
 
 // Récupérer le projet github (git clone)
 cd <répertoire du projet>
