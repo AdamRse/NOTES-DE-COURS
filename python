@@ -1,6 +1,7 @@
 //Requirements
 venv, pyenv
 
+fetch
 // Créer un projet
 Créer le répertoire du projet
     mkdir <répertoire du projet>
