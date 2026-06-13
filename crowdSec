@@ -1,1 +1,32 @@
-crowdsec
+// Doc : https://docs.crowdsec.net/u/getting_started/installation/linux
+// Dashboard : https://app.crowdsec.net/
+
+// Installation
+Ajouter le repo
+    curl -s https://install.crowdsec.net | sudo sh
+Installer crowdsec
+    apt install crowdsec
+Installer le bouncer
+    sudo apt install crowdsec-firewall-bouncer-iptables
+Changer le port de l'API
+    Le port par défaut de l'API est 8080. Si besoin de changer de port (déjà pris, indiquer après l'install de crowdsec) :
+    sudo nano /etc/crowdsec/config.yaml
+        remplacer listen_uri: 127.0.0.1:8080 par listen_uri: 127.0.0.1:<nouveau port>
+    sudo nano /etc/crowdsec/local_api_credentials.yaml
+        rempalcer url: http://127.0.0.1:8080 par url: http://127.0.0.1:<nouveau port>/
+    sudo nano /etc/crowdsec/bouncers/crowdsec-firewall-bouncer.yaml
+        rempalcer api_url: http://127.0.0.1:8080/ par api_url: http://127.0.0.1:<nouveau port>/
+    Redémarrer les services
+        sudo systemctl daemon-reload
+        sudo systemctl restart crowdsec
+        sudo systemctl restart crowdsec-firewall-bouncer
+Lier le dashboard crowdsec.net au serveur
+    sudo cscli console enroll --auto
+
+// Commandes utiles
+Liste des commandes
+    cscli --help
+Résumée
+    cscli metrics
+Annuler un ban
+    cscli decisions delete --ip <IP>
