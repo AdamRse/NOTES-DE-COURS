@@ -5,7 +5,7 @@
 Ajouter le repo
     curl -s https://install.crowdsec.net | sudo sh
 Installer crowdsec
-    apt install crowdsec
+    sudo apt install crowdsec
 Installer le bouncer
     sudo apt install crowdsec-firewall-bouncer-iptables
 Changer le port de l'API
@@ -22,6 +22,16 @@ Changer le port de l'API
         sudo systemctl restart crowdsec-firewall-bouncer
 Lier le dashboard crowdsec.net au serveur
     sudo cscli console enroll --auto
+    OU
+    Aller sur le dashboard (https://app.crowdsec.net/)
+        Onglet Engines, Enroll command
+        copier la ligne avec : sudo cscli console enroll <clé>
+        Executer sur le serveur
+        Accepter l'enroll sur le dashboard
+Installer le bouncer nginx (https://docs.crowdsec.net/u/bouncers/nginx)
+    sudo apt install nginx lua5.1 libnginx-mod-http-lua luarocks gettext-base lua-cjson
+    sudo apt install crowdsec-nginx-bouncer
+    sudo systemctl restart nginx
 
 // Commandes utiles
 Liste des commandes
