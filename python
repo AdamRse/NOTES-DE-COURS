@@ -51,3 +51,10 @@ lib/
 lib64/
 pyvenv.cfg
     ```
+
+//Environement utile
+Recharger le scrip on save avec entr
+    <scripts> | entr -d <commande>
+        par ex : find . -name "*.py" | entr python main.py
+            execute la commande "python main.py" quand un des fichiers en entrée du pipe (.py) a été modifié
+        Pour cibler un seul fichier : ls <fichier> | entr python <fichier python>
