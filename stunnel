@@ -1,0 +1,23 @@
+//DNS Privé
+Prérequis
+    Pihole, un un nom de domaine avec https
+
+Installer stunnel
+    sudo apt update && sudo apt install stunnel4 -y
+Faire la config
+    sudo nano /etc/stunnel/stunnel.conf
+    ```
+pid = /run/stunnel4/stunnel4.pid
+
+[dns-over-tls]
+accept  = 853
+connect = 127.0.0.1:53
+cert    = /etc/letsencrypt/live/<nom de domaine>/fullchain.pem
+key     = /etc/letsencrypt/live/<nom de domaine>/privkey.pem
+    ```
+        Attention à bien changer <nom de domaine>
+Activer
+    sudo sed -i 's/ENABLED=0/ENABLED=1/' /etc/default/stunnel4
+    sudo systemctl enable stunnel4
+    sudo systemctl start stunnel4
+    sudo systemctl status stunnel4
