@@ -40,16 +40,18 @@ deactivate
     A taper simplement dans le terminal.
     Attention, pas deSactivate
 
+// REPL avec Zed
+Installer ipykernel dans la sandbox venv
+    pip install ipykernel
+Installer le kernel dans la sandbox venv
+    python -m ipykernel install --user
+
 // Git
 Gitignore :
     ```
 .venv/
 .env
-bin/
-include/
-lib/
-lib64/
-pyvenv.cfg
+**/__pycache__/
     ```
 
 //Environement utile
