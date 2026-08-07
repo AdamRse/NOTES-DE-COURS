@@ -1,0 +1,6 @@
+// Installation
+sudo apt install postgresql
+
+//Fichier de config
+sudo nano /etc/postgresql/17/main/postgresql.conf
+    17 Pour la version installée, il peut donc varier

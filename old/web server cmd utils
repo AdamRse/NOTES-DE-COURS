@@ -1,0 +1,2 @@
+//Afficher les programmes sur le port <Numéro port>
+sudo ss -tlnp | grep :<Numéro port>
