@@ -16,3 +16,8 @@ Vérifier que steam est sélectionné dans "installer pour"
 Cliquer sur ajouter une version et installer proton-GE
 Redémarrer steam
 Dans steam, dans les paramètres du jeu, onglet compatibilité, possibilité de sélectionner proton-GE
+
+//Optimiser le server graphique avec gamescope
+sudo apt install gamescope
+Pour chaque jeu qui tourne sous proton, ajouter l'options de lancement :
+    gamescope --backend sdl --fullscreen -W 2560 -H 1080 -w 2560 -h 1080 -r 144 -- %command%

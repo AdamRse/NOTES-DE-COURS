@@ -1,0 +1,4 @@
+//Installer le driver pour le dongle xbox
+sudo apt install dkms libarchive-tools
+git clone https://github.com/dlundqvist/xone
+cd xone && sudo make install-debug
