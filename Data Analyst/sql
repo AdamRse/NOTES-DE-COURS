@@ -1,0 +1,10 @@
+# SQL
+### Fonctions d'aggrégation
+- SUM(), AVG(), COUNT(), MIN() et MAX()
+- PERCENTILE_CONT(p) WITHIN GROUP (ORDER BY col)
+    - p : 0 à 1, donne le pourcentile visé (médianne = 0.5)
+    - col : La colonne visée. Le ORDER BY est obligatoire.
+- STDDEV(col) : Calcule l'écart type
+- VARIANCE(col) : Calcule la variance
+- CORR(y, x) : Renvoie le coeffiscient de correlation de Pearson entre 2 nombres
+COVAR_SAMP(y, x) : Calcule la covariance entre 2 variables.

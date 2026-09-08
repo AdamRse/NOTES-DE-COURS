@@ -1,0 +1,60 @@
+Data analyst : producteur d'information (informtique et stats)
+
+Toute mesure n'est pas un indicateur
+
+Méthodologie : CRISP-DM
+
+Population > Ensemble d'élément concernés pas l'étude
+
+Unité statistique > L'unité de Ce qu'on peut mesure
+
+4 types de variable :
+    Qualitative nominale
+    Qualitative ordinale
+    Quantitative discrète
+    Quantitatuve continue
+On utilise différent types d'indcateurs (médiane, moyenne) selon le type de variable
+
+Statistique descriptive
+    Écart type permet de comprendre si la population est homogène ou hétérogène
+        Permet de savoir si la moyenne ou la médiane est la plus pertinente
+
+
+
+4 questions qui définissent un indicateur
+    Qui : Qui consulte l'inducateur ?
+    Quoi : Quelle décision change selon sa valeur
+    Seuil : A partir de quelle valeur agit-on ?
+    Rythme/Fréquence, A quelle fréquence est-il actualisé
+
+Fiche indicateur :
+    Lecteur
+    Décision éclairée
+    Population
+    Calcul
+    Fréquence
+    Seuil / Responsable du seuil
+
+Exercice Médiathèque : Je veux savoir si les gens rendent les livres en retard.
+    Indicateurs :
+        Le taux d'emprunts rendus en retard (%)
+        La durée moyenne de retard (en jours)
+        Le type de documents empruntés
+        La catégorie du livre
+    Indicateur choisis : Le taux d'emprunts rendus en retard (%)
+        Lecteur
+            Manager
+            Responsable de la médathèque
+            Équipe d'accueil
+            Équipe de gestion des collections
+        Décision éclairée
+            Renforcer les rappels (Email, SMS)
+            Ajuster les durées de prêt selon le type de livre
+            Ajuster les sanctions
+            Augmenter le nombre d'exemplaires en tension
+        Population
+            Emprunts
+            Exlure les livres perdus
+        Calcul : SUM(durée d'emprunt - délai de retour) * 100 / population
+        Fréquence/Periode
+        Seuil / Responsable du seuil
