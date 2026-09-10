@@ -34,7 +34,47 @@ Fiche indicateur :
     Calcul
     Fréquence
     Seuil / Responsable du seuil
+-------
+//Les types de diagramme
+Diagramme barres
 
+Courbe : Pour suivre une évolution
+    Tendance : La coube monte (haussière), descend (baissière), stable
+        On peut découper par période
+
+Camembert : Pour voir une composition
+
+Barres empilées : composition dans le temps
+    Voilr l'évolution de la composition (l'évolution d'un camembert)
+
+Nuage de points : étudier une relation
+    Faire des correlations
+    Tendance avec une Courbe de régression
+
+Histogramme
+    Beaucoup de variables
+    Plus pertinent que la moyenne
+        Est-ce que la population ets homogène ou hétérogène
+    voir si ça se raproche de la loi normale (courbe de gauss)
+        On peut mettre en évidence des valeurs extrêmes
+
+//Des indicateurs aux KPI
+Un KPI est un indicateur relié à une stratégie, associés à la dacision (Tous les indicateurs ne sont donc pas des KPI)
+
+Un bon KPI
+    Spécifique et fiable
+        Mesure une seule chose
+    Actionnable
+        Permettre une comparaison
+    Reproductible
+    Compréhensible
+        Pas trop technique
+    Stable et disponible dans le temps
+Un bon KPI doit être S.M.A.R.T
+
+Exemple de bon KPI
+    Taux de casse (banque, crédits impayés), ne pas dépasser un seuil de crédits impayés
+----------------------------------------------------------------------------------
 Exercice Médiathèque : Je veux savoir si les gens rendent les livres en retard.
     Indicateurs :
         Le taux d'emprunts rendus en retard (%)
@@ -58,3 +98,75 @@ Exercice Médiathèque : Je veux savoir si les gens rendent les livres en retard
         Calcul : SUM(durée d'emprunt - délai de retour) * 100 / population
         Fréquence/Periode
         Seuil / Responsable du seuil
+
+----------------------------------------------------------------------------------
+Atelier
+Sélectionner 5 ou 7 indicateurs
+
+Chaque mois, les directions métier envoient leurs chiffres au COMEX (commité exterieur).
+
+Indicateurs sélectionnés :
+    Trésorerie disponnible en fin de mois (Finance)
+        Aligné : Pours sécuriser la trésorerie
+        Portée : Finance
+        Actionnable : Oui, il existe une réponse opérationelle à apporter quand un seuil est atteint
+        Régulier : oui
+    Taux de rupture de stock (supply chain)
+        Aligné : Pour garantir la disponnibliité du produit
+        Portée : Supply Chain
+        Actionnable : Oui
+        Régulier :oui
+    Taux de conversion de prospects
+        Aligné : Pour développer le chiffre d'affaire
+        Portée : Ventes
+        Actionnable : Oui
+        Régulier : oui
+    Nombre de ticket support ouvert
+        Aligné : Pour fidéliser les clients
+        Portée : Service client
+        Actionnable : non
+        Régulier : oui
+    Taux de turnover des cadres
+        Aligné : Stabiliser les équipes
+        Portée : RH
+        Actionnable : non
+        Régulier : oui
+    Nombre de nouveaux followers LinkedIn
+        Aligné : Augmenter la portée publicitaire
+        Portée : Marketing
+        Actionnable : non
+        Régulier : oui
+
+----------------------------------------------------------------------------------
+Atelier
+Penser à des indicateursqui peuvent être utiles.
+---
+Une entreprise déploie un nouvel outil de prise de commande dans ses 40 agences sur 6 mois.
+---
+
+Lister les questions qu'un directeur de programme se poserait pendant ce déploiement
+    - Est-ce qu'il y a plus de commandes passées avec le nouvel outil ?
+    - Quel est la satisfaction client de l'outil ?
+    - Quelle est la satisfaction employé de l'outil ?
+    - L'outils améliore-il le temps de préparation de commande ?
+    - Quel est le taux d'échec (annulations) de commandes de l'outil ?
+Définir 3 KPI complets (objectif, calcul, population, fréquence, seuil)
+    Temps moyen de préparation d'une commande (secondes)
+        objectif : Définir si le nouvel outil ets mieux que l'ancienne méthode.
+        calcul : (timestam_commande_prête - Timestamp_commande_validée) / nombre de commandes réalisées avec le nouvel outil
+        population : commandes effectuées avec l'outil
+        fréquence : jour
+        seuil : Réduction du temps de préparation de X%
+    Taux d'échec et d'annulation des commandes (%)
+        objectif : Mesurer la performance du nouvel outil
+        calcul : (Commandes annulées + commandes erreur) * 100 / nombre de commandes
+        population : commandes effectuées avec l'outil
+        fréquence : jour
+        seuil :  Ancien taux d'échec
+    Taux d'adoption de l'outil (%)
+        objectif : Mesurer si les employés et les clients ont adopté l'outil
+        calcul : (commande avec nouvel outil il y a 6 mois * 100 / commandes totales) - (commande avec nouvel outil 6 mois après * 100 / commandes totales)
+        population : employés + clients
+        fréquence : jour
+        seuil :
+
