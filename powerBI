@@ -1,0 +1,11 @@
+//Tuto
+
+
+//Concepts
+Le langage de transformatio des données s'apelle langage M
+
+Combiner les données
+    Ajouter (append)
+        Ajoute les une ligne (même colonnes)
+    Fusionner (Merge)
+        Ajouter une colonne par rapport à un ID
