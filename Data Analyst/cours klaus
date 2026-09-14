@@ -1,0 +1,90 @@
+Data analyst : producteur d'information (informtique et stats)
+
+Toute mesure n'est pas un indicateur
+
+Méthodologie : CRISP-DM
+
+Population > Ensemble d'élément concernés pas l'étude
+
+Unité statistique > L'unité de Ce qu'on peut mesure
+
+4 types de variable :
+    Qualitative nominale
+    Qualitative ordinale
+    Quantitative discrète
+    Quantitatuve continue
+On utilise différent types d'indcateurs (médiane, moyenne) selon le type de variable
+
+Statistique descriptive
+    Écart type permet de comprendre si la population est homogène ou hétérogène
+        Permet de savoir si la moyenne ou la médiane est la plus pertinente
+
+
+
+4 questions qui définissent un indicateur
+    Qui : Qui consulte l'inducateur ?
+    Quoi : Quelle décision change selon sa valeur
+    Seuil : A partir de quelle valeur agit-on ?
+    Rythme/Fréquence, A quelle fréquence est-il actualisé
+
+Fiche indicateur :
+    Lecteur
+    Décision éclairée
+    Population
+    Calcul
+    Fréquence
+    Seuil / Responsable du seuil
+-------
+//Les types de diagramme
+Diagramme barres
+
+Courbe : Pour suivre une évolution
+    Tendance : La coube monte (haussière), descend (baissière), stable
+        On peut découper par période
+
+Camembert : Pour voir une composition
+
+Barres empilées : composition dans le temps
+    Voilr l'évolution de la composition (l'évolution d'un camembert)
+
+Nuage de points : étudier une relation
+    Faire des correlations
+    Tendance avec une Courbe de régression
+
+Histogramme
+    Beaucoup de variables
+    Plus pertinent que la moyenne
+        Est-ce que la population ets homogène ou hétérogène
+    voir si ça se raproche de la loi normale (courbe de gauss)
+        On peut mettre en évidence des valeurs extrêmes
+
+//Des indicateurs aux KPI
+Un KPI est un indicateur relié à une stratégie, associés à la dacision (Tous les indicateurs ne sont donc pas des KPI)
+
+Un bon KPI
+    Spécifique et fiable
+        Mesure une seule chose
+    Actionnable
+        Permettre une comparaison
+    Reproductible
+    Compréhensible
+        Pas trop technique
+    Stable et disponible dans le temps
+Un bon KPI doit être S.M.A.R.T
+
+Exemple de bon KPI
+    Taux de casse (banque, crédits impayés), ne pas dépasser un seuil de crédits impayés
+
+//Tableaux de bord
+Relie des indicateurs clés à une décision, une action corrective.
+Émet des alertes par rapport à des seuils
+3 types de tableaux de bord
+    Stratégie (pour la direction)
+    Gestion (responsable de service)
+    Opérations (Équipe)
+
+Étape de construction d'un tableau de bord
+    Déterminer les buts : qui utilisera le tableau de bord, pour quel usage, quelle fréquence ?
+    Choisir les indicateurs clés : relier chacun à un objectif chiffré, de type SMART.
+    Organiser la hiérarchie : cohérence entre niveaux, les résultats des services remontent consolidés.
+    Définir la fréquence : plus on est proche des opérations, plus la mise à jour doit être rapprochée.

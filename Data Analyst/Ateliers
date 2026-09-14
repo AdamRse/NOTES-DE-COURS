@@ -1,0 +1,103 @@
+----------------------------------------------------------------------------------
+Exercice Médiathèque : Je veux savoir si les gens rendent les livres en retard.
+    Indicateurs :
+        Le taux d'emprunts rendus en retard (%)
+        La durée moyenne de retard (en jours)
+        Le type de documents empruntés
+        La catégorie du livre
+    Indicateur choisis : Le taux d'emprunts rendus en retard (%)
+        Lecteur
+            Manager
+            Responsable de la médathèque
+            Équipe d'accueil
+            Équipe de gestion des collections
+        Décision éclairée
+            Renforcer les rappels (Email, SMS)
+            Ajuster les durées de prêt selon le type de livre
+            Ajuster les sanctions
+            Augmenter le nombre d'exemplaires en tension
+        Population
+            Emprunts
+            Exlure les livres perdus
+        Calcul : SUM(durée d'emprunt - délai de retour) * 100 / population
+        Fréquence/Periode
+        Seuil / Responsable du seuil
+
+----------------------------------------------------------------------------------
+Atelier
+Sélectionner 5 ou 7 indicateurs
+
+Chaque mois, les directions métier envoient leurs chiffres au COMEX (commité exterieur).
+
+Indicateurs sélectionnés :
+    Trésorerie disponnible en fin de mois (Finance)
+        Aligné : Pours sécuriser la trésorerie
+        Portée : Finance
+        Actionnable : Oui, il existe une réponse opérationelle à apporter quand un seuil est atteint
+        Régulier : oui
+    Taux de rupture de stock (supply chain)
+        Aligné : Pour garantir la disponnibliité du produit
+        Portée : Supply Chain
+        Actionnable : Oui
+        Régulier :oui
+    Taux de conversion de prospects
+        Aligné : Pour développer le chiffre d'affaire
+        Portée : Ventes
+        Actionnable : Oui
+        Régulier : oui
+    Nombre de ticket support ouvert
+        Aligné : Pour fidéliser les clients
+        Portée : Service client
+        Actionnable : non
+        Régulier : oui
+    Taux de turnover des cadres
+        Aligné : Stabiliser les équipes
+        Portée : RH
+        Actionnable : non
+        Régulier : oui
+    Nombre de nouveaux followers LinkedIn
+        Aligné : Augmenter la portée publicitaire
+        Portée : Marketing
+        Actionnable : non
+        Régulier : oui
+
+----------------------------------------------------------------------------------
+Pilotage de la performance
+Atelier 2 : Choisis une vue pour chaque décision
+    A : La direction hésite à ouvrir un deuxième atelier.
+        Type : Stratégie
+        Pour qui : Directeur, gouvernance
+        Question & indicateurs : L'atelier actuel est-il en tension ?
+            Délai de traitement des commandes
+            rentabilité de l'atelier existant
+            Trésorerie
+    B : L'équipe cherche les dossiers à examiner aujourd'hui
+        opérationel
+        Équipe
+        Quels dossiers sont prioritaires ?
+            Taux des dossiers par statut (en cours, à faire, fini)
+    C : La responsable répartit la capacité de réparation entre deux activités.
+        Gestion
+        Responsable d'activité
+        Quelle est la charge des équipes ?
+
+----------------------------------------------------------------------------------
+Pilotage de la performance
+Atelier 3 : Propose un objectif qui ne dégrade pas les autres
+1 : Choisis 2 perspectives du balanced scorecard pour l'atelier fictif
+    Perspectives : Finance, processus internes
+    Processus internes
+        Objectif : Améliorer la performance (rendement)
+        Indicateur : Temps de réalisation d'une commande
+        Initiative : Vérifier la performance
+            (L'initiative n'est pas l'action à réaliser en conclusion)
+
+----------------------------------------------------------------------------------
+Pilotage de la performance
+Atelier final : Livre une esquisse que ton binôme peut expliquer
+Aider la responsable à suivre le délai promis, puis préparer les vérifications sur les dossiers ouverts.
+1: Question : Quel est l'avancement des dossiers traités ?
+    Indicateur : Taux de dossiers traités, pour mesurer l'avancement des dossiers traités
+    Calcul : Dossier ouverts x 100 / dossiers totaux
+    Esquisse : Camembert avec taux dossiers ouverts, et taux dossiers terminés
+    Support : Excel : La donnée à récolter (dossier terminé) doit être mise à jour manuellement.

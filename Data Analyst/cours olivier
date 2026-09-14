@@ -1,0 +1,21 @@
+- Cohorte et ontologie
+
+La moyenne cache la distribution (Max - min)
+    Moyenne ets utile pour la loi normale, mais pas pour la Lognormal et l'exponentielle
+    Il est donc utile de connaitre le type de distribution avant de se fier à la moyenne
+
+//Pipelines d'analyse
+Permet d'être reproductible
+Plusieurs étapes
+    generate
+    prepare
+    describe
+    visualize
+Chaque étape est un script python (dans updated-kit sur le google drive du cours : https://drive.google.com/drive/folders/1Je6wAp4EHLk7T0d68A9KmkEotnAjr0ig)
+On peut personnaliser ces étapes en fonction de nos besoins et de ce qu'on analyse.
+Conrètement on pour avoir un pipeline pour :
+    voir les données
+    controle qualité
+    nettoyer
+    vérifier
+Chaque script executé étape par étape, et on peut vérifier le résultat entre chaque script.
