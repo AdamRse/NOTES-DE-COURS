@@ -1,11 +1,39 @@
 //Tuto
+Modifier les données
+	Dans l'onglet latéral Données, clic droit sur le dataset à modifier, "modifier la requête".
+Group by
+	Sélectionner le graphique
+	Onglet latéral Données, sélectionner la colonne à grouper
+	glisser déposer dans l'onglet Visualisation -> Valeur
 
+Arrondir une valeur
+	Sélectionner la colonne de la vue (dans données), puis dans outils de colonne, Régler le format
+
+//Dans la fenêtre "Modifier la requête"
+Supprimer les doublons
+	ctrl+A, clic droit sur l'en-tête -> supprimer les doublons
+Remplacer les valeurs
+	clic droit sur la colonne -> remplacer les valeurs
+
+//DAX
+Permet de créer des colonnes et des mesures
+Les [] désignent les colonnes
+On peut y accoler le nom de la table
+	Total ventes = SUM(Ventes[CA])
+	Marge = Ventes[CA] - Ventes[Coût]
 
 //Concepts
-Le langage de transformatio des données s'apelle langage M
+Le langage de transformation des données s'appelle langage M
 
 Combiner les données
     Ajouter (append)
         Ajoute les une ligne (même colonnes)
     Fusionner (Merge)
         Ajouter une colonne par rapport à un ID
+
+//Nettoyage
+Corriger les valeurs similaires (uniformiser)
+	Group by dans une vue ou voir dans les fltres
+Convetir les types
+Supprimer les doublons
+	Sélection de toutes les tables
