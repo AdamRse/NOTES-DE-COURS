@@ -1,0 +1,44 @@
+//Concepts
+Figer ligne/colonne (ancrage) : Appliquer un $ devant ligne ou colonne permet de figer celle-ci en cas d'étirement de la formule à d'autres cellules.
+	Ex : A2 devient B2 en cas d'étirement d'une formule vers le bas, $A$2 reste A2 en cas d'étirement vers le bas
+Sélectionner une autre feuille de calcul
+	avec <nom feuille de calcul>!
+	Ex : feuille2!A2
+		Sélectionne la cellule A2 dans l'onglet (la feuille de calcul) "feuille2"
+	Ex avec espaces : 'feuille 2'!A2
+
+//Fusionner les tableurs via power query (même colonnes)
+Données > Obtenir des données > Sélectionner le fichier (excel, csv…)
+Sélectionner les tables à importer dans power query
+Accueil > Ajouter des requêtes > Ajouter des requêtes comme étant nouvelles
+	Si plus de 2 tables à fusionner : sélectionner au moins 3 tables et les ajouter dans la colonne de droite
+Si power query a capturé les lignes null (qu'il a importé toutes les cellules vides en dessous des tableaux) : Flèche sur une colonne > Supprimer les éléments vides
+Renommer le dataset fusionné
+Accueil > Fermer et charger dans…
+
+//Fusionner les tableurs via formule (mêmes colonnes)
+Copier coller la ligne d'en-tête dans la nouvelle feuille
+en A2 de la nouvelle feuille, entrer la formule :
+	=ASSEMB.V(<feuille1>!<cellule haut gauche tableur à copier (ex : A2)>:<cellule bas droite>; <feuille2>!<cellule haut gauche (ex : A2)>; ...)
+
+//Tableau structurel (considéré par excel comme un tableau bien défini)
+Attention, pas possible de définir un tableau structuré à partir d'une fusion avec ASSEMB.V (ou STICK.V)
+	Dans ce cas, copier tout le tableau, et coller en mode valeur (cela enlève toutes les formules et garde la valeur absolue, il faut refaire les formules si nécessaire
+Contrôle + T
+Ou Insertion > Tableau
+
+//Tableau croisé dynamique (TCD)
+Sélectionner une cellule du tableau (tableau structurel, ctrl+T si pas structurel)
+Insertion > Tableau croisé dynamique
+Pour bouger un TCD
+	Sélectionner une cellule du TCD
+	Menu Analyse du tableau croisé dynamique > Déplacer le tableau croisé dynamique
+
+//Formules utiles
+RECHERCHEX() : Recherche une valeur à partir d'autres tableaux
+	RECHERCHEX(Valeur recherchée dans ce tableau ; tableau de recherche ; tableau renvoyé ; [string si non trouvé])
+		Ex : =RECHERCHEX(E2 ; Référentiels!$A$6:$A$29 ; Référentiels!$B$6:$B$29 ; "Inconnu")
+
+SI() : Renvoie une string selon une condition.
+	SI(Condition ; Valeur si vrai ; [valeur si faux])
+		Ex : =SI(O2="Majeure" ; "À signaler" ; "RAS")
