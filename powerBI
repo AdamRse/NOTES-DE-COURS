@@ -25,6 +25,7 @@ On peut y accoler le nom de la table
 //Concepts
 Le langage de transformation des données s'appelle langage M
 
+
 Combiner les données
     Ajouter (append)
         Ajoute les une ligne (même colonnes)

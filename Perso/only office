@@ -1,0 +1,6 @@
+Colonne 1 = colonne 2 + colonne 3
+    Sélectionner la première cellule de colonne 1
+    écrire la formule
+        =SOMME(celluleColonne2, celluleColonne3)
+    Entrée pour valider
+    Pour appliquer sur toute la colonne, double clic sur le carré vert en bas à droite de la cellulle
