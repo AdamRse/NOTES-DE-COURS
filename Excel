@@ -33,6 +33,32 @@ Insertion > Tableau croisé dynamique
 Pour bouger un TCD
     Sélectionner une cellule du TCD
     Menu Analyse du tableau croisé dynamique > Déplacer le tableau croisé dynamique
+Pour filtrer un top 5
+	Sélectionné le TCD, dans le menu à droite avec les champs, cliquer sur la flèche déroulante à droite du champ voulu, puis :
+	Filtre s'appliquant aux valeurs > 10 premiers > mettre 5.
+Pour créer un graphique
+	cliquer sur le TCD concerné
+	Analyse du tableau croisé dynamique > Graphique croisé dynamique
+		Pour changer de feuille, cliquer sur le graphique
+		Création > Déplacer le graphique
+	Netoyer le graphique
+		clic droit sur les boutons, puis masquer tous les boutons de champ sur le graphique
+Ajouter un filtre (segment)
+	Cliquer sur un TCD, puis
+	Analyse du tableau croisé dynamique > Insérer un segment
+		Pour un filtre date : tableau croisé dynamique > Insérer une chronologie
+	Sélectionner le ou les segments (ce sont des filtres)
+	Pour connecter les segments à plusieurs TCD :
+		Clic droit sur le segment
+		Connexions de rapport
+		Sélectionner les TCD qui seront triés par le segment
+
+//Activer les macros
+Fichier > Options > personaliser le ruban
+	cocher l'option développeur à droite
+Développeur > Sécurité des macros > Désactiver avec notifications
+Alt + F11 pour vérifier l'accès
+
 
 //Formules utiles
 RECHERCHEX() : Recherche une valeur à partir d'autres tableaux

@@ -25,7 +25,6 @@ On peut y accoler le nom de la table
 //Concepts
 Le langage de transformation des données s'appelle langage M
 
-
 Combiner les données
     Ajouter (append)
         Ajoute les une ligne (même colonnes)
@@ -38,3 +37,15 @@ Corriger les valeurs similaires (uniformiser)
 Convetir les types
 Supprimer les doublons
 	Sélection de toutes les tables
+
+//Cas pratique
+Travailler avec un grand nombre de lignes (>1000)
+	Lors de l'importation des données, une fenêtre s'ouvre pour valider le format de l'importation (encodage, séparateu).
+	Dans "Détection du type de données", sélectionner "Selon le jeu de données compet"
+Ajouter un dataset
+	Accueil -> Obtenir les données
+Nettoyer les données
+	Ouvrir l'éditeur Power Query
+	A droite dans le svolet "Données", clic droit sur un dataset, pui "Modfier la requête"
+
+	
