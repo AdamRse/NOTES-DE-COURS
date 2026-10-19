@@ -1,0 +1,33 @@
+// installation de kimi code (https://www.kimi.com/code/docs/en/kimi-code-cli/guides/getting-started.html)
+mkdir -p /home/adam/dev/kimicode && cd /home/adam/dev/kimicode
+curl -fsSL https://code.kimi.com/kimi-code/install.sh | bash
+source ~/.bashrc
+kimi
+
+//Configuration de kimi code
+dans le terminal, taperla commande : kimi
+Dans kimi code, se login avec : /login
+Sélectionner l'option : Kimi Code (kimi.ai/code)
+
+//Configurer Kimi Code dans Zed
+L'option : AI > Disable AI : Doit être désactivé.
+Dans settings.json, ajouter :
+    ```
+    "agent_servers": {
+        "Kimi Code CLI": {
+            "type": "custom",
+            "command": "<chemin kimi>",
+            "args": ["acp"],
+            "env": {
+            "KIMI_CODE_OAUTH_HOST": "https://auth.kimi.ai",
+            "KIMI_CODE_BASE_URL": "https://api.kimi.ai/coding/v1"
+            }
+        }
+    }
+    ```
+        <chemin kimi> : Le chemin où kimi est installé
+            Pour voir où, executer la commande bash : which kimi
+Dans Agent pannel (bouton tout en bas, souvent à droite), ajouter Kimi Code CLI
+
+//Branches de discussions
+ctrl+alt+j
