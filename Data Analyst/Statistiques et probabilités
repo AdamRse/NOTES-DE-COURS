@@ -43,18 +43,3 @@ Mesures de tendance centrale
             f2 = fréquence de la classe suivante
             Attention : si la classe précédente ou suivante n'existe pas on ne peut pas faire le calcul!
             Peut être estimé de la façon suivante : 3 fois la médiane- 2 fois la moyenne
-
-Mesures de dispersion
-
-
-
-EXERCICE
-Moyenne = 5
-Médiane = 5
-Mode 2 = 5 et 6
-8-1 = 7
-Variance =
-16+4+1+0+0+1+1+4+9=36
-36/9=4
-Écart type = 2
-

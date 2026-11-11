@@ -1,0 +1,46 @@
+//Prérequis
+Avoir Skyrim Special Edition installé et fonctionnel via Steam (Proton)
+Noter la version du jeu (visible en bas du menu principal, ex : 1.7.104)
+
+//Réglage de la résolution
+Ouvrir ~/.steam/steam/steamapps/compatdata/489830/pfx/drive_c/users/steamuser/Documents/My Games/Skyrim Special Edition/SkyrimPrefs.ini
+Définir iSize W = largeur native de l'écran (ex : 3440)
+Définir iSize H = hauteur native (ex : 1440)
+Définir bBorderless = 1
+    Ne plus jamais ouvrir les options du lanceur Bethesda ensuite (écraserait ces valeurs)
+
+//Installation de SKSE
+Télécharger SKSE sur skse.silverlock.org
+    Prendre le build AE correspondant exactement à sa version du jeu (ex : build 2.3.1 pour jeu 1.7.104)
+Extraire l'archive dans ~/.steam/steam/steamapps/common/Skyrim Special Edition/
+    Fusionner/remplacer si demandé
+
+//Remplacement du lanceur
+Aller dans ~/.steam/steam/steamapps/common/Skyrim Special Edition/
+Renommer SkyrimSELauncher.exe en SkyrimSELauncher_original.exe
+Copier skse64_loader.exe en SkyrimSELauncher.exe
+    Steam lance le lanceur, donc SKSE démarrera le jeu à la place
+    Ne PAS renommer SkyrimSE.exe : le loader en a besoin pour trouver le jeu
+
+//Installation de SkyUI
+Télécharger SkyUI 5.2 SE sur Nexus Mods
+Copier SkyUI_SE.bsa et SkyUI_SE.esp dans ~/.steam/steam/steamapps/common/Skyrim Special Edition/Data/
+
+//Installation du fix écran large (21:9)
+Télécharger Complete Widescreen Fix for Vanilla and SkyUI sur Nexus Mods
+Copier le contenu de l'archive (dossier interface) dans ~/.steam/steam/steamapps/common/Skyrim Special Edition/Data/
+    Installer APRÈS SkyUI et accepter d'écraser ses fichiers
+    Pas d'esp dans ce mod : rien à activer, les fichiers remplacent l'interface vanilla
+
+//Activation des mods
+Fermer le jeu
+Ouvrir ou créer ~/.steam/steam/steamapps/compatdata/489830/pfx/drive_c/users/steamuser/AppData/Local/Skyrim Special Edition/plugins.txt
+Ajouter une ligne par esp, avec un astérisque : *SkyUI_SE.esp
+    L'astérisque signifie « activé »
+    Ne plus utiliser le menu « Créations » du jeu ensuite (il réécrit plugins.txt)
+
+//Vérification
+Lancer le jeu via Steam
+    SKSE actif : le jeu démarre directement, sans le lanceur Bethesda
+    SkyUI actif : inventaire et menus ont un aspect différent (listes compactes)
+    Fix 21:9 actif : menus et HUD aux proportions normales, non étirés
