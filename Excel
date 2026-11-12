@@ -6,6 +6,8 @@ Sélectionner une autre feuille de calcul
     Ex : feuille2!A2
         Sélectionne la cellule A2 dans l'onglet (la feuille de calcul) "feuille2"
     Ex avec espaces : 'feuille 2'!A2
+Macros
+	Les modules ont une portée globale, il est préférable d'écrire les macros dans des modules.
 
 //Fusionner les tableurs via power query (même colonnes)
 Données > Obtenir des données > Sélectionner le fichier (excel, csv…)
@@ -41,7 +43,7 @@ Pour créer un graphique
 	Analyse du tableau croisé dynamique > Graphique croisé dynamique
 		Pour changer de feuille, cliquer sur le graphique
 		Création > Déplacer le graphique
-	Netoyer le graphique
+	Nettoyer le graphique
 		clic droit sur les boutons, puis masquer tous les boutons de champ sur le graphique
 Ajouter un filtre (segment)
 	Cliquer sur un TCD, puis
@@ -54,10 +56,22 @@ Ajouter un filtre (segment)
 		Sélectionner les TCD qui seront triés par le segment
 
 //Activer les macros
-Fichier > Options > personaliser le ruban
+Fichier > Options > personnaliser le ruban
 	cocher l'option développeur à droite
 Développeur > Sécurité des macros > Désactiver avec notifications
 Alt + F11 pour vérifier l'accès
+
+//Créer un module pour écrire les macros
+Activer les macros si pas fait
+Onglet développeur > Visual Basic
+Dans la nouvelle fenêtre : Insertion > Module
+
+//Ajouter un bouton lié à une macro VBA
+Activer les macros si pas fait
+Onglet développeur > Insérer > Bouton
+Cliquer où placer le bouton
+Sélectionner la macro correspondante
+Pour modifier le texte où la position, clic doit sur le bouton
 
 
 //Formules utiles
