@@ -27,7 +27,7 @@ Attention : L'opération a été interrompue avant de se terminer
 	sudo dpkg-reconfigure nvidia-kernel-dkms
 		recompilation du module avec DKMS
 	
-	
+
 //Redémarrage impossible
 Failed to start nvidia_persistence au redémarrage, impossible de rallumer
 	Désactiver le secure boot
