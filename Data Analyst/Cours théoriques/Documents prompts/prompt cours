@@ -1,0 +1,25 @@
+-----------------------ÉTAPE 1-----------------------
+Nous allons créer le cours {N}.
+
+Prépare-le en 4 lectures :
+1. La section « Cours {N} » du « Programme de formation théorique - data analyst.pdf » : objectifs, contenu théorique, fichiers de référence, et concepts signalés « [Ajout — absent des fichiers du projet] ».
+2. Chacun des fichiers de référence indiqués : vérifie qu'ils existent et ce qu'ils couvrent réellement sur ces sujets.
+3. « Fiche de suivi des compétences.md » : le cours {N} ne doit mobiliser comme acquis QUE ce qui y figure. Si le programme suppose un prérequis absent de la fiche, signale-le et propose comment l'introduire.
+4. « charte-pedagogique.md » et « SKILLS.md » : la structure et la forme du cours leur appartiennent intégralement, n'écris rien qui les contredise.
+
+Produis ensuite UNIQUEMENT le plan détaillé du cours {N} :
+- les sections une à une (une section = UN concept, charte §3), avec pour chacune : le concept, son terme anglais, l'illustration prévue, et la présence justifiée ou non d'un encadré « En pratique dans le code » ;
+- les rappels des cours antérieurs et l'exercice entrelacé prévus (charte §2) ;
+- la liste des ajouts « [Ajout] » intégrés et des erreurs ou ambiguïtés repérées dans les sources (elles seront signalées dans le chat, jamais dans le PDF) ;
+- tes doutes : si une indication du programme est introuvable, si un fichier source manque ou si deux sources se contredisent, dis-le maintenant et propose une solution.
+
+Ne rédige pas le cours : arrête-toi après le plan.
+
+-----------------------ÉTAPE 2-----------------------
+Rédige maintenant le cours {N} complet en PDF, en suivant le plan validé et la charte pédagogique (structure §3, rédaction §4, illustrations §5, spécificités §6, mise en page §7).
+Avant de livrer, vérifie point par point la checklist §8 de la charte et corrige ce qui manque.
+Dans ta réponse, hors du PDF : liste les corrections et ajouts significatifs par rapport aux sources, et confirme le passage de la checklist.
+
+-----------------------ÉTAPE 3-----------------------
+Mets à jour « Fiche de suivi des compétences.md » en ajoutant une section « Cours {N} — … » au format exact des sections existantes : uniquement ce que le cours enseigne réellement (notions, formules, réflexes professionnels, fonctions de code), de façon concise. Tout ce qui y figure doit pouvoir être réutilisé sans réexplication dans les cours suivants. Ne modifie pas les sections des cours précédents.
+Ne donne pas des instructions pour le cours suivant, il y a juste besoin d'ajouter les compétences de manière concises, pour ne pas polluer la fenêtre de contexte.
