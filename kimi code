@@ -9,6 +9,9 @@ dans le terminal, taperla commande : kimi
 Dans kimi code, se login avec : /login
 Sélectionner l'option : Kimi Code (kimi.ai/code)
 
+//Réglages
+Les réglages sont dans ~/.kimi-code/config.toml
+
 //Configurer Kimi Code dans Zed
 L'option : AI > Disable AI : Doit être désactivé.
 Dans settings.json, ajouter :
