@@ -1,3 +1,4 @@
+//// KIMI CODE
 // installation de kimi code (https://www.kimi.com/code/docs/en/kimi-code-cli/guides/getting-started.html)
 mkdir -p /home/adam/dev/kimicode && cd /home/adam/dev/kimicode
 curl -fsSL https://code.kimi.com/kimi-code/install.sh | bash
@@ -34,3 +35,10 @@ Dans Agent pannel (bouton tout en bas, souvent à droite), ajouter Kimi Code CLI
 
 //Branches de discussions
 ctrl+alt+j
+
+
+//// CLAUDE CODE
+curl -fsSL https://claude.ai/install.sh | bash
+claude --version
+    Pour vérifier
+claude
